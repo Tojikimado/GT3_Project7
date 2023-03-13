@@ -1,0 +1,4 @@
+﻿  D3DApp.cpp
+D:\mvita\GT3_Project7\ALed\ALed\D3DApp.cpp(98,18): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
+D:\mvita\GT3_Project7\ALed\ALed\D3DApp.cpp(98,35): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
+  ALed.vcxproj -> D:\mvita\GT3_Project7\ALed\x64\Debug\ALed.exe
