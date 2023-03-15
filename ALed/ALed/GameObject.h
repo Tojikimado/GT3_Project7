@@ -3,6 +3,7 @@
 #include <list>
 #include "Transform.h"
 #include "Component.h"
+#include "Collider.h"
 
 using namespace std;
 
@@ -14,8 +15,12 @@ public:
 	GameObject();
 	~GameObject();
 
+	Transform GetTransform();
+
 private:
 	Transform m_transform;
+	Collider* _collider = nullptr;
+
 	list<Component> m_components;
 
 protected:

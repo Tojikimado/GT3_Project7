@@ -1,4 +1,5 @@
-#pragma once	
+#pragma once
+#include <cmath>
 #include<d3d9.h>
 #include<d3dx9.h>
 
@@ -63,4 +64,12 @@ namespace d3dVertex
 
 		static const DWORD FVF;
 	};
+}
+
+namespace d3Distance
+{
+	float Distance(D3DXVECTOR3 _A, D3DXVECTOR3 _B)
+	{
+		return sqrt(pow((_B.x - _A.x), 2) + pow((_B.y - _A.y), 2) + pow((_B.z - _A.z),2));
+	}
 }

@@ -9,3 +9,8 @@ GameObject::~GameObject()
 {
 
 }
+
+Transform GameObject::GetTransform()
+{
+	return m_transform;
+}
