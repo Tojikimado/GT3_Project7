@@ -3,6 +3,7 @@
 #include "ColoredSlopeMesh.h"
 #include "Camera.h"
 
+#include "ColoredMeshRenderer.h"
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -10,8 +11,8 @@ const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 #pragma region Test class for our D3App class
 
 
-IDirect3DVertexBuffer9* VB;
-IDirect3DIndexBuffer9* IB;
+ColoredMeshRenderer* renderTest;
+ColoredMeshRenderer* renderTest2;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -29,29 +30,35 @@ bool Test::Init()
 		return false;
 	}
 
-	ColoredSlopeMesh* meshTest = new ColoredSlopeMesh(2.f,1.f,1.f);
+	ColoredSlopeMesh* meshTest = new ColoredSlopeMesh(2.f,1.f,1.f, d3dColors::Red);
+	ColoredRectangleMesh* meshTest2 = new ColoredRectangleMesh(0.75f, 1.f, 0.75f, d3dColors::Yellow);
+	
+	renderTest = new ColoredMeshRenderer(meshTest);
+	renderTest->Init(m_pDevice3D);
 
-	// Création d'un vertex buffer pour stocker les vertices d'une figure
-	m_pDevice3D->CreateVertexBuffer(meshTest->GetVerticesSize(), 0,
-		d3dVertex::VertexPositionColor::FVF, D3DPOOL_MANAGED,
-		&VB, NULL);
+	renderTest2 = new ColoredMeshRenderer(meshTest2);
+	renderTest2->Init(m_pDevice3D);
+	// Crï¿½ation d'un vertex buffer pour stocker les vertices d'une figure
+	//m_pDevice3D->CreateVertexBuffer(meshTest->GetVerticesSize(), 0,
+	//	d3dVertex::VertexPositionColor::FVF, D3DPOOL_MANAGED,
+	//	&VB, NULL);
 
-	// Création d'un index buffer pour stocker les indexes des triangles d'une figure
-	m_pDevice3D->CreateIndexBuffer(meshTest->GetIndicesSize(), D3DUSAGE_WRITEONLY,
-		D3DFMT_INDEX16, D3DPOOL_MANAGED,
-		&IB, NULL);
+	//// Crï¿½ation d'un index buffer pour stocker les indexes des triangles d'une figure
+	//m_pDevice3D->CreateIndexBuffer(meshTest->GetIndicesSize(), D3DUSAGE_WRITEONLY,
+	//	D3DFMT_INDEX16, D3DPOOL_MANAGED,
+	//	&IB, NULL);
 
 	// Stock les vertices dans le vertex buffer
-	VOID* pVerts;
-	VB->Lock(0, meshTest->GetVerticesSize(), (void**)&pVerts, 0);
-	memcpy(pVerts, meshTest->GetVerices(), meshTest->GetVerticesSize());
-	VB->Unlock();
+	//VOID* pVerts;
+	//VB->Lock(0, meshTest->GetVerticesSize(), (void**)&pVerts, 0);
+	//memcpy(pVerts, meshTest->GetVerices(), meshTest->GetVerticesSize());
+	//VB->Unlock();
 
-	// Stock les indexes dans l'index buffer
-	VOID* pIndices;
-	IB->Lock(0, meshTest->GetIndicesSize(), (void**)&pIndices, 0);
-	memcpy(pIndices, meshTest->GetIndices(), meshTest->GetIndicesSize());
-	IB->Unlock();
+	//// Stock les indexes dans l'index buffer
+	//VOID* pIndices;
+	//IB->Lock(0, meshTest->GetIndicesSize(), (void**)&pIndices, 0);
+	//memcpy(pIndices, meshTest->GetIndices(), meshTest->GetIndicesSize());
+	//IB->Unlock();
 
 
 	if (pCamera == nullptr)
@@ -95,10 +102,8 @@ void Test::Render()
 
 	m_pDevice3D->BeginScene();
 
-	m_pDevice3D->SetStreamSource(0, VB, 0, sizeof(d3dVertex::VertexPositionColor));
-	m_pDevice3D->SetIndices(IB);
-	m_pDevice3D->SetFVF(d3dVertex::VertexPositionColor::FVF);
-	m_pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, 6, 0, 2);
+	renderTest->Render(m_pDevice3D);
+	renderTest2->Render(m_pDevice3D);
 
 	m_pDevice3D->EndScene();
 
