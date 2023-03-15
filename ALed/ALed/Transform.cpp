@@ -1,81 +1,28 @@
 #include "Transform.h"
 
-void Transform::Identity()
+D3DXMATRIX Transform::GetWorld()
 {
-	D3DXMatrixIdentity(&mRotation);
-	D3DXMatrixIdentity(&matrix);
-	D3DXQuaternionIdentity(&qRotation);
-	
+	D3DXMATRIX Scale, Rx, Ry, Rz, Translate;
+	D3DXMatrixScaling(&Scale, m_scale.x, m_scale.y, m_scale.z);
+	D3DXMatrixRotationX(&Rx, m_rotation.vector3.x);
+	D3DXMatrixRotationY(&Ry, m_rotation.vector3.y);
+	D3DXMatrixRotationZ(&Rz, m_rotation.vector3.z);
+	D3DXMatrixTranslation(&Translate, m_position.x, m_position.y, m_position.z);
+	m_world = Scale * Rx * Ry * Rz * Translate;
+	return m_world;
 }
 
-void Transform::FromMatrix(D3DXMATRIX matrix)
-{
-
-}
-
-void Transform::UpdateRotationFromVectors()
-{
-
-}
-
-void Transform::UpdateRotationFromQuaternion()
-{
-
-}
-
-void Transform::UpdateRotationFromMatrix()
-{
-
-}
-
-void Transform::UpdateMatrix()
-{
-
-}
-
-void Transform::Rotate(float yaw, float pitch, float roll)
-{
-
-}
-
-void Transform::RotateYaw(float angle)
+D3DXQUATERNION Transform::GetQuaternion()
 {
 	D3DXQUATERNION quat;
-	D3DXQuaternionRotationAxis(&quat, &vUp, angle);
-	qRotation *= quat;
+	D3DXQuaternionRotationAxis(&quat, &m_direction, roll);
+	m_rotation.quaternion *= quat;
+	D3DXQuaternionRotationAxis(&quat, &m_right, pitch);
+	m_rotation.quaternion *= quat;
+	D3DXQuaternionRotationAxis(&quat, &m_up, yaw);
+	m_rotation.quaternion *= quat;
+
+	return m_rotation.quaternion;
 }
 
-void Transform::RotatePitch(float angle)
-{
-	D3DXQUATERNION quat;
-	D3DXQuaternionRotationAxis(&quat, &vRight, angle);
-	qRotation *= quat;
-}
-
-void Transform::RotateRoll(float angle)
-{
-	D3DXQUATERNION quat;
-	D3DXQuaternionRotationAxis(&quat, &vDirection, angle);
-	qRotation *= quat;
-}
-
-void Transform::RotateWorld(D3DXMATRIX matrix)
-{
-
-}
-
-void Transform::RotateWorldX(float angle)
-{
-
-}
-
-void Transform::RotateWorldY(float angle)
-{
-
-}
-
-void Transform::RotateWorldZ(float angle)
-{
-
-}
 

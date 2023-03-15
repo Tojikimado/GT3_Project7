@@ -3,31 +3,62 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
+struct Rotation
+{
+	D3DXVECTOR3 vector3;
+	D3DXQUATERNION quaternion;
+};
+
 struct Transform
 {
-	//Attributes
-	D3DXVECTOR3 vScale;
-	D3DXVECTOR3 vDirection;
-	D3DXVECTOR3 vRight;
-	D3DXVECTOR3 vUp;
-	D3DXQUATERNION qRotation;
-	D3DXMATRIX mRotation;
-	D3DXVECTOR3 vPosition;
-	D3DXMATRIX matrix;
+public :
 
-	//Methods
-	void Identity();
-	void FromMatrix(D3DXMATRIX matrix);
-	void UpdateRotationFromVectors();
-	void UpdateRotationFromQuaternion();
-	void UpdateRotationFromMatrix();
-	void UpdateMatrix();
-	void Rotate(float yaw, float pitch, float roll);
-	void RotateYaw(float angle);
-	void RotatePitch(float angle);
-	void RotateRoll(float angle);
-	void RotateWorld(D3DXMATRIX matrix);
-	void RotateWorldX(float angle);
-	void RotateWorldY(float angle);
-	void RotateWorldZ(float angle);
+	D3DXVECTOR3 SetPosition(D3DXVECTOR3 _newPosition)
+	{
+		m_position = _newPosition;
+	}
+
+	D3DXVECTOR3 GetPosition()
+	{
+		return m_position;
+	}
+
+	D3DXVECTOR3 SetScale(D3DXVECTOR3 _newScale)
+	{
+		m_scale = _newScale;
+	}
+
+	D3DXVECTOR3 GetScale()
+	{
+		return m_scale;
+	}
+
+	D3DXVECTOR3 SetRotation(D3DXVECTOR3 _newRotation)
+	{
+		m_scale = _newRotation;
+	}
+
+	D3DXVECTOR3 GetRotation()
+	{
+		return m_rotation.vector3;
+	}
+
+
+private : 
+	D3DXVECTOR3 m_position;
+	D3DXVECTOR3 m_scale;
+	D3DXVECTOR3 m_direction;
+	D3DXVECTOR3 m_right, m_up;
+	D3DXMATRIX m_world;
+
+	Rotation m_rotation;
+
+	float roll, pitch, yaw;
+	
+protected : 
+	D3DXMATRIX GetWorld();
+
+	D3DXQUATERNION GetQuaternion();
+
 };
+
