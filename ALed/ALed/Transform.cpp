@@ -1,5 +1,35 @@
 #include "Transform.h"
 
+void Transform::SetPosition(D3DXVECTOR3 _newPosition)
+{
+	m_position = _newPosition;
+}
+
+D3DXVECTOR3 Transform::GetPosition()
+{
+	return m_position;
+}
+
+void Transform::SetScale(D3DXVECTOR3 _newScale)
+{
+	m_scale = _newScale;
+}
+
+D3DXVECTOR3 Transform::GetScale()
+{
+	return m_scale;
+}
+
+void Transform::SetRotation(D3DXVECTOR3 _newRotation)
+{
+	m_rotation.vector3 = _newRotation;
+}
+
+D3DXVECTOR3 Transform::GetRotation()
+{
+	return m_rotation.vector3;
+}
+
 D3DXMATRIX Transform::GetWorld()
 {
 	D3DXMATRIX Scale, Rx, Ry, Rz, Translate;
@@ -24,5 +54,4 @@ D3DXQUATERNION Transform::GetQuaternion()
 
 	return m_rotation.quaternion;
 }
-
 

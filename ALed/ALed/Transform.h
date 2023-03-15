@@ -2,6 +2,7 @@
 #include <windows.h> 
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "Component.h"
 
 struct Rotation
 {
@@ -9,42 +10,24 @@ struct Rotation
 	D3DXQUATERNION quaternion;
 };
 
-struct Transform
+class Transform : Component
 {
-public :
+public:
 
-	D3DXVECTOR3 SetPosition(D3DXVECTOR3 _newPosition)
-	{
-		m_position = _newPosition;
-	}
+	void SetPosition(D3DXVECTOR3 _newPosition);
 
-	D3DXVECTOR3 GetPosition()
-	{
-		return m_position;
-	}
+	D3DXVECTOR3 GetPosition();
 
-	D3DXVECTOR3 SetScale(D3DXVECTOR3 _newScale)
-	{
-		m_scale = _newScale;
-	}
+	void SetScale(D3DXVECTOR3 _newScale);
 
-	D3DXVECTOR3 GetScale()
-	{
-		return m_scale;
-	}
+	D3DXVECTOR3 GetScale();
 
-	D3DXVECTOR3 SetRotation(D3DXVECTOR3 _newRotation)
-	{
-		m_scale = _newRotation;
-	}
+	void SetRotation(D3DXVECTOR3 _newRotation);
 
-	D3DXVECTOR3 GetRotation()
-	{
-		return m_rotation.vector3;
-	}
+	D3DXVECTOR3 GetRotation();
 
 
-private : 
+private:
 	D3DXVECTOR3 m_position;
 	D3DXVECTOR3 m_scale;
 	D3DXVECTOR3 m_direction;
@@ -54,11 +37,12 @@ private :
 	Rotation m_rotation;
 
 	float roll, pitch, yaw;
-	
-protected : 
+
+protected:
 	D3DXMATRIX GetWorld();
 
 	D3DXQUATERNION GetQuaternion();
-
 };
+
+
 
