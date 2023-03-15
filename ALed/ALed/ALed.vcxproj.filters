@@ -83,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="IntersectData.cpp">
       <Filter>Source Files\Physics</Filter>
+    <ClCompile Include="Camera.cpp">
+    <ClCompile Include="ColoredMeshRenderer.cpp">
+      <Filter>Source Files\Render</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
@@ -130,6 +133,14 @@
     </ClInclude>
     <ClInclude Include="IntersectData.h">
       <Filter>Header Files\Physics</Filter>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="ColoredMeshRenderer.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>

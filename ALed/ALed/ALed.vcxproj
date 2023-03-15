@@ -133,8 +133,10 @@
   <ItemGroup>
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColoredCubeMesh.cpp" />
     <ClCompile Include="ColoredMesh.cpp" />
+    <ClCompile Include="ColoredMeshRenderer.cpp" />
     <ClCompile Include="ColoredRectangleMesh.cpp" />
     <ClCompile Include="ColoredSlopeMesh.cpp" />
     <ClCompile Include="D3DApp.cpp" />
@@ -149,8 +151,10 @@
   <ItemGroup>
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Collider.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ColoredCubeMesh.h" />
     <ClInclude Include="ColoredMesh.h" />
+    <ClInclude Include="ColoredMeshRenderer.h" />
     <ClInclude Include="ColoredRectangleMesh.h" />
     <ClInclude Include="ColoredSlopeMesh.h" />
     <ClInclude Include="Component.h" />
@@ -159,6 +163,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="IntersectData.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="Transform.h" />
