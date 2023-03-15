@@ -1,5 +1,24 @@
 #include "Transform.h"
 
+Transform::Transform()
+{
+	roll = 0.0f;
+	pitch = 0.0f;
+	yaw = 0.0f;
+}
+
+Transform::Transform(D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale)
+{
+	Transform::SetPosition(position);
+	Transform::SetRotation(rotation);
+	Transform::SetScale(scale);
+}
+
+Transform::~Transform()
+{
+
+}
+
 void Transform::SetPosition(D3DXVECTOR3 _newPosition)
 {
 	m_position = _newPosition;

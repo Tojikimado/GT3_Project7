@@ -13,6 +13,9 @@ struct Rotation
 class Transform : Component
 {
 public:
+	Transform();
+	Transform(D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale);
+	~Transform();
 
 	void SetPosition(D3DXVECTOR3 _newPosition);
 
