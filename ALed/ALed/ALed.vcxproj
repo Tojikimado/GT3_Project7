@@ -133,9 +133,11 @@
   <ItemGroup>
     <ClCompile Include="ColoredCubeMesh.cpp" />
     <ClCompile Include="ColoredMesh.cpp" />
+    <ClCompile Include="ColoredMeshRenderer.cpp" />
     <ClCompile Include="ColoredRectangleMesh.cpp" />
     <ClCompile Include="ColoredSlopeMesh.cpp" />
     <ClCompile Include="D3DApp.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="TexturedMesh.cpp" />
@@ -145,12 +147,15 @@
   <ItemGroup>
     <ClInclude Include="ColoredCubeMesh.h" />
     <ClInclude Include="ColoredMesh.h" />
+    <ClInclude Include="ColoredMeshRenderer.h" />
     <ClInclude Include="ColoredRectangleMesh.h" />
     <ClInclude Include="ColoredSlopeMesh.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="D3DApp.h" />
     <ClInclude Include="d3dUtil.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Test.h" />
     <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="Transform.h" />
