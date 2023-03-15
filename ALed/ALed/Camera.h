@@ -29,7 +29,7 @@ private:
     D3DXMATRIX matProjection;
     D3DXMATRIX matView;
 
-    D3DXVECTOR3 position;
+    D3DXVECTOR3 vPosition;
 
     int width;
     int height;
@@ -44,10 +44,6 @@ private:
     //GameObject *following
 
     // à ajouter dans Test::Init();
-    /*if (pCamera == nullptr)
-    {
-        pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f));
-        pCamera->SetTransform(m_pDevice3D);
-    }*/
+    
 };
 

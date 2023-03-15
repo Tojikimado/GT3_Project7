@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColoredCubeMesh.cpp" />
     <ClCompile Include="ColoredMesh.cpp" />
     <ClCompile Include="ColoredRectangleMesh.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Winmaincpp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ColoredCubeMesh.h" />
     <ClInclude Include="ColoredMesh.h" />
     <ClInclude Include="ColoredRectangleMesh.h" />

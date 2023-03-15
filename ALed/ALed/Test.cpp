@@ -1,6 +1,8 @@
 #include "Test.h"
 #include "ColoredCubeMesh.h"
 #include "ColoredSlopeMesh.h"
+#include "Camera.h"
+
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -51,22 +53,29 @@ bool Test::Init()
 	memcpy(pIndices, meshTest->GetIndices(), meshTest->GetIndicesSize());
 	IB->Unlock();
 
-	D3DXMATRIX view;
-	D3DXMATRIX proj;
 
-	//SET VIEW (transform of all the objects, 'how they appear to the camera')
-	D3DXVECTOR3 position = D3DXVECTOR3(0.0f, 0.0f, -5.0f);
-	D3DXVECTOR3 target = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
-	D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	if (pCamera == nullptr)
+	{
+		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f));
+		pCamera->SetTransform(m_pDevice3D);
+	}
 
-	D3DXMatrixLookAtLH(&view, &position, &target, &up);
-	m_pDevice3D->SetTransform(D3DTS_VIEW, &view);
+	//D3DXMATRIX view;
+	//D3DXMATRIX proj;
 
-	//SET PROJECTION ('camera')
-	D3DXMatrixPerspectiveFovLH(&proj, D3DX_PI / 4,
-		static_cast<float>(m_uiClientWidth) / m_uiClientHeight,
-		1.0f, 1000.f);
-	m_pDevice3D->SetTransform(D3DTS_PROJECTION, &proj);
+	////SET VIEW (transform of all the objects, 'how they appear to the camera')
+	//D3DXVECTOR3 position = D3DXVECTOR3(0.0f, 0.0f, -5.0f);
+	//D3DXVECTOR3 target = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
+	//D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+
+	//D3DXMatrixLookAtLH(&view, &position, &target, &up);
+	//m_pDevice3D->SetTransform(D3DTS_VIEW, &view);
+
+	////SET PROJECTION ('camera')
+	//D3DXMatrixPerspectiveFovLH(&proj, D3DX_PI / 4,
+	//	static_cast<float>(m_uiClientWidth) / m_uiClientHeight,
+	//	1.0f, 1000.f);
+	//m_pDevice3D->SetTransform(D3DTS_PROJECTION, &proj);
 
 	//
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
@@ -77,7 +86,7 @@ bool Test::Init()
 
 void Test::Update(float dt)
 {
-
+	pCamera->Update();
 }
 
 void Test::Render()
