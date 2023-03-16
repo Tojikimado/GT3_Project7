@@ -39,28 +39,6 @@ bool Test::Init()
 
 	renderTest2 = new ColoredMeshRenderer(meshTest2);
 	renderTest2->Init(m_pDevice3D);
-	// Cr�ation d'un vertex buffer pour stocker les vertices d'une figure
-	//m_pDevice3D->CreateVertexBuffer(meshTest->GetVerticesSize(), 0,
-	//	d3dVertex::VertexPositionColor::FVF, D3DPOOL_MANAGED,
-	//	&VB, NULL);
-
-	//// Cr�ation d'un index buffer pour stocker les indexes des triangles d'une figure
-	//m_pDevice3D->CreateIndexBuffer(meshTest->GetIndicesSize(), D3DUSAGE_WRITEONLY,
-	//	D3DFMT_INDEX16, D3DPOOL_MANAGED,
-	//	&IB, NULL);
-
-	// Stock les vertices dans le vertex buffer
-	//VOID* pVerts;
-	//VB->Lock(0, meshTest->GetVerticesSize(), (void**)&pVerts, 0);
-	//memcpy(pVerts, meshTest->GetVerices(), meshTest->GetVerticesSize());
-	//VB->Unlock();
-
-	//// Stock les indexes dans l'index buffer
-	//VOID* pIndices;
-	//IB->Lock(0, meshTest->GetIndicesSize(), (void**)&pIndices, 0);
-	//memcpy(pIndices, meshTest->GetIndices(), meshTest->GetIndicesSize());
-	//IB->Unlock();
-
 
 	if (pCamera == nullptr)
 	{
@@ -68,24 +46,6 @@ bool Test::Init()
 		pCamera->SetTransform(m_pDevice3D);
 	}
 
-	//D3DXMATRIX view;
-	//D3DXMATRIX proj;
-
-	////SET VIEW (transform of all the objects, 'how they appear to the camera')
-	//D3DXVECTOR3 position = D3DXVECTOR3(0.0f, 0.0f, -5.0f);
-	//D3DXVECTOR3 target = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
-	//D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-
-	//D3DXMatrixLookAtLH(&view, &position, &target, &up);
-	//m_pDevice3D->SetTransform(D3DTS_VIEW, &view);
-
-	////SET PROJECTION ('camera')
-	//D3DXMatrixPerspectiveFovLH(&proj, D3DX_PI / 4,
-	//	static_cast<float>(m_uiClientWidth) / m_uiClientHeight,
-	//	1.0f, 1000.f);
-	//m_pDevice3D->SetTransform(D3DTS_PROJECTION, &proj);
-
-	//
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
 

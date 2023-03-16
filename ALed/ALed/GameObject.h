@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include <list>
-#include "transform.h"
+#include "Transform.h"
+#include "BoundingSphere.h"
+#include "Camera.h"
+#include "ColoredMeshRenderer.h"
 
 using namespace std;
 
@@ -15,11 +18,16 @@ public:
 
 	Transform GetTransform();
 	
+	void SetColoredMeshRenderer(ColoredMeshRenderer* _meshRenderer);
+
+	void SetCamera(Camera* _camera);
+
 private:
 	
 	Transform m_transform;
 
-protected:
+	ColoredMeshRenderer* m_meshRenderer = nullptr;
 
-
+	Camera* m_camera = nullptr;
 };
+

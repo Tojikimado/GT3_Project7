@@ -2,7 +2,6 @@
 #include <windows.h> 
 #include <d3d9.h>
 #include <d3dx9.h>
-#include "Component.h"
 
 struct Rotation
 {
@@ -10,7 +9,7 @@ struct Rotation
 	D3DXQUATERNION quaternion;
 };
 
-class Transform : Component
+class Transform
 {
 public:
 	Transform();

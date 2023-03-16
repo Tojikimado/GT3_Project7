@@ -137,9 +137,6 @@
     <ClInclude Include="MeshRenderer.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="d3dUtil.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>

@@ -1,9 +1,9 @@
 #pragma once
 #include <cmath>
-#include "Component.h"
 #include "IntersectData.h"
+#include "d3dUtil.h"
 
-class Collider : Component
+class Collider
 {
 public :
 	enum
@@ -13,8 +13,11 @@ public :
 		TYPE_SIZE,
 	};
 
+	Collider(int _collisionType, D3DXVECTOR3 _position);
+
 private :
 
-
+	int m_type;
+	D3DXVECTOR3* m_position;
 };
 
