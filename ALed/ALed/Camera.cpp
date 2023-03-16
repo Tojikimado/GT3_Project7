@@ -1,24 +1,27 @@
 #include "Camera.h"
 
 
-Camera::Camera(int width, int height, D3DXVECTOR3 position, D3DXVECTOR3 target)
+Camera::Camera(int width, int height, Transform camTransform)
 {
-    this->width = width;
-    this->height = height;
-    this->vPosition = position;
-    this->fov = D3DX_PI / 4;
-    this->zNear = 1.0f;
-    this->zFar = 1000.f;
+    _width = width;
+    _height = height;
+    transform = camTransform;
+    _fov = D3DX_PI / 2;
+    _zNear = 1.0f;
+    _zFar = 100.f;
 
-    //this->angle = angle;
-    //this->scaleFactors = scaleFactors;
+    _pitch = D3DXToRadian(transform.GetRotation().x);
+    _yaw = D3DXToRadian(transform.GetRotation().y);
+    _roll = D3DXToRadian(transform.GetRotation().z);
 
-    D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+    _vUp = D3DXVECTOR3(0.f, 1.f, 0.f);
+    _vForward = D3DXVECTOR3(0.f, 0.f, 1.f);
 
-    /*D3DXMatrixOrthoLH(&matProjection, width, height, 1.0f, 1.0f);*/
-    D3DXMatrixPerspectiveFovLH(&matProjection, fov, static_cast<float>(width) / static_cast<float>(height), zNear, zFar);
-    D3DXMatrixLookAtLH(&matView, &position, &target, &up);
-    D3DXMatrixIdentity(&matIdentity);
+    D3DXVECTOR3 tempPos = transform.GetPosition();
+    D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(width) / FLOAT(height), _zNear, _zFar);
+    D3DXMatrixLookAtLH(&_matView, &tempPos, &_vForward, &_vUp);
+    D3DXMatrixIdentity(&_matIdentity);
+
 }
 
 Camera::~Camera()
@@ -26,39 +29,37 @@ Camera::~Camera()
 
 }
 
-void Camera::Update()
+void Camera::Update(IDirect3DDevice9* device)
 {
-    int cameraX = this->width / 2;
-    int cameraY = this->height / 2;
+    /*Debug rotation
+    _pitch += D3DXToRadian(1.f);*/
 
-    /* if (this->following && this->following->IsInitialized())
-    {
-        cameraX = this->following->position.x
-        cameraY = this->following->position.y
-    }
-    */
+    
+    _pitch = D3DXToRadian(transform.GetRotation().x);
+    _yaw = D3DXToRadian(transform.GetRotation().y);
+    _roll = D3DXToRadian(transform.GetRotation().z);
 
+    // Rotation matrix
+    D3DXMatrixRotationYawPitchRoll(&_matLook, _pitch, _yaw, _roll);
+    D3DXVec3TransformCoord(&_vForward, &_vForward, &_matLook);
 
-    /*this->matView = D3DXMATRIX(scaleFactors.x * cos(angle), scaleFactors.x * sin(angle), 0, 0,
-        -scaleFactors.y * sin(angle), scaleFactors.y * cos(angle), 0, 0,
-        0, 0, scaleFactors.z, 0,
-        -cameraX * scaleFactors.x * cos(angle) + cameraY * scaleFactors.y * sin(angle), -cameraX * scaleFactors.y * sin(angle) - cameraY * scaleFactors.y * cos(angle), 0, 1);*/
+    D3DXVECTOR3 pos = transform.GetPosition();
+    D3DXVECTOR3 at;
+    at = pos + _vForward;
+
+    // Update projection matrix of the camera
+    D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(_width) / FLOAT(_height), _zNear, _zFar);
+    // Update where the camera look at matrix
+    D3DXMatrixLookAtLH(&_matView, &pos, &at, &_vUp);
+
+    SetTransform(device);
 }
 
 void Camera::SetTransform(IDirect3DDevice9* device) const
 {
-    device->SetTransform(D3DTS_PROJECTION, &matProjection);
-    device->SetTransform(D3DTS_WORLD, &matIdentity);
-    device->SetTransform(D3DTS_VIEW, &matView);
-}
 
-
-void Camera::Follow()
-{
-
-}
-
-void Camera::Unfollow()
-{
+    device->SetTransform(D3DTS_PROJECTION, &_matProjection);
+    device->SetTransform(D3DTS_WORLD, &_matIdentity);
+    device->SetTransform(D3DTS_VIEW, &_matView);
 
 }

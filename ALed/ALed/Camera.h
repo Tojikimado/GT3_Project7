@@ -1,8 +1,7 @@
 #pragma once
 #include<d3d9.h>
 #include<d3dx9.h>
-
-
+#include "Transform.h"
 
 class Camera
 {
@@ -10,40 +9,34 @@ class Camera
 public:
 
     /*Camera(int width, int height, float angle, D3DXVECTOR3 scaleFactors);*/    
-    Camera(int width, int height, D3DXVECTOR3 position, D3DXVECTOR3 target);
-
-
+    Camera(int width, int height, Transform camTransform);
     ~Camera();
 
-    void Update();
-
-    void Follow(); // GameObject
-    void Unfollow();
+    void Update(IDirect3DDevice9* device);
 
     void SetTransform(IDirect3DDevice9* device) const;
-protected:
 
+    Transform transform;
 
 private:
-    D3DXMATRIX matIdentity;
-    D3DXMATRIX matProjection;
-    D3DXMATRIX matView;
 
-    D3DXVECTOR3 vPosition;
+    D3DXMATRIX _matIdentity;
+    D3DXMATRIX _matProjection;
+    D3DXMATRIX _matView;
+    D3DXMATRIX _matLook;
 
-    int width;
-    int height;
-    float fov;
-    float zNear;
-    float zFar;
+    D3DXVECTOR3 _vUp;
+    D3DXVECTOR3 _vForward;
 
+    int _width;
+    int _height;
+    float _fov;
+    float _zNear;
+    float _zFar;
 
-    //float angle;
-    //D3DXVECTOR3 scaleFactors;
-
-    //GameObject *following
-
-    // à ajouter dans Test::Init();
+    float _pitch;
+    float _yaw;
+    float _roll;
     
 };
 
