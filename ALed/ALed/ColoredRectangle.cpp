@@ -2,6 +2,10 @@
 #include "ColoredRectangleMesh.h"
 
 
+ColoredRectangle::ColoredRectangle()
+{
+}
+
 ColoredRectangle::ColoredRectangle(Transform transform, Camera* camera)
 {
 	m_transform = transform;

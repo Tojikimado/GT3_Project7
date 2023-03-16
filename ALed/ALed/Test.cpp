@@ -1,11 +1,14 @@
+#define _USE_MATH_DEFINES
+
 #include "Test.h"
-#include "ColoredCubeMesh.h"
-#include "ColoredSlopeMesh.h"
 #include "Camera.h"
 
-#include "ColoredMeshRenderer.h"
 #include "ColoredRectangle.h"
+#include "ColoredCube.h"
+#include "TexturedGameObject.h"
+
 #include <string>
+#include <cmath>
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -13,8 +16,9 @@ const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 #pragma region Test class for our D3App class
 
 
-ColoredGameObject* cube1;
+ColoredCube* cube;
 ColoredRectangle* rectangle;
+TexturedGameObject* brickCube;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -32,23 +36,22 @@ bool Test::Init()
 		return false;
 	}
 
-	/*ColoredSlopeMesh* meshTest = new ColoredSlopeMesh(2.f,1.f,1.f, d3dColors::Red);
-
-	ColoredMeshRenderer* renderTest;
-
-	renderTest = new ColoredMeshRenderer(meshTest);*/
-
 	if (pCamera == nullptr)
 	{
 		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f));
 		pCamera->SetTransform(m_pDevice3D);
 	}
 
-	//cube1 = new ColoredGameObject(Transform(), renderTest, pCamera);
-	//cube1->Init(m_pDevice3D);
+
+	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), pCamera, 0.5f, d3dColors::CornFlowerBlue);
+	cube->Init(m_pDevice3D);
 
 	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), pCamera, 1.5f,1.f,0.75f, d3dColors::Green);
 	rectangle->Init(m_pDevice3D);
+
+	TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
+	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer, pCamera);
+	brickCube->Init(m_pDevice3D);
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
@@ -67,8 +70,9 @@ void Test::Render()
 
 	m_pDevice3D->BeginScene();
 
-	//cube1->Render(m_pDevice3D);
+	cube->Render(m_pDevice3D);
 	rectangle->Render(m_pDevice3D);
+	brickCube->Render(m_pDevice3D);
 
 	m_pDevice3D->EndScene();
 

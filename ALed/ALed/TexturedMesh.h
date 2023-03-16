@@ -1,5 +1,6 @@
 #pragma once
 #include "Mesh.h"
+#include <string>
 using namespace d3dVertex;
 
 class TexturedMesh : public Mesh
@@ -7,13 +8,17 @@ class TexturedMesh : public Mesh
 protected:
 	VertexPositionTexture* vertices;
 	int nbVertices;
+	const char* texFileName;
+
 
 public:
 	TexturedMesh();
-	TexturedMesh(VertexPositionTexture* newvertices, int size, short* indices, int indiceSize);
+	TexturedMesh(const char* texFile);
+	TexturedMesh(VertexPositionTexture* newvertices, int size, short* indices, int indiceSize, const char* texFile);
 
 	VertexPositionTexture* GetVerices();
 	int GetNbVertices();
 	int GetVerticesSize();
+	const char* GetTexFileName();
 };
 

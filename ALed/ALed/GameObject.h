@@ -4,7 +4,6 @@
 #include "Transform.h"
 #include "BoundingSphere.h"
 #include "Camera.h"
-#include "ColoredMeshRenderer.h"
 
 using namespace std;
 
@@ -18,7 +17,6 @@ public:
 
 	Transform GetTransform();
 	
-	void SetColoredMeshRenderer(ColoredMeshRenderer* _meshRenderer);
 
 	void SetCamera(Camera* _camera);
 
@@ -29,8 +27,6 @@ public:
 protected:
 	
 	Transform m_transform;
-
-	ColoredMeshRenderer* m_meshRenderer = nullptr;
 
 	Camera* m_camera = nullptr;
 };

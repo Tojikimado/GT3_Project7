@@ -120,6 +120,18 @@
     <ClCompile Include="ColoredRectangle.cpp">
       <Filter>Source Files\Objects\ColoredPrimitives</Filter>
     </ClCompile>
+    <ClCompile Include="ColoredCube.cpp">
+      <Filter>Source Files\Objects\ColoredPrimitives</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedRectangleMesh.cpp">
+      <Filter>Source Files\Render\MeshPresets\Textured</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedMeshRenderer.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturedGameObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test.h">
@@ -181,6 +193,18 @@
     </ClInclude>
     <ClInclude Include="ColoredRectangle.h">
       <Filter>Header Files\Objects\ColoredPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="ColoredCube.h">
+      <Filter>Header Files\Objects\ColoredPrimitives</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedRectangleMesh.h">
+      <Filter>Header Files\Render\MeshPresets\Textured</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedMeshRenderer.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturedGameObject.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

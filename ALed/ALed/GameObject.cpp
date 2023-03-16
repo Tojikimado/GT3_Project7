@@ -14,11 +14,6 @@ Transform GameObject::GetTransform()
 	return m_transform;
 }
 
-void GameObject::SetColoredMeshRenderer(ColoredMeshRenderer*_meshRenderer)
-{
-	m_meshRenderer = _meshRenderer;
-}
-
 void GameObject::SetCamera(Camera* _camera)
 {
 	m_camera = _camera;

@@ -15,6 +15,11 @@ ColoredGameObject::~ColoredGameObject()
 {
 }
 
+void ColoredGameObject::SetColoredMeshRenderer(ColoredMeshRenderer* _meshRenderer)
+{
+	m_meshRenderer = _meshRenderer;
+}
+
 bool ColoredGameObject::Init(IDirect3DDevice9* m_pDevice3D)
 {
 	m_meshRenderer->Init(m_pDevice3D);
