@@ -5,7 +5,7 @@ Camera::Camera(int width, int height, D3DXVECTOR3 position, D3DXVECTOR3 target)
 {
     this->width = width;
     this->height = height;
-    this->position = position;
+    this->vPosition = position;
     this->fov = D3DX_PI / 4;
     this->zNear = 1.0f;
     this->zFar = 1000.f;

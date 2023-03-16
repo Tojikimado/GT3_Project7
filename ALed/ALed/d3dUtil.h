@@ -68,8 +68,8 @@ namespace d3dVertex
 
 namespace d3Distance
 {
-	float Distance(D3DXVECTOR3 _A, D3DXVECTOR3 _B)
+	inline float Distance(D3DXVECTOR3 _A, D3DXVECTOR3 _B)
 	{
-		return sqrt(pow((_B.x - _A.x), 2) + pow((_B.y - _A.y), 2) + pow((_B.z - _A.z),2));
+		return (float)sqrt(pow((_B.x - _A.x), 2) + pow((_B.y - _A.y), 2) + pow((_B.z - _A.z),2));
 	}
 }
