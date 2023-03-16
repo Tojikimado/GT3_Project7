@@ -22,7 +22,11 @@ public:
 
 	void SetCamera(Camera* _camera);
 
-private:
+	bool Init();
+	void Update(float dt);
+	void Render();
+
+protected:
 	
 	Transform m_transform;
 

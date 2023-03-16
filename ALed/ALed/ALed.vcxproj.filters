@@ -49,6 +49,18 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{f6b4c8a5-77f8-4296-b58f-3d901ab92617}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{c5f05ccf-3d19-421c-b00e-1755d0234b14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{5390df6c-2880-49a4-91a1-02ad3eeb2a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\ColoredPrimitives">
+      <UniqueIdentifier>{ce6af1c3-099e-4a5b-8587-bff33a09b6ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\ColoredPrimitives">
+      <UniqueIdentifier>{df679606-f3d3-4a8d-86ec-fca195eed43a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -101,6 +113,11 @@
     </ClCompile>
     <ClCompile Include="BoundingAABB.cpp">
       <Filter>Source Files\Physics</Filter>
+    <ClCompile Include="ColoredGameObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ColoredRectangle.cpp">
+      <Filter>Source Files\Objects\ColoredPrimitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +174,11 @@
     </ClInclude>
     <ClInclude Include="BoundingAABB.h">
       <Filter>Header Files\Physics</Filter>
+    <ClInclude Include="ColoredGameObject.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ColoredRectangle.h">
+      <Filter>Header Files\Objects\ColoredPrimitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
