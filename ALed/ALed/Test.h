@@ -17,7 +17,7 @@ public:
 private: 
 
 	Camera* pCamera = nullptr;
-	bool InitializeInput();
+	
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
 

@@ -90,6 +90,12 @@
     <ClCompile Include="BoundingSphere.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="IntersectData.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="ColoredMeshRenderer.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -161,6 +167,12 @@
     <ClInclude Include="BoundingSphere.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="IntersectData.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
     <ClInclude Include="ColoredMeshRenderer.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
@@ -205,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="TexturedGameObject.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

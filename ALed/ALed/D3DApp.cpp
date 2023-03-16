@@ -1,5 +1,6 @@
 #include "D3DApp.h"
 #include <string>
+#include <iostream>
 
 namespace
 {
@@ -59,11 +60,17 @@ bool D3DApp::Init()
 	{
 		return false;
 	}
+	if (InitializeInput() == false)
+	{
+		return false;
+	}
 	return true;
 }
 
 LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	std::string a = std::to_string(msg);
+	std::wstring b = std::wstring(a.begin(), a.end());
 	switch (msg)
 	{
 	case WM_DESTROY:
@@ -71,28 +78,30 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	case WM_INPUT:
-		UINT dwSize;
-		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
-		LPBYTE lpb = new BYTE[dwSize];
-		if (lpb == NULL)
-			return 0;
-		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUT));
-		RAWINPUT* raw = (RAWINPUT*)lpb;
-		if (raw->header.dwType == RIM_TYPEKEYBOARD)
+		RAWINPUT* raw = GetRawInput(lParam);
+		if (raw->header.dwType == Input::DXI_KEYBOARD)
 		{
-			if (raw->data.keyboard.Message == WM_KEYDOWN || raw->data.keyboard.Message == WM_SYSKEYDOWN)
+			if (raw->data.keyboard.Message == Input::DXE_SYSKEYDOWN || raw->data.keyboard.Message == Input::DXE_KEYDOWN)
 			{
-				std::string information =
-					"Make Code - " + std::to_string(raw->data.keyboard.MakeCode) +
-					"; Flag - " + std::to_string(raw->data.keyboard.Flags) +
-					"; Reserved - " + std::to_string(raw->data.keyboard.Reserved) +
-					"; Extra Information - " + std::to_string(raw->data.keyboard.ExtraInformation) +
-					"; Message - " + std::to_string(raw->data.keyboard.Message) +
-					"; VKey - " + std::to_string(raw->data.keyboard.VKey) +
-					"\n";
-				OutputDebugString((LPCWSTR)information.c_str());
+				if (GetAsyncKeyState(Input::DXK_ESCAPE))
+				{
+					PostQuitMessage(0);
+				}
+				if (GetAsyncKeyState(Input::DXK_A))
+				{
+					OutputDebugString(L"A\n");
+				}
 			}
 		}
+		if (raw->header.dwType == Input::DXI_MOUSE)
+		{
+			if (GetAsyncKeyState(Input::DXK_LEFTMOUSEBUTTON))
+			{
+				OutputDebugString(L"LeftMB\n");
+			}
+				
+		}
+		
 	}
 
 
@@ -183,4 +192,39 @@ bool D3DApp::InitDirect3D()
 	}
 
 	return true;
+}
+
+bool D3DApp::InitializeInput()
+{
+	RAWINPUTDEVICE rawInput[2];
+
+	//Keyboard
+	rawInput[0].usUsagePage = 0x01;
+	rawInput[0].usUsage = 0x06;
+	rawInput[0].dwFlags = 0;
+	rawInput[0].hwndTarget = 0;
+
+	//////Mouse
+	rawInput[1].usUsagePage = 0x01;
+	rawInput[1].usUsage = 0x02;
+	rawInput[1].dwFlags = 0;
+	rawInput[1].hwndTarget = 0;
+
+
+	if (RegisterRawInputDevices(rawInput, 2, sizeof(RAWINPUTDEVICE)) == FALSE)
+		return false;
+
+	return true;
+}
+
+RAWINPUT* D3DApp::GetRawInput(LPARAM lParam)
+{
+	UINT dwSize;
+	GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
+	LPBYTE lpb = new BYTE[dwSize];
+	if (lpb == NULL)
+		return nullptr;
+	GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
+	RAWINPUT* raw = (RAWINPUT*)lpb;
+	return raw;
 }

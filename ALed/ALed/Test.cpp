@@ -79,18 +79,6 @@ void Test::Render()
 	m_pDevice3D->Present(0, 0, 0, 0);
 }
 
-bool Test::InitializeInput()
-{
-	RAWINPUTDEVICE rawinput[1];
-	rawinput[0].usUsagePage = 0x01;
-	rawinput[0].usUsage = 0x06;
-	rawinput[0].dwFlags = 0;
-	rawinput[0].hwndTarget = 0;
-	if (RegisterRawInputDevices(rawinput, 1, sizeof(rawinput[0])) == FALSE)
-		return false;
-	return true;
-}
-
 LRESULT Test::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
