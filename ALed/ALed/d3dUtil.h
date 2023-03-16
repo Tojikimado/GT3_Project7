@@ -64,12 +64,30 @@ namespace d3dVertex
 
 		static const DWORD FVF;
 	};
-}
 
-namespace d3Distance
-{
-	inline float Distance(D3DXVECTOR3 _A, D3DXVECTOR3 _B)
+	struct WidhtHeightDepth
 	{
-		return (float)sqrt(pow((_B.x - _A.x), 2) + pow((_B.y - _A.y), 2) + pow((_B.z - _A.z),2));
-	}
+		WidhtHeightDepth(float _maxW, float _maxH, float _maxD, float _minW, float _minH, float _minD)
+		{
+			maxX = _maxW;
+			maxY = _maxH;
+			maxZ = _maxD;
+			minX = _minW;
+			minY = _minH;
+			minZ = _minD;
+		}
+
+		WidhtHeightDepth()
+		{
+			maxX = 0.f;
+			maxY = 0.f;
+			maxZ = 0.f;
+			minX = 0.f;
+			minY = 0.f;
+			minZ = 0.f;
+		}
+
+		float maxX, maxY, maxZ;
+		float minX, minY, minZ;
+	};
 }

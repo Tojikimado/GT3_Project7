@@ -78,9 +78,6 @@
     <ClCompile Include="BoundingSphere.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="IntersectData.cpp">
-      <Filter>Source Files\Physics</Filter>
-    </ClCompile>
     <ClCompile Include="ColoredMeshRenderer.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -98,6 +95,12 @@
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionHandler.cpp">
+      <Filter>Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingAABB.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +131,6 @@
     <ClInclude Include="BoundingSphere.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="IntersectData.h">
-      <Filter>Header Files\Physics</Filter>
-    </ClInclude>
     <ClInclude Include="ColoredMeshRenderer.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
@@ -151,6 +151,12 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionHandler.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingAABB.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

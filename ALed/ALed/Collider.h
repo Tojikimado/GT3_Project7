@@ -1,6 +1,4 @@
 #pragma once
-#include <cmath>
-#include "IntersectData.h"
 #include "d3dUtil.h"
 
 class Collider
@@ -10,14 +8,17 @@ public :
 	{
 		TYPE_SPHERE,
 		TYPE_AABB,
-		TYPE_SIZE,
 	};
 
-	Collider(int _collisionType, D3DXVECTOR3 _position);
+	Collider(int _collisionType, D3DXVECTOR3* _position);
 
-private :
+	D3DXVECTOR3 GetPosition() const;
 
-	int m_type;
+protected :
 	D3DXVECTOR3* m_position;
+
+private : 
+	int m_type;
+
 };
 
