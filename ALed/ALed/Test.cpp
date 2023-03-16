@@ -4,6 +4,7 @@
 #include "Camera.h"
 
 #include "ColoredMeshRenderer.h"
+#include "ColoredRectangle.h"
 #include <string>
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
@@ -12,8 +13,8 @@ const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 #pragma region Test class for our D3App class
 
 
-ColoredMeshRenderer* renderTest;
-ColoredMeshRenderer* renderTest2;
+ColoredGameObject* cube1;
+ColoredRectangle* rectangle;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -31,20 +32,23 @@ bool Test::Init()
 		return false;
 	}
 
-	ColoredSlopeMesh* meshTest = new ColoredSlopeMesh(2.f,1.f,1.f, d3dColors::Red);
-	ColoredRectangleMesh* meshTest2 = new ColoredRectangleMesh(0.75f, 1.f, 0.75f, d3dColors::Yellow);
-	
-	renderTest = new ColoredMeshRenderer(meshTest);
-	renderTest->Init(m_pDevice3D);
+	/*ColoredSlopeMesh* meshTest = new ColoredSlopeMesh(2.f,1.f,1.f, d3dColors::Red);
 
-	renderTest2 = new ColoredMeshRenderer(meshTest2);
-	renderTest2->Init(m_pDevice3D);
+	ColoredMeshRenderer* renderTest;
+
+	renderTest = new ColoredMeshRenderer(meshTest);*/
 
 	if (pCamera == nullptr)
 	{
 		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f));
 		pCamera->SetTransform(m_pDevice3D);
 	}
+
+	//cube1 = new ColoredGameObject(Transform(), renderTest, pCamera);
+	//cube1->Init(m_pDevice3D);
+
+	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), pCamera, 1.5f,1.f,0.75f, d3dColors::Green);
+	rectangle->Init(m_pDevice3D);
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
@@ -63,8 +67,8 @@ void Test::Render()
 
 	m_pDevice3D->BeginScene();
 
-	renderTest->Render(m_pDevice3D);
-	renderTest2->Render(m_pDevice3D);
+	//cube1->Render(m_pDevice3D);
+	rectangle->Render(m_pDevice3D);
 
 	m_pDevice3D->EndScene();
 

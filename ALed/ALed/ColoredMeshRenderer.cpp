@@ -36,12 +36,6 @@ void ColoredMeshRenderer::Render(IDirect3DDevice9* m_pDevice3D)
 	m_pDevice3D->SetStreamSource(0, vectorBuffer, 0, sizeof(d3dVertex::VertexPositionColor));
 	m_pDevice3D->SetIndices(indexBuffer);
 
-	// ROTATION
-	static float index = 0.0f; index += 0.02f; // an ever-increasing float value
-	D3DXMATRIX matRotate;    // a matrix to store the rotation for each triangle
-	D3DXMatrixRotationY(&matRotate, index);    // the rotation matrix
-	m_pDevice3D->SetTransform(D3DTS_WORLD, &(matRotate));    // set the world transform
-
 	m_pDevice3D->SetFVF(d3dVertex::VertexPositionColor::FVF);
 	m_pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, coloredMesh->GetNbVertices(), 0, coloredMesh->GetNbIndices());
 }

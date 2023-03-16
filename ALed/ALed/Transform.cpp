@@ -2,6 +2,9 @@
 
 Transform::Transform()
 {
+	m_position = D3DXVECTOR3(0.f,0.f,0.f);
+	m_scale = D3DXVECTOR3(1.f, 1.f, 1.f);
+	m_rotation.vector3 = D3DXVECTOR3(0.f, 0.f, 0.f);
 	roll = 0.0f;
 	pitch = 0.0f;
 	yaw = 0.0f;
@@ -49,7 +52,7 @@ D3DXVECTOR3 Transform::GetRotation()
 	return m_rotation.vector3;
 }
 
-D3DXMATRIX Transform::GetWorld()
+D3DXMATRIX* Transform::GetWorld()
 {
 	D3DXMATRIX Scale, Rx, Ry, Rz, Translate;
 	D3DXMatrixScaling(&Scale, m_scale.x, m_scale.y, m_scale.z);
@@ -57,7 +60,7 @@ D3DXMATRIX Transform::GetWorld()
 	D3DXMatrixRotationY(&Ry, m_rotation.vector3.y);
 	D3DXMatrixRotationZ(&Rz, m_rotation.vector3.z);
 	D3DXMatrixTranslation(&Translate, m_position.x, m_position.y, m_position.z);
-	m_world = Scale * Rx * Ry * Rz * Translate;
+	m_world = new D3DXMATRIX(Scale * Rx * Ry * Rz * Translate);
 	return m_world;
 }
 

@@ -7,7 +7,7 @@ class ColoredRectangleMesh: public ColoredMesh
 
 public:
 	ColoredRectangleMesh();
-	ColoredRectangleMesh(float height, float width, float deepth, D3DCOLOR color);
-	ColoredRectangleMesh(float height, float width, float deepth);
+	ColoredRectangleMesh(float width, float height, float deepth, D3DCOLOR color);
+	ColoredRectangleMesh(float width, float height, float deepth);
 };
 

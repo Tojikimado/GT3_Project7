@@ -24,3 +24,16 @@ void GameObject::SetCamera(Camera* _camera)
 	m_camera = _camera;
 }
 
+bool GameObject::Init()
+{
+	return true;
+}
+
+void GameObject::Update(float dt)
+{
+}
+
+void GameObject::Render()
+{
+}
+

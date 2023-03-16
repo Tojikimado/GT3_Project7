@@ -7,7 +7,7 @@ class ColoredSlopeMesh : public ColoredMesh
 
 public:
 	ColoredSlopeMesh();
-	ColoredSlopeMesh(float height, float width, float deepth, D3DCOLOR color);
-	ColoredSlopeMesh(float height, float width, float deepth);
+	ColoredSlopeMesh(float width, float height, float deepth, D3DCOLOR color);
+	ColoredSlopeMesh(float width, float height, float deepth);
 };
 

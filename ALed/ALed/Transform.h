@@ -28,22 +28,23 @@ public:
 
 	D3DXVECTOR3 GetRotation();
 
+	D3DXMATRIX* GetWorld();
+
+	D3DXQUATERNION GetQuaternion();
+
 
 private:
 	D3DXVECTOR3 m_position;
 	D3DXVECTOR3 m_scale;
 	D3DXVECTOR3 m_direction;
 	D3DXVECTOR3 m_right, m_up;
-	D3DXMATRIX m_world;
+	D3DXMATRIX* m_world;
 
 	Rotation m_rotation;
 
 	float roll, pitch, yaw;
 
 protected:
-	D3DXMATRIX GetWorld();
-
-	D3DXQUATERNION GetQuaternion();
 };
 
 
