@@ -83,7 +83,10 @@
     </ClCompile>
     <ClCompile Include="IntersectData.cpp">
       <Filter>Source Files\Physics</Filter>
+	</ClCompile>
     <ClCompile Include="Camera.cpp">
+		<Filter>Source Files</Filter>
+	</ClCompile>
     <ClCompile Include="ColoredMeshRenderer.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -133,6 +136,7 @@
     </ClInclude>
     <ClInclude Include="IntersectData.h">
       <Filter>Header Files\Physics</Filter>
+	</ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
