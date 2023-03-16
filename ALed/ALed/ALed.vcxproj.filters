@@ -43,17 +43,14 @@
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{6137e59c-8d5a-48c1-a1eb-4859c6f40b9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{935502bf-e142-4dca-bde1-434066797e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{f6b4c8a5-77f8-4296-b58f-3d901ab92617}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Winmaincpp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D3DApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -83,31 +80,28 @@
     </ClCompile>
     <ClCompile Include="IntersectData.cpp">
       <Filter>Source Files\Physics</Filter>
-	</ClCompile>
-    <ClCompile Include="Camera.cpp">
-		<Filter>Source Files</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="ColoredMeshRenderer.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
+    <ClCompile Include="D3DApp.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Winmaincpp.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D3DApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="d3dUtil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Test.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ColoredCubeMesh.h">
@@ -136,9 +130,6 @@
     </ClInclude>
     <ClInclude Include="IntersectData.h">
       <Filter>Header Files\Physics</Filter>
-	</ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\Render</Filter>
     </ClInclude>
     <ClInclude Include="ColoredMeshRenderer.h">
       <Filter>Header Files\Render</Filter>
@@ -146,8 +137,23 @@
     <ClInclude Include="MeshRenderer.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="d3dUtil.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DApp.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
