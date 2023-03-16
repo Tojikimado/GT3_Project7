@@ -3,6 +3,7 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 #include "d3dUtil.h"
+#include "Input.h"
 
 // include the Direct3D Library file
 #pragma comment (lib, "d3d9.lib")
@@ -44,5 +45,9 @@ protected:
 
 	//Initialize
 	bool InitDirect3D();
+	bool InitializeInput();
+
+	//Get raw input data
+	RAWINPUT* GetRawInput(LPARAM lParam);
 
 };
