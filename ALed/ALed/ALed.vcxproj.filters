@@ -113,6 +113,7 @@
     </ClCompile>
     <ClCompile Include="BoundingAABB.cpp">
       <Filter>Source Files\Physics</Filter>
+	</ClCompile>
     <ClCompile Include="ColoredGameObject.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -174,6 +175,7 @@
     </ClInclude>
     <ClInclude Include="BoundingAABB.h">
       <Filter>Header Files\Physics</Filter>
+	</ClInclude>
     <ClInclude Include="ColoredGameObject.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
