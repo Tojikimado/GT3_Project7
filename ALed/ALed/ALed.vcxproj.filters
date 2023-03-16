@@ -113,7 +113,7 @@
     </ClCompile>
     <ClCompile Include="BoundingAABB.cpp">
       <Filter>Source Files\Physics</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="ColoredGameObject.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -122,9 +122,6 @@
     </ClCompile>
     <ClCompile Include="ColoredCube.cpp">
       <Filter>Source Files\Objects\ColoredPrimitives</Filter>
-    </ClCompile>
-    <ClCompile Include="TexturedRectangleMesh.cpp">
-      <Filter>Source Files\Render\MeshPresets\Textured</Filter>
     </ClCompile>
     <ClCompile Include="TexturedMeshRenderer.cpp">
       <Filter>Source Files\Render</Filter>
@@ -187,24 +184,21 @@
     </ClInclude>
     <ClInclude Include="BoundingAABB.h">
       <Filter>Header Files\Physics</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="ColoredGameObject.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="ColoredRectangle.h">
       <Filter>Header Files\Objects\ColoredPrimitives</Filter>
     </ClInclude>
-    <ClInclude Include="ColoredCube.h">
-      <Filter>Header Files\Objects\ColoredPrimitives</Filter>
-    </ClInclude>
-    <ClInclude Include="TexturedRectangleMesh.h">
-      <Filter>Header Files\Render\MeshPresets\Textured</Filter>
+    <ClInclude Include="TexturedGameObject.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="TexturedMeshRenderer.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
-    <ClInclude Include="TexturedGameObject.h">
-      <Filter>Header Files\Objects</Filter>
+    <ClInclude Include="ColoredCube.h">
+      <Filter>Header Files\Objects\ColoredPrimitives</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

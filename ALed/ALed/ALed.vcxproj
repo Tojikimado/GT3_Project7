@@ -151,7 +151,6 @@
     <ClCompile Include="TexturedGameObject.cpp" />
     <ClCompile Include="TexturedMesh.cpp" />
     <ClCompile Include="TexturedMeshRenderer.cpp" />
-    <ClCompile Include="TexturedRectangleMesh.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Winmaincpp.cpp" />
   </ItemGroup>
@@ -178,7 +177,6 @@
     <ClInclude Include="TexturedGameObject.h" />
     <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="TexturedMeshRenderer.h" />
-    <ClInclude Include="TexturedRectangleMesh.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
