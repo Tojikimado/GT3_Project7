@@ -4,6 +4,7 @@
 #include "Camera.h"
 
 #include "ColoredMeshRenderer.h"
+#include <string>
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -108,6 +109,57 @@ void Test::Render()
 	m_pDevice3D->EndScene();
 
 	m_pDevice3D->Present(0, 0, 0, 0);
+}
+
+bool Test::InitializeInput()
+{
+	RAWINPUTDEVICE rawinput[1];
+	rawinput[0].usUsagePage = 0x01;
+	rawinput[0].usUsage = 0x06;
+	rawinput[0].dwFlags = 0;
+	rawinput[0].hwndTarget = 0;
+	if (RegisterRawInputDevices(rawinput, 1, sizeof(rawinput[0])) == FALSE)
+		return false;
+	return true;
+}
+
+LRESULT Test::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+	switch (msg)
+	{
+		case WM_DESTROY:
+		{
+			PostQuitMessage(0);
+			return 0;
+		} break;
+
+		case WM_INPUT:
+		{
+			UINT dwSize;
+			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
+			LPBYTE lpb = new BYTE[dwSize];
+			if (lpb == NULL)
+				return 0;
+			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUT));
+			RAWINPUT* raw = (RAWINPUT*)lpb;
+			if (raw->header.dwType == RIM_TYPEKEYBOARD)
+			{
+				if (raw->data.keyboard.Message == WM_KEYDOWN || raw->data.keyboard.Message == WM_SYSKEYDOWN)
+				{
+					std::string information =
+						"Make Code - " + std::to_string(raw->data.keyboard.MakeCode) +
+						"; Flag - " + std::to_string(raw->data.keyboard.Flags) +
+						"; Reserved - " + std::to_string(raw->data.keyboard.Reserved) +
+						"; Extra Information - " + std::to_string(raw->data.keyboard.ExtraInformation) +
+						"; Message - " + std::to_string(raw->data.keyboard.Message) +
+						"; VKey - " + std::to_string(raw->data.keyboard.VKey) +
+						"\n";
+					OutputDebugString((LPCWSTR)information.c_str());
+				}
+			}
+		} break;
+	}
+	return LRESULT();
 }
 
 #pragma endregion

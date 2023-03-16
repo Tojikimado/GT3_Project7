@@ -1,4 +1,5 @@
 #include "D3DApp.h"
+#include <string>
 
 namespace
 {
@@ -68,7 +69,32 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
+
+	case WM_INPUT:
+		UINT dwSize;
+		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
+		LPBYTE lpb = new BYTE[dwSize];
+		if (lpb == NULL)
+			return 0;
+		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUT));
+		RAWINPUT* raw = (RAWINPUT*)lpb;
+		if (raw->header.dwType == RIM_TYPEKEYBOARD)
+		{
+			if (raw->data.keyboard.Message == WM_KEYDOWN || raw->data.keyboard.Message == WM_SYSKEYDOWN)
+			{
+				std::string information =
+					"Make Code - " + std::to_string(raw->data.keyboard.MakeCode) +
+					"; Flag - " + std::to_string(raw->data.keyboard.Flags) +
+					"; Reserved - " + std::to_string(raw->data.keyboard.Reserved) +
+					"; Extra Information - " + std::to_string(raw->data.keyboard.ExtraInformation) +
+					"; Message - " + std::to_string(raw->data.keyboard.Message) +
+					"; VKey - " + std::to_string(raw->data.keyboard.VKey) +
+					"\n";
+				OutputDebugString((LPCWSTR)information.c_str());
+			}
+		}
 	}
+
 
 	return DefWindowProcW(hwnd, msg, wParam, lParam);
 }
