@@ -141,6 +141,9 @@
     <ClCompile Include="InputControlle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="STimer.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test.h">
@@ -229,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="InputControlle.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="STimer.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,9 +12,10 @@
 #include "InputControlle.h"
 
 // include the Direct3D Library file
-#pragma comment (lib, "winmm.lib")
+
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
+#pragma comment (lib, "winmm.lib")
 
 class D3DApp
 {

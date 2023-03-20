@@ -1,5 +1,5 @@
 #include "D3DApp.h"
-
+#include "STimer.h"
 
 namespace
 {
@@ -32,6 +32,7 @@ D3DApp::~D3DApp()
 int D3DApp::Run()
 {
 	MSG msg = { 0 };
+	STimer::InitSystemTime();
 
 	while (WM_QUIT != msg.message)
 	{
@@ -42,7 +43,14 @@ int D3DApp::Run()
 		}
 		else
 		{
-			Update(0.0f);
+			Update(STimer::s_deltaTime);
+			STimer::UpdateDeltaTime();
+
+			/*std::string a = std::to_string(STimer::s_deltaTime);
+			a += "\n";
+			std::wstring b = std::wstring(a.begin(), a.end());
+			OutputDebugString((LPCWSTR)b.c_str());*/
+
 			Render();
 		}
 	}

@@ -63,6 +63,7 @@ void Camera::Update(IDirect3DDevice9* device)
     _pitch += D3DXToRadian(5.f) * STimer::s_deltaTime;
 
     transform.SetRotation(D3DXVECTOR3(_pitch, _yaw, _roll));
+
     // Rotation matrix
     D3DXMatrixRotationYawPitchRoll(&_matLook, _pitch, _yaw, _roll);
     D3DXVec3TransformCoord(&_vForward, &_vForward, &_matLook);

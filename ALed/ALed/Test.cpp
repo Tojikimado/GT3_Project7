@@ -29,9 +29,10 @@ bool Test::Init()
 
 	if (pCamera == nullptr)
 	{
-		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f), D3DXVECTOR3(1.f,1.f,1.f)));
+		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f), D3DXVECTOR3(1.f, 1.f, 1.f)));
 		pCamera->SetTransform(m_pDevice3D);
 	}
+
 	/*
 	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	
@@ -62,7 +63,7 @@ bool Test::Init()
 
 void Test::Update(float dt)
 {
-	//pCamera->Update(m_pDevice3D);
+	pCamera->Update(m_pDevice3D);
 }
 
 void Test::Render()

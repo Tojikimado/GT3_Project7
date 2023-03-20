@@ -25,9 +25,11 @@ public:
 	void Update(float dt) override;
 	void Render() override;
 
+	Camera* pCamera = nullptr;
+
 private: 
 
-	Camera* pCamera = nullptr;
+	
 	
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
