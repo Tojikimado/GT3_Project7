@@ -7,14 +7,23 @@ class Camera
 {
 
 public:
-
-    /*Camera(int width, int height, float angle, D3DXVECTOR3 scaleFactors);*/    
+  
     Camera(int width, int height, Transform camTransform);
+    Camera(int width, int height, Transform camTransform, float fov, float zNear, float zFar);
     ~Camera();
 
     void Update(IDirect3DDevice9* device);
 
     void SetTransform(IDirect3DDevice9* device) const;
+
+    inline void SetFOV(float fov) { _fov = fov; };
+    inline float GetFOV() { return _fov; };
+
+    inline void SetZNear(float zNear) { _zNear = zNear; };
+    inline float GetZNear() { return _zNear; };
+
+    inline void SetZFar(float zFar) { _zFar = zFar; };
+    inline float GetZFar() { return _zFar; };
 
     Transform transform;
 
