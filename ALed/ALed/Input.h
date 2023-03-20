@@ -18,6 +18,7 @@ public:
         DXE_KEYUP = 0x0101,
         DXE_SYSKEYDOWN = 0x0104,
         DXE_KEYDOWN = 0x0100,
+        DXE_MOUSEMOVE = 0x0200,
         /*DXE_LBUTTONDBLCLK = 0x0203,
         DXE_LBUTTONUP = 0x0202,
         DXE_LBUTTONDOWN = 0x0201,

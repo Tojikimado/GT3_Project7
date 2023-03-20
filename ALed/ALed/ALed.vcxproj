@@ -146,6 +146,7 @@
     <ClCompile Include="ColoredGameObject.cpp" />
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="InputControlle.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="TexturedGameObject.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="InputControlle.h" />
     <ClInclude Include="IntersectData.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
