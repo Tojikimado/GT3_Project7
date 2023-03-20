@@ -10,9 +10,9 @@ public :
 	BoundingAABB(int _collisionType, D3DXVECTOR3* _position, ColoredMesh* _mesh);
 	BoundingAABB(int _collisionType, D3DXVECTOR3* _position, TexturedMesh* _mesh);
 
-	WidhtHeightDepth SetDimensions(ColoredMesh* _mesh);
+	d3dCollision::WidhtHeightDepth SetDimensions(ColoredMesh* _mesh);
 
-	WidhtHeightDepth SetDimensions(TexturedMesh* _mesh);
+	d3dCollision::WidhtHeightDepth SetDimensions(TexturedMesh* _mesh);
 	
 	float MaxX() const;
 	float MinX() const;
@@ -23,7 +23,7 @@ public :
 
 protected : 
 
-	WidhtHeightDepth m_dimensions;
+	d3dCollision::WidhtHeightDepth m_dimensions;
 
 };
 
