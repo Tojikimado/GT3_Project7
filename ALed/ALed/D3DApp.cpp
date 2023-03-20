@@ -1,6 +1,5 @@
 #include "D3DApp.h"
-#include <string>
-#include <iostream>
+
 
 namespace
 {
@@ -99,13 +98,26 @@ void D3DApp::Render()
 
 LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	std::string a = std::to_string(msg);
-	std::wstring b = std::wstring(a.begin(), a.end());
 	switch (msg)
 	{
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
+
+	case Input::DXE_MOUSEMOVE:
+	{
+		GetCursorPos(&m_pt);
+		int a = m_pt.x;
+		std::string b = std::to_string(a);
+		std::wstring c = std::wstring(b.begin(), b.end());
+		int d = m_pt.y;
+		std::string e = std::to_string(d);
+		std::wstring f = std::wstring(e.begin(), e.end());
+		std::wstring info = L"x = " + c + L" ; y = " + f;
+		OutputDebugString((LPCWSTR)info.c_str());
+		OutputDebugString(L"\n");
+		return 0;
+	}
 
 	case WM_INPUT:
 		RAWINPUT* raw = GetRawInput(lParam);
@@ -113,7 +125,7 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		{
 			if (raw->data.keyboard.Message == Input::DXE_SYSKEYDOWN || raw->data.keyboard.Message == Input::DXE_KEYDOWN)
 			{
-				if (GetAsyncKeyState(Input::DXK_ESCAPE))
+				if (GetAsyncKeyState(m_inputs.m_controls["Menu"]))
 				{
 					PostQuitMessage(0);
 				}
@@ -131,7 +143,7 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			}
 				
 		}
-		
+		return 0;
 	}
 
 

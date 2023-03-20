@@ -35,8 +35,8 @@ TexturedMesh::TexturedMesh(const char* texFile) {
 	// Bottom face
 	cubeVertices[20] = { 1.0f, -1.0f, 1.0f, 0.f, 0.f, }; // G
 	cubeVertices[21] = { -1.0f, -1.0f, 1.0f, 1.f, 0.f, }; // H
-	cubeVertices[22] = { -1.0f, -1.0f, -1.0f, 0.f, 1.f, }; // C
-	cubeVertices[23] = { 1.0f, -1.0f, -1.0f, 1.f, 1.f, }; // D
+	cubeVertices[22] = { -1.0f, -1.0f, -1.0f, 1.f, 1.f, }; // C
+	cubeVertices[23] = { 1.0f, -1.0f, -1.0f, 0.f, 1.f, }; // D
 
 	this->vertices = cubeVertices;
 	this->nbVertices = 24;
@@ -59,7 +59,7 @@ TexturedMesh::TexturedMesh(const char* texFile) {
 	baseIndices[27] = 18; baseIndices[28] = 17; baseIndices[29] = 19;
 
 	baseIndices[30] = 20; baseIndices[31] = 21; baseIndices[32] = 22;    // Bottom Face
-	baseIndices[33] = 22; baseIndices[34] = 21; baseIndices[35] = 23;
+	baseIndices[33] = 22; baseIndices[34] = 23; baseIndices[35] = 20;
 
 	this->indices = baseIndices;
 	this->nbIndices = 36;

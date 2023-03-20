@@ -7,8 +7,12 @@
 #include "Input.h"
 #include "TexturedGameObject.h"
 #include "ColoredGameObject.h"
+#include <string>
+#include <iostream>
+#include "InputControlle.h"
 
 // include the Direct3D Library file
+#pragma comment (lib, "winmm.lib")
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
 
@@ -36,6 +40,8 @@ protected:
 	unsigned int m_uiClientWidth;
 	unsigned int m_uiClientHeight;
 	DWORD m_WindowStyle;
+	POINT m_pt;
+	InputController m_inputs;
 
 	//DirectX attributes 
 	IDirect3D9* m_pDirect3D;

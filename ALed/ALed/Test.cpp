@@ -9,6 +9,7 @@ const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 ColoredCube* cube;
 ColoredRectangle* rectangle;
 TexturedGameObject* brickCube;
+ID3DXEffect* shader;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -42,6 +43,7 @@ bool Test::Init()
 	
 	TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);
+	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(M_PI_4, M_PI_4, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer, pCamera);
 	brickCube->Init(m_pDevice3D);
 	*/
 
@@ -49,6 +51,8 @@ bool Test::Init()
 	{
 		coloredGO->Init(m_pDevice3D);
 	}
+
+	//D3DXCreateEffect(m_pDevice3D, , , nullptr, nullptr, D3DXSHADER_PACKMATRIX_COLUMNMAJOR, nullptr, &shader, nullptr);
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
