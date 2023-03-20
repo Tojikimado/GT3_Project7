@@ -12,7 +12,7 @@ Collider(_collisionType, _position)
 	m_dimensions = SetDimensions(_mesh);
 }
 
-WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
+d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 {
 	float maxWidth = _mesh->GetVerices()[0].x;
 	float maxHeight = _mesh->GetVerices()[0].y;
@@ -76,11 +76,11 @@ WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 		}
 	}
 
-	return WidhtHeightDepth(maxWidth, maxHeight, maxDepth,
+	return d3dCollision::WidhtHeightDepth(maxWidth, maxHeight, maxDepth,
 		minWidth, minHeight, minDepth);
 }
 
-WidhtHeightDepth BoundingAABB::SetDimensions(TexturedMesh* _mesh)
+d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(TexturedMesh* _mesh)
 {
 	float maxWidth = _mesh->GetVerices()[0].x;
 	float maxHeight = _mesh->GetVerices()[0].y;
@@ -144,7 +144,7 @@ WidhtHeightDepth BoundingAABB::SetDimensions(TexturedMesh* _mesh)
 		}
 	}
 
-	return WidhtHeightDepth(maxWidth, maxHeight, maxDepth,
+	return d3dCollision::WidhtHeightDepth(maxWidth, maxHeight, maxDepth,
 		minWidth, minHeight, minDepth);
 }
 

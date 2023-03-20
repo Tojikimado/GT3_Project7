@@ -64,7 +64,10 @@ namespace d3dVertex
 
 		static const DWORD FVF;
 	};
+}
 
+namespace d3dCollision 
+{
 	struct WidhtHeightDepth
 	{
 		WidhtHeightDepth(float _maxW, float _maxH, float _maxD, float _minW, float _minH, float _minD)
