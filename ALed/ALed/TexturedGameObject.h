@@ -5,7 +5,7 @@ class TexturedGameObject : public GameObject
 {
 public:
 	TexturedGameObject();
-	TexturedGameObject(Transform transform, TexturedMeshRenderer* meshRenderer, Camera* camera);
+	TexturedGameObject(Transform transform, TexturedMeshRenderer* meshRenderer);
 	~TexturedGameObject();
 
 	void SetTexturedMeshRenderer(TexturedMeshRenderer* _meshRenderer);

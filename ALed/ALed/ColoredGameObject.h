@@ -5,7 +5,7 @@ class ColoredGameObject : public GameObject
 {
 public:
 	ColoredGameObject();
-	ColoredGameObject(Transform transform, ColoredMeshRenderer* meshRenderer, Camera* camera);
+	ColoredGameObject(Transform transform, ColoredMeshRenderer* meshRenderer);
 	~ColoredGameObject();
 
 	void SetColoredMeshRenderer(ColoredMeshRenderer* _meshRenderer);

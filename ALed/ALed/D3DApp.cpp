@@ -67,6 +67,36 @@ bool D3DApp::Init()
 	return true;
 }
 
+void D3DApp::Update(float dt)
+{
+	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
+	{
+		if (coloredGobj->b_isActive)
+		{
+			coloredGobj->Update(dt);
+		}
+	}
+}
+
+void D3DApp::Render()
+{
+	m_pDevice3D->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, d3dColors::Black, 1.0f, 0);
+
+	m_pDevice3D->BeginScene();
+
+	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
+	{
+		if (coloredGobj->b_isActive)
+		{
+			coloredGobj->Render(m_pDevice3D);
+		}
+	}
+
+	m_pDevice3D->EndScene();
+
+	m_pDevice3D->Present(0, 0, 0, 0);
+}
+
 LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	std::string a = std::to_string(msg);
@@ -106,6 +136,11 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 
 	return DefWindowProcW(hwnd, msg, wParam, lParam);
+}
+
+void D3DApp::CreateColoredGameObject(ColoredGameObject* _coloredGameObject)
+{
+	v_coloredGameObjects.push_back(_coloredGameObject);
 }
 
 bool D3DApp::InitWindow()

@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{33238d3e-e180-4f82-bd2b-2ade4bbb5f2e}</ProjectGuid>
-    <RootNamespace>ALed</RootNamespace>
+    <ProjectGuid>{5bfa91de-cca9-49cc-9fc0-11b5ecf82ec3}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -71,18 +71,18 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;D:\mvita\GT3_Project7\ALed\ALed;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -92,11 +92,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -106,12 +106,14 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(SolutionDir)ALed</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>../x64/Debug/ALed.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -120,66 +122,35 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoundingAABB.cpp" />
-    <ClCompile Include="BoundingSphere.cpp" />
-    <ClCompile Include="Collider.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CollisionHandler.cpp" />
-    <ClCompile Include="ColoredCube.cpp" />
-    <ClCompile Include="ColoredCubeMesh.cpp" />
-    <ClCompile Include="ColoredMesh.cpp" />
-    <ClCompile Include="ColoredMeshRenderer.cpp" />
-    <ClCompile Include="ColoredRectangle.cpp" />
-    <ClCompile Include="ColoredRectangleMesh.cpp" />
-    <ClCompile Include="ColoredSlopeMesh.cpp" />
-    <ClCompile Include="ColoredGameObject.cpp" />
-    <ClCompile Include="D3DApp.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Test.cpp" />
-    <ClCompile Include="TexturedGameObject.cpp" />
-    <ClCompile Include="TexturedMesh.cpp" />
-    <ClCompile Include="TexturedMeshRenderer.cpp" />
-    <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="Winmaincpp.cpp" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="LandscapeGenerator.h" />
+    <ClInclude Include="PerlinNoise.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoundingAABB.h" />
-    <ClInclude Include="BoundingSphere.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CollisionHandler.h" />
-    <ClInclude Include="ColoredCube.h" />
-    <ClInclude Include="ColoredCubeMesh.h" />
-    <ClInclude Include="ColoredMesh.h" />
-    <ClInclude Include="ColoredMeshRenderer.h" />
-    <ClInclude Include="ColoredRectangle.h" />
-    <ClInclude Include="ColoredRectangleMesh.h" />
-    <ClInclude Include="ColoredSlopeMesh.h" />
-    <ClInclude Include="ColoredGameObject.h" />
-    <ClInclude Include="D3DApp.h" />
-    <ClInclude Include="d3dUtil.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="IntersectData.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="MeshRenderer.h" />
-    <ClInclude Include="Test.h" />
-    <ClInclude Include="TexturedGameObject.h" />
-    <ClInclude Include="TexturedMesh.h" />
-    <ClInclude Include="TexturedMeshRenderer.h" />
-    <ClInclude Include="Transform.h" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LandscapeGenerator.cpp" />
+    <ClCompile Include="PerlinNoise.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Game.ico" />
+    <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

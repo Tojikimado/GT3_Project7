@@ -16,18 +16,16 @@ public:
 	~GameObject();
 
 	Transform GetTransform();
-	
-
-	void SetCamera(Camera* _camera);
 
 	bool Init();
 	void Update(float dt);
 	void Render();
 
+	bool b_isActive = true;
+
 protected:
 	
 	Transform m_transform;
 
-	Camera* m_camera = nullptr;
 };
 

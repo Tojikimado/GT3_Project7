@@ -4,11 +4,10 @@ ColoredGameObject::ColoredGameObject()
 {
 }
 
-ColoredGameObject::ColoredGameObject(Transform transform, ColoredMeshRenderer* meshRenderer, Camera* camera)
+ColoredGameObject::ColoredGameObject(Transform transform, ColoredMeshRenderer* meshRenderer)
 {
 	m_transform = transform;
 	SetColoredMeshRenderer(meshRenderer);
-	SetCamera(camera);
 }
 
 ColoredGameObject::~ColoredGameObject()

@@ -11,7 +11,6 @@ protected:
 
 public:
 	ColoredMeshRenderer(ColoredMesh* mesh);
-
 	void Init(IDirect3DDevice9* m_pDevice3D) override;
 	void Render(IDirect3DDevice9* m_pDevice3D) override;
 };

@@ -1,5 +1,16 @@
 #pragma once
+#define _USE_MATH_DEFINES
+
 #include "D3DApp.h"
+#include "Camera.h"
+
+#include "ColoredRectangle.h"
+#include "ColoredCube.h"
+#include "TexturedGameObject.h"
+
+#include <string>
+#include <cmath>
+#include <math.h>
 
 class Camera; 
 

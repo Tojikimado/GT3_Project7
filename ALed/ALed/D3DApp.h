@@ -2,8 +2,11 @@
 #include <windows.h> 
 #include <d3d9.h>
 #include <d3dx9.h>
+#include <vector>
 #include "d3dUtil.h"
 #include "Input.h"
+#include "TexturedGameObject.h"
+#include "ColoredGameObject.h"
 
 // include the Direct3D Library file
 #pragma comment (lib, "d3d9.lib")
@@ -20,9 +23,11 @@ public :
 	int Run();
 
 	virtual bool Init(); 
-	virtual void Update(float dt) = 0;
-	virtual void Render() = 0;
+	virtual void Update(float dt);
+	virtual void Render();
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
+	void CreateColoredGameObject(ColoredGameObject* _coloredGameObject);
 
 protected: 
 	//atributes
@@ -36,6 +41,9 @@ protected:
 	IDirect3D9* m_pDirect3D;
 	IDirect3DDevice9* m_pDevice3D;
 	D3DPRESENT_PARAMETERS m_d3dpp;
+
+	//Game attributes 
+	std::vector<ColoredGameObject*> v_coloredGameObjects;
 
 protected:
 	//Methods 

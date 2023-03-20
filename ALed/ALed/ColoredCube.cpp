@@ -1,9 +1,9 @@
 #include "ColoredCube.h"
 
-ColoredCube::ColoredCube(Transform transform, Camera* camera) : ColoredRectangle(transform, camera)
+ColoredCube::ColoredCube(Transform transform) : ColoredRectangle(transform)
 {
 }
 
-ColoredCube::ColoredCube(Transform transform, Camera* camera, float size, D3DCOLOR color) : ColoredRectangle(transform, camera, size, size, size, color)
+ColoredCube::ColoredCube(Transform transform, float size, D3DCOLOR color) : ColoredRectangle(transform, size, size, size, color)
 {
 }

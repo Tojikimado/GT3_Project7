@@ -3,11 +3,10 @@ TexturedGameObject::TexturedGameObject()
 {
 }
 
-TexturedGameObject::TexturedGameObject(Transform transform, TexturedMeshRenderer* meshRenderer, Camera* camera)
+TexturedGameObject::TexturedGameObject(Transform transform, TexturedMeshRenderer* meshRenderer)
 {
 	m_transform = transform;
 	SetTexturedMeshRenderer(meshRenderer);
-	SetCamera(camera);
 }
 
 TexturedGameObject::~TexturedGameObject()

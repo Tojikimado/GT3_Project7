@@ -14,11 +14,6 @@ Transform GameObject::GetTransform()
 	return m_transform;
 }
 
-void GameObject::SetCamera(Camera* _camera)
-{
-	m_camera = _camera;
-}
-
 bool GameObject::Init()
 {
 	return true;

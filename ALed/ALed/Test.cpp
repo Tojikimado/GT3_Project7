@@ -1,14 +1,4 @@
-#define _USE_MATH_DEFINES
-
 #include "Test.h"
-#include "Camera.h"
-
-#include "ColoredRectangle.h"
-#include "ColoredCube.h"
-#include "TexturedGameObject.h"
-
-#include <string>
-#include <cmath>
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -41,17 +31,24 @@ bool Test::Init()
 		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f), D3DXVECTOR3(1.f,1.f,1.f)));
 		pCamera->SetTransform(m_pDevice3D);
 	}
+	/*
+	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
+	
+	this->CreateColoredGameObject(cube);
 
+	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), 1.5f,1.f,0.75f, d3dColors::Green);
+	this->CreateColoredGameObject(rectangle);
 
-	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), pCamera, 0.5f, d3dColors::CornFlowerBlue);
-	cube->Init(m_pDevice3D);
-
-	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), pCamera, 1.5f,1.f,0.75f, d3dColors::Green);
-	rectangle->Init(m_pDevice3D);
-
+	
 	TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
-	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer, pCamera);
+	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);
 	brickCube->Init(m_pDevice3D);
+	*/
+
+	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
+	{
+		coloredGO->Init(m_pDevice3D);
+	}
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
@@ -66,17 +63,7 @@ void Test::Update(float dt)
 
 void Test::Render()
 {
-	m_pDevice3D->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, d3dColors::Black, 1.0f, 0);
-
-	m_pDevice3D->BeginScene();
-
-	cube->Render(m_pDevice3D);
-	rectangle->Render(m_pDevice3D);
-	brickCube->Render(m_pDevice3D);
-
-	m_pDevice3D->EndScene();
-
-	m_pDevice3D->Present(0, 0, 0, 0);
+	this->D3DApp::Render();
 }
 
 LRESULT Test::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
