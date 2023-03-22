@@ -146,7 +146,9 @@
     <ClCompile Include="ColoredGameObject.cpp" />
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InputControlle.cpp" />
+    <ClCompile Include="IC.cpp" />
+    <ClCompile Include="InputController.cpp" />
+    <ClCompile Include="InputListener.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Spline.cpp" />
     <ClCompile Include="State.cpp" />
@@ -178,8 +180,10 @@
     <ClInclude Include="D3DApp.h" />
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="IC.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="InputControlle.h" />
+    <ClInclude Include="InputController.h" />
+    <ClInclude Include="InputListener.h" />
     <ClInclude Include="IntersectData.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />

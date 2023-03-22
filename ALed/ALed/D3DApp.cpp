@@ -67,15 +67,15 @@ bool D3DApp::Init()
 	{
 		return false;
 	}
-	if (InitializeInput() == false)
-	{
-		return false;
-	}
+	InputController::Get()->AddListener(this);
+	//IC::Get()->AddListener(this);
 	return true;
 }
 
 void D3DApp::Update(float dt)
 {
+	InputController::Get()->Update();
+	//IC::Get()->Update();
 	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
 	{
 		if (coloredGobj->b_isActive)
@@ -112,7 +112,7 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		return 0;
 
-	case Input::DXE_MOUSEMOVE:
+	/*case Input::DXE_MOUSEMOVE:
 	{
 		GetCursorPos(&m_pt);
 		int a = m_pt.x;
@@ -125,21 +125,21 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		OutputDebugString((LPCWSTR)info.c_str());
 		OutputDebugString(L"\n");
 		return 0;
-	}
+	}*/
 
-	case WM_INPUT:
+	/*case WM_INPUT:
 		RAWINPUT* raw = GetRawInput(lParam);
 		if (raw->header.dwType == Input::DXI_KEYBOARD)
 		{
 			if (raw->data.keyboard.Message == Input::DXE_SYSKEYDOWN || raw->data.keyboard.Message == Input::DXE_KEYDOWN)
 			{
-				if (GetAsyncKeyState(m_inputs.m_controls["Menu"]))
+				if (GetAsyncKeyState(m_inputController.m_controls["Menu"]))
 				{
 					PostQuitMessage(0);
 				}
 				if (GetAsyncKeyState(Input::DXK_A))
 				{
-					OutputDebugString(L"A\n");
+					m_inputController.BindControl("Menu", Input::DXK_LCONTROL);
 				}
 			}
 		}
@@ -151,7 +151,7 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			}
 				
 		}
-		return 0;
+		return 0;*/
 	}
 
 
@@ -287,4 +287,21 @@ RAWINPUT* D3DApp::GetRawInput(LPARAM lParam)
 	GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
 	RAWINPUT* raw = (RAWINPUT*)lpb;
 	return raw;
+}
+
+void D3DApp::OnKeyDown(int key)
+{
+	OutputDebugString(L"Debug\n");
+	if (key == InputController::Get()->m_controls["Menu"])
+		PostQuitMessage(0);
+	if (key == 'Z')
+		OutputDebugString(L"Z\n");
+	if (key == 'P')
+		OutputDebugString(L"P\n");
+}
+
+void D3DApp::OnKeyUp(int key)
+{
+	if (key == 'S')
+		OutputDebugString(L"S\n");
 }

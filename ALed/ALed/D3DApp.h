@@ -9,8 +9,8 @@
 #include "ColoredGameObject.h"
 #include <string>
 #include <iostream>
-#include "InputControlle.h"
 #include "Track.h"
+#include "InputController.h"
 
 // include the Direct3D Library file
 
@@ -18,7 +18,7 @@
 #pragma comment (lib, "d3dx9.lib")
 #pragma comment (lib, "winmm.lib")
 
-class D3DApp
+class D3DApp: public InputListener
 {
 public : 
 
@@ -44,7 +44,6 @@ protected:
 	unsigned int m_uiClientHeight;
 	DWORD m_WindowStyle;
 	POINT m_pt;
-	InputController m_inputs;
 
 	//DirectX attributes 
 	IDirect3D9* m_pDirect3D;
@@ -54,6 +53,7 @@ protected:
 	//Game attributes 
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
 	std::vector<Track*> v_tracks;
+
 
 protected:
 	//Methods 
@@ -67,5 +67,10 @@ protected:
 
 	//Get raw input data
 	RAWINPUT* GetRawInput(LPARAM lParam);
+
+
+	// Inherited via InputListener
+	virtual void OnKeyDown(int key) override;
+	virtual void OnKeyUp(int key) override;
 
 };

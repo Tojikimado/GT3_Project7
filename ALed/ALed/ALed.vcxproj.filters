@@ -61,6 +61,12 @@
     <Filter Include="Source Files\Objects\ColoredPrimitives">
       <UniqueIdentifier>{df679606-f3d3-4a8d-86ec-fca195eed43a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Inputs">
+      <UniqueIdentifier>{d5757f35-3c27-4f41-8cba-63868761b489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inputs">
+      <UniqueIdentifier>{d7ef516f-d0d7-4d3e-a832-5a4aa02f15e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -135,6 +141,12 @@
     <ClCompile Include="InputControlle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="STimer.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -152,6 +164,15 @@
     </ClCompile>
     <ClCompile Include="TrackPosition.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputController.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="InputListener.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="IC.cpp">
+      <Filter>Source Files\Inputs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -236,6 +257,12 @@
     <ClInclude Include="InputControlle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="STimer.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
@@ -253,6 +280,18 @@
     </ClInclude>
     <ClInclude Include="TrackPosition.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputController.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="InputListener.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="IC.h">
+      <Filter>Header Files\Inputs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

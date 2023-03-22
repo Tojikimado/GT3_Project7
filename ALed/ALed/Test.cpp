@@ -85,6 +85,7 @@ void Test::Update(float dt)
 		gameObject->Update(dt);
 	}
 	pCamera->Update(/*dt*/);
+	D3DApp::Update(dt);
 }
 
 void Test::Render()
