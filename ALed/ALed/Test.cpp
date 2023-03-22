@@ -75,7 +75,7 @@ bool Test::Init()
 void Test::Update(float dt)
 {
 	pCamera->Update(m_pDevice3D);
-	track->Update(dt);
+	// track->Update(dt);
 }
 
 void Test::Render()
