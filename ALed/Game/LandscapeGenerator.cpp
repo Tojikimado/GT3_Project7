@@ -10,8 +10,6 @@ XSize(_XSize), YSize(_YSize), Scale(_Scale)
 
 bool LandscapeGenerator::CreateMesh()
 {
-	PerlinNoise* noise = new PerlinNoise();
-
 	if (XSize < 1 || YSize < 1)
 	{
 		return false;
@@ -24,7 +22,15 @@ bool LandscapeGenerator::CreateMesh()
 	{
 		for (int y = 0; y < YSize; y++)
 		{
-			vertices[vertex] = VertexPositionColor(x - XSize/2, y - YSize/2, 0.f, d3dColors::Green);
+			D3DCOLOR color = d3dColors::Yellow;
+
+			float z = 0.f + std::rand() % 2;
+			if (z > 0.4f)
+			{
+				color = d3dColors::CornFlowerBlue;
+			}
+
+			vertices[vertex] = VertexPositionColor(x - XSize/2, y - YSize/2, -z , color);
 			vertex++;
 		}
 	}

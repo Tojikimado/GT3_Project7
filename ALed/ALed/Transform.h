@@ -3,11 +3,11 @@
 #include <d3d9.h>
 #include <d3dx9.h>
 
-struct Rotation
-{
-	D3DXVECTOR3 vector3;
-	D3DXQUATERNION quaternion;
-};
+//struct Rotation
+//{
+//	//D3DXVECTOR3 vector3;
+//
+//};
 
 class Transform
 {
@@ -16,35 +16,40 @@ public:
 	Transform(D3DXVECTOR3 position, D3DXVECTOR3 rotation, D3DXVECTOR3 scale);
 	~Transform();
 
+	void Identity();
+
 	void SetPosition(D3DXVECTOR3 _newPosition);
 
-	D3DXVECTOR3 GetPosition();
+	//D3DXVECTOR3 m_position;
 
 	void SetScale(D3DXVECTOR3 _newScale);
 
 	D3DXVECTOR3 GetScale();
 
-	void SetRotation(D3DXVECTOR3 _newRotation);
+	//void SetRotation(D3DXVECTOR3 _newRotation);
+	void Rotate(float yaw, float pitch, float roll);
 
-	D3DXVECTOR3 GetRotation();
+	D3DXMATRIX& GetRotation();
 
-	D3DXMATRIX* GetWorld();
+	D3DXMATRIX& GetWorld();
 
-	D3DXQUATERNION GetQuaternion();
+	//D3DXQUATERNION GetQuaternion();
+
+	void UpdateMatrix();
 
 
-private:
 	D3DXVECTOR3 m_position;
+
 	D3DXVECTOR3 m_scale;
+
 	D3DXVECTOR3 m_direction;
 	D3DXVECTOR3 m_right, m_up;
-	D3DXMATRIX* m_world;
+	D3DXQUATERNION m_quat;
+	D3DXMATRIX m_rot;
 
-	Rotation m_rotation;
+	D3DXMATRIX m_world;
 
-	float roll, pitch, yaw;
-
-protected:
+	//float roll, pitch, yaw;
 };
 
 

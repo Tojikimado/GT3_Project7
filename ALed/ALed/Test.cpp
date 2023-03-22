@@ -26,10 +26,10 @@ bool Test::Init()
 		return false;
 	}
 
+
 	if (pCamera == nullptr)
 	{
-		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f), D3DXVECTOR3(1.f, 1.f, 1.f)));
-		pCamera->SetTransform(m_pDevice3D);
+		pCamera = new Camera(m_pDevice3D, m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
 	}
 
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
@@ -81,10 +81,10 @@ bool Test::Init()
 
 void Test::Update(float dt)
 {
-	pCamera->Update(m_pDevice3D);
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
+	pCamera->Update(/*dt*/);
 }
 
 void Test::Render()
