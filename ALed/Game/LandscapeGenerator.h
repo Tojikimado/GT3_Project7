@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
+#include <random>
 #include "ColoredGameObject.h"
-#include "PerlinNoise.h"
-
+#include "Noise.h"
 
 class LandscapeGenerator : public ColoredGameObject
 {

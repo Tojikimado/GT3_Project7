@@ -27,10 +27,10 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PerlinNoise.h">
+    <ClInclude Include="LandscapeGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LandscapeGenerator.h">
+    <ClInclude Include="Noise.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PerlinNoise.cpp">
+    <ClCompile Include="LandscapeGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LandscapeGenerator.cpp">
+    <ClCompile Include="Noise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
