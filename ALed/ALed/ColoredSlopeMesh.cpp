@@ -1,11 +1,15 @@
 #include "ColoredSlopeMesh.h"
 
-ColoredSlopeMesh::ColoredSlopeMesh() : ColoredSlopeMesh(1.f, 1.f, 1.f, D3DCOLOR_XRGB(255, 0, 255))
+ColoredSlopeMesh::ColoredSlopeMesh() : ColoredSlopeMesh(1.f, 1.f, 1.f, D3DCOLOR_XRGB(255, 0, 255), true, true)
 {
 }
 
-ColoredSlopeMesh::ColoredSlopeMesh(float width, float height, float deepth, D3DCOLOR color)
+ColoredSlopeMesh::ColoredSlopeMesh(float width, float height, float deepth, D3DCOLOR color, bool vOrientation = true, bool hOrientation = true)
 {
+	// Settup Orientation
+	width = (hOrientation * 2 - 1) * width;
+	height = (vOrientation * 2 - 1) * height;
+
 	// Create a Cube by default
 	VertexPositionColor* slopeVertices = new VertexPositionColor[6];
 	slopeVertices[0] = { -1.0f * width, -1.0f * height, -1.0f * deepth, color, };

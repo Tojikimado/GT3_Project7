@@ -25,6 +25,10 @@ Track::Track(Transform transform, Spline* spline, GameObject* splineFollower, bo
 	_looping = looping;
 }
 
+Track::~Track()
+{
+}
+
 void Track::StartFollow()
 {
 	_movementState = true;

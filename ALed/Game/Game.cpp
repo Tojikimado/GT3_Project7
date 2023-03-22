@@ -15,7 +15,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Test* tApp = new Test(hInstance);
 
 
-	
+
 	
 	tApp->CreateColoredGameObject(new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 3.f), 
 		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), 

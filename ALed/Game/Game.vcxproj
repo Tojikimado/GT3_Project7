@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CreateSpaceship.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="LandscapeGenerator.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CreateSpaceship.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LandscapeGenerator.cpp" />
     <ClCompile Include="PerlinNoise.cpp" />

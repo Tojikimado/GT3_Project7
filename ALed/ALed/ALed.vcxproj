@@ -157,6 +157,7 @@
     <ClCompile Include="TexturedMesh.cpp" />
     <ClCompile Include="TexturedMeshRenderer.cpp" />
     <ClCompile Include="Track.cpp" />
+    <ClCompile Include="TrackPosition.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="Winmaincpp.cpp" />
   </ItemGroup>
@@ -191,6 +192,7 @@
     <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="TexturedMeshRenderer.h" />
     <ClInclude Include="Track.h" />
+    <ClInclude Include="TrackPosition.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,7 +3,7 @@
 #include "GameObject.h"
 class Track : public GameObject
 {
-private:
+protected:
 	GameObject* _splineFollower;
 	Spline* _spline;
 	int _currentPoint = 0;
@@ -15,6 +15,7 @@ public:
 	Track();
 	Track(Spline* spline, GameObject* splineFollower, bool looping);
 	Track(Transform transform, Spline* spline, GameObject* splineFollower, bool looping);
+	~Track();
 
 	void StartFollow();
 	void PauseFollow();
