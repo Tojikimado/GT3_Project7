@@ -15,6 +15,7 @@ public:
 	~GameObject();
 
 	Transform GetTransform();
+	void SetTransform(Transform transform);
 
 	bool Init();
 	void Update(float dt);

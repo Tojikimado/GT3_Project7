@@ -7,6 +7,7 @@
 #include "ColoredRectangle.h"
 #include "ColoredCube.h"
 #include "TexturedGameObject.h"
+#include "ColoredSlopeMesh.h"
 
 #include <string>
 #include <cmath>

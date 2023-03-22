@@ -67,7 +67,7 @@ void Camera::Update()
     at = pos + _vForward;
 
     // Update projection matrix of the camera
-    // à appeler seulement si le fov change
+    // ï¿½ appeler seulement si le fov change
     /*D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(_width) / FLOAT(_height), _zNear, _zFar);*/
 
     // Update matView Matrix
