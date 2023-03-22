@@ -12,6 +12,7 @@ namespace d3dColors
 	const D3DCOLOR Black = D3DCOLOR_ARGB(255, 0, 0, 0);
 	const D3DCOLOR DeepPink = D3DCOLOR_ARGB(255, 219, 112, 147);
 	const D3DCOLOR Yellow = D3DCOLOR_ARGB(255, 255, 255, 0);
+	const D3DCOLOR DarkGrey = D3DCOLOR_ARGB(255, 50, 50, 50);
 }
 
 namespace d3dVertex

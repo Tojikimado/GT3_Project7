@@ -82,7 +82,9 @@ bool Test::Init()
 void Test::Update(float dt)
 {
 	pCamera->Update(m_pDevice3D);
-	track->Update(dt);
+	for (Track* gameObject : v_tracks) {
+		gameObject->Update(dt);
+	}
 }
 
 void Test::Render()

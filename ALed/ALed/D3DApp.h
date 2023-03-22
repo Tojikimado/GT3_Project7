@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include "InputControlle.h"
+#include "Track.h"
 
 // include the Direct3D Library file
 
@@ -33,6 +34,7 @@ public :
 	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 	void CreateColoredGameObject(ColoredGameObject* _coloredGameObject);
+	void CreateTrack(Track* gameObject);
 
 protected: 
 	//atributes
@@ -51,6 +53,7 @@ protected:
 
 	//Game attributes 
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
+	std::vector<Track*> v_tracks;
 
 protected:
 	//Methods 

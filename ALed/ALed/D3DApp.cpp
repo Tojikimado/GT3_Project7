@@ -163,6 +163,11 @@ void D3DApp::CreateColoredGameObject(ColoredGameObject* _coloredGameObject)
 	v_coloredGameObjects.push_back(_coloredGameObject);
 }
 
+void D3DApp::CreateTrack(Track* gameObject) 
+{
+	v_tracks.push_back(gameObject);
+}
+
 bool D3DApp::InitWindow()
 {
 	//create a window class struct 

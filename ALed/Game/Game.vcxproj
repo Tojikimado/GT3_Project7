@@ -139,13 +139,16 @@
     <ClInclude Include="LandscapeGenerator.h" />
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SplinePresets.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CreateSpaceship.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LandscapeGenerator.cpp" />
     <ClCompile Include="PerlinNoise.cpp" />
+    <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />
