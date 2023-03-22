@@ -27,10 +27,10 @@ bool Test::Init()
 		return false;
 	}
 
+
 	if (pCamera == nullptr)
 	{
-		pCamera = new Camera(m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 1.0f), D3DXVECTOR3(1.f, 1.f, 1.f)));
-		pCamera->SetTransform(m_pDevice3D);
+		pCamera = new Camera(m_pDevice3D, m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
 	}
 
 	/*
@@ -62,8 +62,8 @@ bool Test::Init()
 }
 
 void Test::Update(float dt)
-{
-	pCamera->Update(m_pDevice3D);
+{	
+	pCamera->Update();
 }
 
 void Test::Render()

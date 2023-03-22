@@ -3,7 +3,6 @@
 #include <list>
 #include "Transform.h"
 #include "BoundingSphere.h"
-#include "Camera.h"
 
 using namespace std;
 

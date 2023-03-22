@@ -32,6 +32,6 @@ void TexturedGameObject::Render(IDirect3DDevice9* m_pDevice3D)
 {
 	float t = timeGetTime();
 	//m_transform.SetRotation(D3DXVECTOR3(t*0.001f, t * 0.001f,0));
-	m_pDevice3D->SetTransform(D3DTS_WORLD, m_transform.GetWorld());
+	m_pDevice3D->SetTransform(D3DTS_WORLD, &m_transform.GetWorld());
 	m_meshRenderer->Render(m_pDevice3D);
 }
