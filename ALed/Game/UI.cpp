@@ -6,8 +6,8 @@ UI::UI()
 
 UI::UI(Camera* camera)
 {
-	if (camera != nullptr) m_transform = camera->transform;
-	else m_transform = Transform(D3DXVECTOR3(0.f, 0.f, -5.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f));
+	if (camera != nullptr) m_transform = camera->GetTransform();
+	else m_transform = Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f));
 
 	VertexPositionColor* uiVertices = new VertexPositionColor[6];
 	uiVertices[0] = { -4.0f, -2.0f, 0.1f, d3dColors::DarkGrey, };

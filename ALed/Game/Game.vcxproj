@@ -147,7 +147,6 @@
     <ClCompile Include="CreateSpaceship.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LandscapeGenerator.cpp" />
-    <ClCompile Include="PerlinNoise.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Noise.cpp" />
   </ItemGroup>

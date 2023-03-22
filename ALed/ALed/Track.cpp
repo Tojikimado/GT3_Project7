@@ -62,8 +62,8 @@ void Track::Update(float dt)
 		}
 		else {
 			_movementState = false;
-			_splineFollower->GetTransform().SetPosition(m_transform.GetPosition() + _spline->GetSplinePoint(_currentPoint).transform.GetPosition());
-			_splineFollower->GetTransform().SetRotation(m_transform.GetRotation() + _spline->GetSplinePoint(_currentPoint).transform.GetRotation());
+			_splineFollower->GetTransform().SetPosition(m_transform.m_position + _spline->GetSplinePoint(_currentPoint).transform.m_position);
+			//_splineFollower->GetTransform().SetRotation(m_transform.GetRotation() + _spline->GetSplinePoint(_currentPoint).transform.GetRotation());
 		}
 	}
 }
