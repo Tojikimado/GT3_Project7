@@ -14,6 +14,11 @@ Transform GameObject::GetTransform()
 	return m_transform;
 }
 
+void GameObject::SetTransform(Transform transform)
+{
+	m_transform = transform;
+}
+
 bool GameObject::Init()
 {
 	return true;

@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "Track.h"
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -10,6 +11,7 @@ ColoredCube* cube;
 ColoredRectangle* rectangle;
 TexturedGameObject* brickCube;
 ID3DXEffect* shader;
+Track* track;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -33,11 +35,20 @@ bool Test::Init()
 		pCamera->SetTransform(m_pDevice3D);
 	}
 
-	/*
-	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
-	
+	/*cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	this->CreateColoredGameObject(cube);
 
+	SplinePoint* testSpline = new SplinePoint[5];
+	testSpline[0] = { Transform() };
+	testSpline[1] = { Transform(D3DXVECTOR3(0.f, 5.f, 0.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[2] = { Transform(D3DXVECTOR3(5.f, 5.f, 0.f), D3DXVECTOR3(M_PI_2, M_PI_2, M_PI_2), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[3] = { Transform(D3DXVECTOR3(5.f, 0.f, 0.f), D3DXVECTOR3(2* M_PI, 2 * M_PI, 2 * M_PI), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[4] = { Transform() };
+
+	Spline* spline = new Spline(testSpline, 5);
+	track = new Track(cube->GetTransform(), spline, cube, true);
+	track->StartFollow();*/
+	/*
 	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), 1.5f,1.f,0.75f, d3dColors::Green);
 	this->CreateColoredGameObject(rectangle);
 
@@ -64,6 +75,7 @@ bool Test::Init()
 void Test::Update(float dt)
 {
 	pCamera->Update(m_pDevice3D);
+	track->Update(dt);
 }
 
 void Test::Render()

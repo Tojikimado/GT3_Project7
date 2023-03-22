@@ -60,7 +60,7 @@ void Camera::Update(IDirect3DDevice9* device)
     _yaw = D3DXToRadian(transform.GetRotation().y);
     _roll = D3DXToRadian(transform.GetRotation().z);
 
-    _pitch += D3DXToRadian(5.f) * STimer::s_deltaTime;
+    //_pitch += D3DXToRadian(5.f) * STimer::s_deltaTime;
 
     transform.SetRotation(D3DXVECTOR3(_pitch, _yaw, _roll));
 
