@@ -16,7 +16,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Test* tApp = new Test(hInstance);
 
-	LandscapeGenerator* land = new LandscapeGenerator(
+	tApp->CreateColoredGameObject(new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 3.f), 
+		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), 
+		D3DXVECTOR3(1.f, 1.f, 1.f)),0.5f, 
+		d3dColors::Yellow));
+		
+
+	/*LandscapeGenerator* land = new LandscapeGenerator(
 		Transform(
 		D3DXVECTOR3(0.f, -10.f, 5),
 		D3DXVECTOR3(M_PI_2, 0.f, 0.f),

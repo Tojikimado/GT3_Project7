@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "TrackPosition.h"
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -6,10 +7,8 @@ const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 #pragma region Test class for our D3App class
 
 
-ColoredCube* cube;
-ColoredRectangle* rectangle;
-TexturedGameObject* brickCube;
 ID3DXEffect* shader;
+Track* track;
 
 Test::Test(HINSTANCE hInstance) :D3DApp(hInstance)
 {
@@ -33,16 +32,35 @@ bool Test::Init()
 		pCamera->SetTransform(m_pDevice3D);
 	}
 
-	/*
-	cube = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 0.f, 2.f), D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
-	
+	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	this->CreateColoredGameObject(cube);
 
-	rectangle = new ColoredRectangle(Transform(D3DXVECTOR3(2.f,1.5f,6.f), D3DXVECTOR3(0.f, 0.f, 15.f), D3DXVECTOR3(1.f,1.f,1.f)), 1.5f,1.f,0.75f, d3dColors::Green);
-	this->CreateColoredGameObject(rectangle);
+	SplinePoint* testSpline = new SplinePoint[5];
+	testSpline[0] = { Transform() };
+	testSpline[1] = { Transform(D3DXVECTOR3(0.f, 5.f, 0.f), D3DXVECTOR3(0, 0, M_PI_4), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[2] = { Transform(D3DXVECTOR3(5.f, 5.f, 0.f), D3DXVECTOR3(0, 0, M_PI), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[3] = { Transform(D3DXVECTOR3(5.f, 0.f, 0.f), D3DXVECTOR3(0, 0, 4 * M_PI), D3DXVECTOR3(1.f, 1.f, 1.f)) };
+	testSpline[4] = { Transform() };
 
+	Spline* spline = new Spline(testSpline, 5);
+	track = new Track(cube->GetTransform(), spline, cube, true);
+	track->StartFollow();
+
+	//ColoredSlopeMesh* testMesh = new ColoredSlopeMesh(
+	//	1, 1, 1, // Size
+	//	d3dColors::CornFlowerBlue, // Color
+	//	false, true // Orientation
+	//);
+	//ColoredMeshRenderer* testRenderer = new ColoredMeshRenderer(testMesh);
+	//this->CreateColoredGameObject(new ColoredGameObject(
+	//	Transform(
+	//		D3DXVECTOR3(0, 0, 4.f),
+	//		D3DXVECTOR3(0, M_PI_4, 0),
+	//		D3DXVECTOR3(1.f, 1.f, 1.f)
+	//	),
+	//	testRenderer));
 	
-	TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
+	/*TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(M_PI_4, M_PI_4, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer, pCamera);
 	brickCube->Init(m_pDevice3D);
@@ -64,6 +82,7 @@ bool Test::Init()
 void Test::Update(float dt)
 {
 	pCamera->Update(m_pDevice3D);
+	track->Update(dt);
 }
 
 void Test::Render()
