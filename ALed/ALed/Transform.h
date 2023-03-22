@@ -20,7 +20,7 @@ public:
 
 	void SetPosition(D3DXVECTOR3 _newPosition);
 
-	//D3DXVECTOR3 GetPosition();
+	//D3DXVECTOR3 m_position;
 
 	void SetScale(D3DXVECTOR3 _newScale);
 

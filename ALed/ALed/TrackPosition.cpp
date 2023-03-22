@@ -32,7 +32,7 @@ void TrackPosition::Update(float dt)
 		}
 		else {
 			_movementState = false;
-			_splineFollower->GetTransform().SetPosition(_spline->GetSplinePoint(_currentPoint).transform.GetPosition());
+			_splineFollower->GetTransform().SetPosition(_spline->GetSplinePoint(_currentPoint).transform.m_position);
 		}
 	}
 }
@@ -44,7 +44,7 @@ void TrackPosition::UpdateTransform()
 	Transform prevTransform = _spline->GetSplinePoint(_currentPoint).transform;
 	Transform nextTransform = _spline->GetSplinePoint(_currentPoint + 1).transform;
 
-	D3DXVECTOR3 newPosition = m_transform.GetPosition() + lerpVector3(prevTransform.GetPosition(), nextTransform.GetPosition(), _pointProgress);
+	D3DXVECTOR3 newPosition = m_transform.m_position + lerpVector3(prevTransform.m_position, nextTransform.m_position, _pointProgress);
 
 	newTransform.SetPosition(newPosition);
 

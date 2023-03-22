@@ -74,11 +74,11 @@ void Track::UpdateTransform()
 	Transform prevTransform = _spline->GetSplinePoint(_currentPoint).transform;
 	Transform nextTransform = _spline->GetSplinePoint(_currentPoint+1).transform;
 
-	D3DXVECTOR3 newPosition = m_transform.GetPosition() + lerpVector3(prevTransform.GetPosition(), nextTransform.GetPosition(), _pointProgress);
-	D3DXVECTOR3 newRotation = m_transform.GetRotation() + lerpVector3(prevTransform.GetRotation(), nextTransform.GetRotation(), _pointProgress);
+	D3DXVECTOR3 newPosition = m_transform.m_position + lerpVector3(prevTransform.m_position, nextTransform.m_position, _pointProgress);
+	/*D3DXVECTOR3 newRotation = m_transform.GetRotation() + lerpVector3(prevTransform.GetRotation(), nextTransform.GetRotation(), _pointProgress);*/
 	
 	newTransform.SetPosition(newPosition);
-	newTransform.SetRotation(newRotation);
+	/*newTransform.SetRotation(newRotation);*/
 
 	_splineFollower->SetTransform(newTransform);
 }

@@ -35,6 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		tApp->CreateColoredGameObject(land);
 	}
+	*/
 
 	if (tApp->Init() == false)
 	{
