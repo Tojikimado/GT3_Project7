@@ -21,16 +21,6 @@ Test::~Test()
 
 bool Test::Init()
 {
-	if (D3DApp::Init() == false)
-	{
-		return false;
-	}
-
-
-	if (pCamera == nullptr)
-	{
-		pCamera = new Camera(m_pDevice3D, m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
-	}
 
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	this->CreateColoredGameObject(cube);
@@ -45,20 +35,7 @@ bool Test::Init()
 	Spline* spline = new Spline(testSpline, 5);
 	track = new Track(cube->GetTransform(), spline, cube, true);
 	track->StartFollow();
-
-	//ColoredSlopeMesh* testMesh = new ColoredSlopeMesh(
-	//	1, 1, 1, // Size
-	//	d3dColors::CornFlowerBlue, // Color
-	//	false, true // Orientation
-	//);
-	//ColoredMeshRenderer* testRenderer = new ColoredMeshRenderer(testMesh);
-	//this->CreateColoredGameObject(new ColoredGameObject(
-	//	Transform(
-	//		D3DXVECTOR3(0, 0, 4.f),
-	//		D3DXVECTOR3(0, M_PI_4, 0),
-	//		D3DXVECTOR3(1.f, 1.f, 1.f)
-	//	),
-	//	testRenderer));
+	this->CreateTrack(track);
 	
 	/*TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);

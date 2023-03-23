@@ -13,7 +13,7 @@ UI::UI(Camera* camera)
 	uiVertices[0] = { -4.0f, -2.0f, 0.1f, d3dColors::DarkGrey, };
 	uiVertices[1] = { -1.5f, -1.5f, 2.0f, d3dColors::DarkGrey, };
 	uiVertices[2] = { 0.0f, -2.0f, 0.1f, d3dColors::DarkGrey, };
-	uiVertices[3] = { 0.0f, -1.0f, 5.0f, d3dColors::DarkGrey, };
+	uiVertices[3] = { 0.0f, -1.0f, 3.5f, d3dColors::DarkGrey, };
 	uiVertices[4] = { 1.5f, -1.5f, 2.0f, d3dColors::DarkGrey, };
 	uiVertices[5] = { 4.0f, -2.0f, 0.1f, d3dColors::DarkGrey, };
 

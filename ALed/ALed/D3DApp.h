@@ -36,6 +36,10 @@ public :
 	void CreateColoredGameObject(ColoredGameObject* _coloredGameObject);
 	void CreateTrack(Track* gameObject);
 
+	unsigned int GetClientWidth();
+	unsigned int GetClientHeight();
+	IDirect3DDevice9* GetDevice();
+
 protected: 
 	//atributes
 	HWND m_hAppWindow; 

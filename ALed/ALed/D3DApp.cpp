@@ -168,6 +168,21 @@ void D3DApp::CreateTrack(Track* gameObject)
 	v_tracks.push_back(gameObject);
 }
 
+unsigned int D3DApp::GetClientWidth()
+{
+	return m_uiClientWidth;
+}
+
+unsigned int D3DApp::GetClientHeight()
+{
+	return m_uiClientHeight;
+}
+
+IDirect3DDevice9* D3DApp::GetDevice()
+{
+	return m_pDevice3D;
+}
+
 bool D3DApp::InitWindow()
 {
 	//create a window class struct 

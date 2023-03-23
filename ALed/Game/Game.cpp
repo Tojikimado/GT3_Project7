@@ -18,6 +18,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	std::srand(time(NULL));
 
     Test* tApp = new Test(hInstance);
+
+	if (tApp->D3DApp::Init() == false)
+	{
+		return false;
+	}
+
+	if (tApp->pCamera == nullptr)
+	{
+		tApp->pCamera = new Camera(tApp->GetDevice(), tApp->GetClientWidth(), tApp->GetClientHeight(), Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
+	}
 	
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 3.f),
 		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
@@ -25,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		d3dColors::Yellow);
 	tApp->CreateColoredGameObject(cube);
 
-	Track* track = new Track(cube->GetTransform(), PlayerSplines::StraightSpline(5).spline, cube, false);
+	Track* track = new Track(tApp->pCamera->GetTransform(), PlayerSplines::StraightSpline(5).spline, tApp->pCamera, false);
 	track->StartFollow();
 	tApp->CreateTrack(track);
 	/*LandscapeGenerator* land = new LandscapeGenerator(
