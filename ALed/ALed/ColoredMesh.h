@@ -12,7 +12,7 @@ public:
 	ColoredMesh();
 	ColoredMesh(VertexPositionColor* newvertices, int size, short* indices, int indiceSize);
 
-	VertexPositionColor* GetVerices();
+	VertexPositionColor* GetVertices();
 	int GetNbVertices();
 	int GetVerticesSize();
 };

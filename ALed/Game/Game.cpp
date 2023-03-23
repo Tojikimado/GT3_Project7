@@ -22,13 +22,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 3.f),
 		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
-		d3dColors::Yellow);
+		d3dColors::Yellow, "D:/mvita/Color.hlsl");
 	tApp->CreateColoredGameObject(cube);
 
 	Track* track = new Track(cube->GetTransform(), PlayerSplines::StraightSpline(5).spline, cube, false);
 	track->StartFollow();
 	tApp->CreateTrack(track);
-	/*LandscapeGenerator* land = new LandscapeGenerator(
+
+	LandscapeGenerator* land = new LandscapeGenerator(
 		Transform(
 		D3DXVECTOR3(0.f, -10.f, 5),
 		D3DXVECTOR3(M_PI_2, 0.f, 0.f),
@@ -41,7 +42,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		tApp->CreateColoredGameObject(land);
 	}
-	*/
+	
 	tApp->CreateColoredGameObject(new UI(tApp->pCamera));
 
 	if (tApp->Init() == false)

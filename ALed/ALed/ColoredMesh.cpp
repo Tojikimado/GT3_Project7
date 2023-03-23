@@ -49,7 +49,7 @@ ColoredMesh::ColoredMesh(VertexPositionColor* newvertices, int size, short* indi
 }
 
 
-VertexPositionColor* ColoredMesh::GetVerices() {
+VertexPositionColor* ColoredMesh::GetVertices() {
 	return vertices;
 }
 

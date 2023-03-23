@@ -7,5 +7,7 @@ public:
 	ColoredRectangle(Transform transform);
 	ColoredRectangle(Transform transform, float width, float height, float deapth, D3DCOLOR color);
 
+	ColoredRectangle(Transform transform, float width, float height, float deapth, D3DCOLOR color, std::string _shaderFilePath);
+
 };
 
