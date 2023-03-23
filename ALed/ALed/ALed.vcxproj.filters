@@ -138,9 +138,6 @@
     <ClCompile Include="TexturedGameObject.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="InputControlle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -173,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="IC.cpp">
       <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTrack.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +254,6 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InputControlle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -292,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="IC.h">
       <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTrack.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

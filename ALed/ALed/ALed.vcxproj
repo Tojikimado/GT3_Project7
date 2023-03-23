@@ -150,6 +150,7 @@
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="InputListener.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="PlayerTrack.cpp" />
     <ClCompile Include="Spline.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="IntersectData.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="PlayerTrack.h" />
     <ClInclude Include="Spline.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />

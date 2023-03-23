@@ -14,6 +14,8 @@ public:
 	~Spline();
 	SplinePoint* GetSplinePoints();
 	SplinePoint GetSplinePoint(int pointIndex);
+	SplinePoint GetLastPoint();
 	int GetNbPoints();
+
 };
 

@@ -48,6 +48,9 @@
     <ClInclude Include="CreateSpaceship.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
+    <ClInclude Include="GenerateRandPlayerSplines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -64,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="CreateSpaceship.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="GenerateRandPlayerSplines.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,9 @@ public:
 
     void SetTransform(IDirect3DDevice9* device) const;
 
+    void SetUI(GameObject* ui);
+    GameObject* GetUI();
+
     inline void SetFOV(float fov) { _fov = fov; };
     inline float GetFOV() { return _fov; };
 
@@ -26,8 +29,9 @@ public:
     inline float GetZFar() { return _zFar; };
 
 private:
-
     IDirect3DDevice9* _device;
+
+    GameObject* pUI;
 
     D3DXMATRIX _matIdentity;
     D3DXMATRIX _matProjection;

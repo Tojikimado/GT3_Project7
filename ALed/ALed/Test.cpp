@@ -61,6 +61,7 @@ void Test::Update(float dt)
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
+	pTrack->Update(dt);
 	pCamera->Update(dt);
 	D3DApp::Update(dt);
 }

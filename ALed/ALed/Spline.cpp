@@ -24,7 +24,13 @@ SplinePoint Spline::GetSplinePoint(int pointIndex)
     return _splinePoints[pointIndex];
 }
 
+SplinePoint Spline::GetLastPoint()
+{
+    return _splinePoints[_nbPoints-1];
+}
+
 int Spline::GetNbPoints()
 {
     return _nbPoints;
 }
+

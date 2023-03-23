@@ -62,6 +62,10 @@ void Camera::Update(float dt)
     D3DXMatrixLookAtLH(&_matView, &pos, &at, &m_transform.m_up);
 
     SetTransform(_device);
+
+    if (pUI != nullptr) {
+        pUI->SetTransform(m_transform);
+    }
 }
 
 void Camera::SetTransform(IDirect3DDevice9* device) const
@@ -69,4 +73,14 @@ void Camera::SetTransform(IDirect3DDevice9* device) const
     device->SetTransform(D3DTS_PROJECTION, &_matProjection);
     //device->SetTransform(D3DTS_WORLD, &_matIdentity);
     device->SetTransform(D3DTS_VIEW, &_matView);
+}
+
+void Camera::SetUI(GameObject* ui)
+{
+    pUI = ui;
+}
+
+GameObject* Camera::GetUI()
+{
+    return pUI;
 }

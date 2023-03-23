@@ -46,6 +46,16 @@ void Track::ResetTrack()
 	_pointProgress = 0;
 }
 
+Spline* Track::GetSpline()
+{
+	return _spline;
+}
+
+bool Track::GetState()
+{
+	return _movementState;
+}
+
 void Track::Update(float dt)
 {
 	if (_movementState == true) {

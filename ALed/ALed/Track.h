@@ -21,6 +21,9 @@ public:
 	void PauseFollow();
 	void ResetTrack();
 
+	Spline* GetSpline();
+	bool GetState();
+
 	void Update(float dt);
 	void UpdateTransform();
 
