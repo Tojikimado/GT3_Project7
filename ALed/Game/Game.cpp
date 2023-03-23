@@ -21,7 +21,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (tApp->D3DApp::Init() == false)
 	{
-		return false;
+		return 1;
 	}
 
 	if (tApp->pCamera == nullptr)
@@ -59,7 +59,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		return 1;
 	}
-
 
 	return tApp->Run();
 }
