@@ -12,12 +12,9 @@ Camera::Camera(IDirect3DDevice9* device, int width, int height, Transform camTra
     _zNear = 1.0f;
     _zFar = 100.f;
 
-    _vUp = D3DXVECTOR3(0.f, 1.f, 0.f);
-    _vForward = D3DXVECTOR3(0.f, 0.f, 1.f);
-
     D3DXVECTOR3 tempPos = m_transform.m_position;
     D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(width) / FLOAT(height), _zNear, _zFar);
-    D3DXMatrixLookAtLH(&_matView, &tempPos, &_vForward, &_vUp);
+    D3DXMatrixLookAtLH(&_matView, &tempPos, &m_transform.m_direction, &m_transform.m_up);
     D3DXMatrixIdentity(&_matIdentity);
 
     SetTransform(_device);
@@ -35,12 +32,9 @@ Camera::Camera(IDirect3DDevice9* device, int width, int height, Transform camTra
     _zNear = zNear;
     _zFar = zFar;
 
-    _vUp = D3DXVECTOR3(0.f, 1.f, 0.f);
-    _vForward = D3DXVECTOR3(0.f, 0.f, 1.f);
-
     D3DXVECTOR3 tempPos = m_transform.m_position;
     D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(width) / FLOAT(height), _zNear, _zFar);
-    D3DXMatrixLookAtLH(&_matView, &tempPos, &_vForward, &_vUp);
+    D3DXMatrixLookAtLH(&_matView, &tempPos, &m_transform.m_direction, &m_transform.m_up);
     D3DXMatrixIdentity(&_matIdentity);
 
     SetTransform(_device);
@@ -52,26 +46,20 @@ Camera::~Camera()
 
 }
 
-void Camera::Update()
+void Camera::Update(float dt)
 {
-
-    //m_transform.Rotate(50.f * STimer::s_deltaTime, 0.f, 0.f);
-    m_transform.Rotate( 10 * STimer::s_deltaTime, 0.f, 0.f);
-
-
-    //m_transform.m_position.x += 10.f * STimer::s_deltaTime;
-    //m_transform.UpdateMatrix();
+    /*m_transform.Rotate( D3DX_PI / 2 * dt, 0.f, 0.f);*/
 
     D3DXVECTOR3 pos = m_transform.m_position;
     D3DXVECTOR3 at;
-    at = pos + _vForward;
+    at = pos + m_transform.m_direction;
 
     // Update projection matrix of the camera
     // � appeler seulement si le fov change
     /*D3DXMatrixPerspectiveFovLH(&_matProjection, _fov, FLOAT(_width) / FLOAT(_height), _zNear, _zFar);*/
 
     // Update matView Matrix
-    D3DXMatrixLookAtLH(&_matView, &pos, &at, &_vUp);
+    D3DXMatrixLookAtLH(&_matView, &pos, &at, &m_transform.m_up);
 
     SetTransform(_device);
 }
