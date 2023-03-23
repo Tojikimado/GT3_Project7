@@ -30,8 +30,5 @@ public:
 
 private: 
 
-	
-	
-	LRESULT MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
 
