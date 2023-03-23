@@ -59,7 +59,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		D3DXVECTOR3(0.f, -10.f, 5),
 		D3DXVECTOR3(M_PI_2, 0.f, 0.f),
 		D3DXVECTOR3(1.f, 1.f, 1.f)),
-		200,205,1.f);
+		500,205,1.f);
 
 	land->CreateMesh();
 

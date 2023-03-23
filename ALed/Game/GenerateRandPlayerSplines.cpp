@@ -9,28 +9,28 @@ GenerateRandPlayerSplines::GenerateRandPlayerSplines(int trackLength)
 		splineIndex = rand() % 7;
 		switch (splineIndex) {
 		case 0:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
 			break;
 		case 1:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::StraightSpinSpline(10).spline;
 			break;
 		case 2:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::RightStrafSpline(10).spline;
 			break;
 		case 3:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
 			break;
 		case 4:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
 			break;
 		case 5:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
 			break;
 		case 6:
-			_splineBuffer[i] = PlayerSplines::RightStrafSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
 			break;
 		default:
-			_splineBuffer[i] = PlayerSplines::StraightSpline(20).spline;
+			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
 		}
 	}
 }
