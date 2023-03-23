@@ -26,7 +26,6 @@ bool Test::Init()
 		return false;
 	}
 
-
 	if (pCamera == nullptr)
 	{
 		pCamera = new Camera(m_pDevice3D, m_uiClientWidth, m_uiClientHeight, Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
@@ -45,20 +44,7 @@ bool Test::Init()
 	Spline* spline = new Spline(testSpline, 5);
 	track = new Track(cube->GetTransform(), spline, cube, true);
 	track->StartFollow();
-
-	//ColoredSlopeMesh* testMesh = new ColoredSlopeMesh(
-	//	1, 1, 1, // Size
-	//	d3dColors::CornFlowerBlue, // Color
-	//	false, true // Orientation
-	//);
-	//ColoredMeshRenderer* testRenderer = new ColoredMeshRenderer(testMesh);
-	//this->CreateColoredGameObject(new ColoredGameObject(
-	//	Transform(
-	//		D3DXVECTOR3(0, 0, 4.f),
-	//		D3DXVECTOR3(0, M_PI_4, 0),
-	//		D3DXVECTOR3(1.f, 1.f, 1.f)
-	//	),
-	//	testRenderer));
+	this->CreateTrack(track);
 	
 	/*TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);
@@ -81,55 +67,17 @@ bool Test::Init()
 
 void Test::Update(float dt)
 {
+	this->D3DApp::Update(dt);
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
-	pCamera->Update(/*dt*/);
 	D3DApp::Update(dt);
+	pCamera->Update(/*dt*/);
 }
 
 void Test::Render()
 {
 	this->D3DApp::Render();
-}
-
-LRESULT Test::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
-{
-	switch (msg)
-	{
-		case WM_DESTROY:
-		{
-			PostQuitMessage(0);
-			return 0;
-		} break;
-
-		case WM_INPUT:
-		{
-			UINT dwSize;
-			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dwSize, sizeof(RAWINPUTHEADER));
-			LPBYTE lpb = new BYTE[dwSize];
-			if (lpb == NULL)
-				return 0;
-			GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUT));
-			RAWINPUT* raw = (RAWINPUT*)lpb;
-			if (raw->header.dwType == RIM_TYPEKEYBOARD)
-			{
-				if (raw->data.keyboard.Message == WM_KEYDOWN || raw->data.keyboard.Message == WM_SYSKEYDOWN)
-				{
-					std::string information =
-						"Make Code - " + std::to_string(raw->data.keyboard.MakeCode) +
-						"; Flag - " + std::to_string(raw->data.keyboard.Flags) +
-						"; Reserved - " + std::to_string(raw->data.keyboard.Reserved) +
-						"; Extra Information - " + std::to_string(raw->data.keyboard.ExtraInformation) +
-						"; Message - " + std::to_string(raw->data.keyboard.Message) +
-						"; VKey - " + std::to_string(raw->data.keyboard.VKey) +
-						"\n";
-					OutputDebugString((LPCWSTR)information.c_str());
-				}
-			}
-		} break;
-	}
-	return LRESULT();
 }
 
 #pragma endregion

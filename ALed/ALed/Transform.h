@@ -30,11 +30,13 @@ public:
 	void Rotate(float yaw, float pitch, float roll);
 
 	D3DXMATRIX& GetRotation();
+	D3DXQUATERNION GetQuaternion();
 
 	D3DXMATRIX& GetWorld();
 
 	//D3DXQUATERNION GetQuaternion();
 
+	void SetRotation(D3DXQUATERNION* quat);
 	void UpdateMatrix();
 
 

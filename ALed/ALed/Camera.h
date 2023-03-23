@@ -12,7 +12,7 @@ public:
     Camera(IDirect3DDevice9* device, int width, int height, Transform camTransform, float fov, float zNear, float zFar);
     ~Camera();
 
-    void Update();
+    void Update(float dt);
 
     void SetTransform(IDirect3DDevice9* device) const;
 
@@ -33,18 +33,11 @@ private:
     D3DXMATRIX _matProjection;
     D3DXMATRIX _matView;
 
-    D3DXVECTOR3 _vUp;
-    D3DXVECTOR3 _vForward;
-
     int _width;
     int _height;
     float _fov;
     float _zNear;
     float _zFar;
 
-    float _pitch;
-    float _yaw;
-    float _roll;
-    
 };
 

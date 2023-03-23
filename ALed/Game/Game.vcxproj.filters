@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\WorldGeneration">
+      <UniqueIdentifier>{1a8b33b0-4cca-4332-b940-15e837fc1132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WorldGeneration">
+      <UniqueIdentifier>{5ace0ec0-db8e-46c7-866d-500cd88ee9db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -27,37 +33,37 @@
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LandscapeGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Noise.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateSpaceship.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LandscapeGenerator.h">
+      <Filter>Header Files\WorldGeneration</Filter>
+    </ClInclude>
     <ClInclude Include="SplinePresets.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\WorldGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="Noise.h">
+      <Filter>Header Files\WorldGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateSpaceship.h">
+      <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LandscapeGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Noise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateSpaceship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LandscapeGenerator.cpp">
+      <Filter>Source Files\WorldGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateSpaceship.cpp">
+      <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

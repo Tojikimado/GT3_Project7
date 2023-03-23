@@ -63,6 +63,11 @@ D3DXMATRIX& Transform::GetRotation()
 	return m_rot; /*m_rotation.vector3;*/
 }
 
+D3DXQUATERNION Transform::GetQuaternion()
+{
+	return m_quat;
+}
+
 D3DXMATRIX& Transform::GetWorld()
 {
 	return m_world;
@@ -102,6 +107,25 @@ void Transform::Rotate(float yaw, float pitch, float roll)
 	}
 
 	m_quat *= quatAll;
+
+	D3DXMatrixRotationQuaternion(&m_rot, &m_quat);
+
+	m_right.x = m_rot._11;
+	m_right.y = m_rot._12;
+	m_right.z = m_rot._13;
+	m_up.x = m_rot._21;
+	m_up.y = m_rot._22;
+	m_up.z = m_rot._23;
+	m_direction.x = m_rot._31;
+	m_direction.y = m_rot._32;
+	m_direction.z = m_rot._33;
+
+	UpdateMatrix();
+}
+
+void Transform::SetRotation(D3DXQUATERNION* quat)
+{
+	m_quat = *quat;
 
 	D3DXMatrixRotationQuaternion(&m_rot, &m_quat);
 

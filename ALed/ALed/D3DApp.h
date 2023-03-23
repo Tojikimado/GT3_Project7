@@ -18,7 +18,7 @@
 #pragma comment (lib, "d3dx9.lib")
 #pragma comment (lib, "winmm.lib")
 
-class D3DApp: public InputListener
+class D3DApp
 {
 public : 
 
@@ -35,6 +35,10 @@ public :
 
 	void CreateColoredGameObject(ColoredGameObject* _coloredGameObject);
 	void CreateTrack(Track* gameObject);
+
+	unsigned int GetClientWidth();
+	unsigned int GetClientHeight();
+	IDirect3DDevice9* GetDevice();
 
 protected: 
 	//atributes
@@ -70,7 +74,5 @@ protected:
 
 
 	// Inherited via InputListener
-	virtual void OnKeyDown(int key) override;
-	virtual void OnKeyUp(int key) override;
 
 };

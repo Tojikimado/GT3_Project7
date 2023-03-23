@@ -67,14 +67,20 @@ bool D3DApp::Init()
 	{
 		return false;
 	}
-	InputController::Get()->AddListener(this);
-	//IC::Get()->AddListener(this);
+	//InputController::Get()->AddListener(this);
 	return true;
 }
 
 void D3DApp::Update(float dt)
 {
 	InputController::Get()->Update();
+	if (InputController::Get()->IsKey(InputController::Get()->m_controls["Forward"]))
+	{
+		std::string a = to_string(InputController::Get()->m_keys[InputController::Get()->m_controls["Forward"]]);
+		std::wstring b = wstring(a.begin(), a.end());
+		OutputDebugString(b.c_str());
+		InputController::Get()->Update();
+	}
 	//IC::Get()->Update();
 	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
 	{
@@ -166,6 +172,21 @@ void D3DApp::CreateColoredGameObject(ColoredGameObject* _coloredGameObject)
 void D3DApp::CreateTrack(Track* gameObject) 
 {
 	v_tracks.push_back(gameObject);
+}
+
+unsigned int D3DApp::GetClientWidth()
+{
+	return m_uiClientWidth;
+}
+
+unsigned int D3DApp::GetClientHeight()
+{
+	return m_uiClientHeight;
+}
+
+IDirect3DDevice9* D3DApp::GetDevice()
+{
+	return m_pDevice3D;
 }
 
 bool D3DApp::InitWindow()
@@ -287,21 +308,4 @@ RAWINPUT* D3DApp::GetRawInput(LPARAM lParam)
 	GetRawInputData((HRAWINPUT)lParam, RID_INPUT, lpb, &dwSize, sizeof(RAWINPUTHEADER));
 	RAWINPUT* raw = (RAWINPUT*)lpb;
 	return raw;
-}
-
-void D3DApp::OnKeyDown(int key)
-{
-	OutputDebugString(L"Debug\n");
-	if (key == InputController::Get()->m_controls["Menu"])
-		PostQuitMessage(0);
-	if (key == 'Z')
-		OutputDebugString(L"Z\n");
-	if (key == 'P')
-		OutputDebugString(L"P\n");
-}
-
-void D3DApp::OnKeyUp(int key)
-{
-	if (key == 'S')
-		OutputDebugString(L"S\n");
 }

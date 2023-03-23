@@ -18,43 +18,42 @@ InputController* InputController::Get()
 
 void InputController::Update()
 {
-    if (::GetKeyboardState(m_keysState))
+    for (int i = 0; i < 256; i++)
     {
-        for (unsigned int i = 0; i < 256; i++)
+        if (GetAsyncKeyState(i) < 0)
         {
-            //Key Down
-            if (m_keysState[i] & 0x80)
+            switch (m_keys[i])
             {
-                std::map<InputListener*, InputListener*>::iterator it = m_listeners.begin();
-
-                while (it != m_listeners.end())
-                {
-                    it->second->OnKeyDown(i);
-                    ++it;
-                }
-            }
-            //Key Up
-            else
-            {
-                if (m_keysState[i] != m_oldKeysState[i])
-                {
-                    std::map<InputListener*, InputListener*>::iterator it = m_listeners.begin();
-
-                    while (it != m_listeners.end())
-                    {
-                        it->second->OnKeyUp(i);
-                        ++it;
-                    }
-                }
+            case NONE:
+                m_keys[i] = DOWN;
+                break;
+            case DOWN:
+            case UP:
+                m_keys[i] = HOLD;
+                break;
             }
         }
-        //Stocke l'état actuel de la clé dans le buffer de l'ancienne clé
-        ::memcpy(m_oldKeysState, m_keysState, sizeof(unsigned char) * 256);
+        else
+        {
+            switch (m_keys[i])
+            {
+            case HOLD:
+                m_keys[i] = UP;
+                break;
+            case UP:
+            case DOWN:
+                m_keys[i] = NONE;
+                break;
+            }
+
+        }
     }
 }
 
 void InputController::InitControls()
 {
+    memset(m_keys, 0, 256);
+
 	m_controls.insert({ "Menu", Input::DXK_ESCAPE });
 	m_controls.insert({ "Forward", Input::DXK_Z });
 	m_controls.insert({ "Back", Input::DXK_S });
@@ -75,20 +74,5 @@ void InputController::UnbindControl(std::string action)
 {
 	if (m_controls.find(action) != m_controls.end())
 		m_controls.at(action) = NULL;
-}
-
-void InputController::AddListener(InputListener* listener)
-{
-    m_listeners.insert(std::make_pair<InputListener*, InputListener*>(std::forward< InputListener*>(listener), std::forward< InputListener*>(listener)));
-}
-
-void InputController::RemoveListener(InputListener* listener)
-{
-    std::map<InputListener*, InputListener*>::iterator it = m_listeners.find(listener);
-
-    if (it != m_listeners.end())
-    {
-        m_listeners.erase(it);
-    }
 }
 

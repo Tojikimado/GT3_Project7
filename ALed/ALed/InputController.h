@@ -1,11 +1,19 @@
 #pragma once
 #include "Input.h"
-#include "InputListener.h"
 #include <map>
 #include <string>
 
 class InputController
 {
+public:
+	enum
+	{
+		NONE,
+		DOWN,
+		HOLD,
+		UP,
+	};
+
 public:
 	InputController();
 	~InputController();
@@ -17,13 +25,13 @@ public:
 	void BindControl(std::string action, int key);
 	void UnbindControl(std::string action);
 
-	void AddListener(InputListener* listener);
-	void RemoveListener(InputListener* listener);
+	bool IsKey(int key) { return m_keys[key] == DOWN || m_keys[VK_LBUTTON] == HOLD; }
+	bool IsKeyDown(int key) { return m_keys[key] == DOWN; }
+	bool IsKeyUp(int key) { return m_keys[key] == UP; }
 
 	std::map<std::string, int> m_controls;
-	std::map<InputListener*, InputListener*> m_listeners;
-	unsigned char m_keysState[256] = {};
-	unsigned char m_oldKeysState[256] = {};
+
+	BYTE m_keys[256];
 
 protected:
 	//Methods
