@@ -20,3 +20,9 @@ ColoredRectangle::ColoredRectangle(Transform transform,float width, float height
 	m_meshRenderer = new ColoredMeshRenderer(mesh);
 }
 
+ColoredRectangle::ColoredRectangle(Transform transform, float width, float height, float deapth, D3DCOLOR color, std::string _shaderFilePath)
+{
+	m_transform = transform;
+	ColoredRectangleMesh* mesh = new ColoredRectangleMesh(width, height, deapth, color);
+	m_meshRenderer = new ColoredMeshRenderer(mesh, _shaderFilePath);
+}

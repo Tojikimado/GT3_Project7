@@ -14,13 +14,13 @@ Collider(_collisionType, _position)
 
 d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 {
-	float maxWidth = _mesh->GetVerices()[0].x;
-	float maxHeight = _mesh->GetVerices()[0].y;
-	float maxDepth = _mesh->GetVerices()[0].z;
+	float maxWidth = _mesh->GetVertices()[0].x;
+	float maxHeight = _mesh->GetVertices()[0].y;
+	float maxDepth = _mesh->GetVertices()[0].z;
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].x;
+		float tmp = _mesh->GetVertices()[i].x;
 		if (tmp > maxWidth)
 		{
 			maxWidth = tmp;
@@ -29,7 +29,7 @@ d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].y;
+		float tmp = _mesh->GetVertices()[i].y;
 		if (tmp > maxHeight)
 		{
 			maxHeight = tmp;
@@ -38,20 +38,20 @@ d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].z;
+		float tmp = _mesh->GetVertices()[i].z;
 		if (tmp > maxDepth)
 		{
 			maxDepth = tmp;
 		}
 	}
 
-	float minWidth = _mesh->GetVerices()[0].x;
-	float minHeight = _mesh->GetVerices()[0].y;
-	float minDepth = _mesh->GetVerices()[0].z;
+	float minWidth = _mesh->GetVertices()[0].x;
+	float minHeight = _mesh->GetVertices()[0].y;
+	float minDepth = _mesh->GetVertices()[0].z;
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].x;
+		float tmp = _mesh->GetVertices()[i].x;
 		if (tmp < minWidth)
 		{
 			minWidth = tmp;
@@ -60,7 +60,7 @@ d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].y;
+		float tmp = _mesh->GetVertices()[i].y;
 		if (tmp < minHeight)
 		{
 			minHeight = tmp;
@@ -69,7 +69,7 @@ d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(ColoredMesh* _mesh)
 
 	for (int i = 1; i < _mesh->GetNbVertices(); i++)
 	{
-		float tmp = _mesh->GetVerices()[i].z;
+		float tmp = _mesh->GetVertices()[i].z;
 		if (tmp < minDepth)
 		{
 			minDepth = tmp;

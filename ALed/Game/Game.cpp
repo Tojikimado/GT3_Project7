@@ -22,7 +22,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	if (tApp->D3DApp::Init() == false)
 	{
-		return false;
+		return 1;
 	}
 
 	if (tApp->pCamera == nullptr)
@@ -37,7 +37,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 20.f),
 		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
-		d3dColors::Yellow);
+		d3dColors::Yellow, "D:/mvita/Color.hlsl");
 	tApp->CreateColoredGameObject(cube);
 
 	ColoredCube* cube1 = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 3.f, 40.f),
@@ -76,7 +76,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		return 1;
 	}
-
 
 	return tApp->Run();
 }

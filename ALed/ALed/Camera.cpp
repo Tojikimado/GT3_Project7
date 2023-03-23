@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include "STimer.h"
 
 
 Camera::Camera(IDirect3DDevice9* device, int width, int height, Transform camTransform)
@@ -49,6 +48,7 @@ Camera::~Camera()
 void Camera::Update(float dt)
 {
     /*m_transform.Rotate( D3DX_PI / 2 * dt, 0.f, 0.f);*/
+
 
     D3DXVECTOR3 pos = m_transform.m_position;
     D3DXVECTOR3 at;

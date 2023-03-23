@@ -18,7 +18,7 @@
 #pragma comment (lib, "d3dx9.lib")
 #pragma comment (lib, "winmm.lib")
 
-class D3DApp: public InputListener
+class D3DApp
 {
 public : 
 
@@ -74,7 +74,5 @@ protected:
 
 
 	// Inherited via InputListener
-	virtual void OnKeyDown(int key) override;
-	virtual void OnKeyUp(int key) override;
 
 };

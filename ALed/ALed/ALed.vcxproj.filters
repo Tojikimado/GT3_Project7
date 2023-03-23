@@ -281,9 +281,6 @@
     <ClInclude Include="InputController.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
-    <ClInclude Include="InputListener.h">
-      <Filter>Header Files\Inputs</Filter>
-    </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
