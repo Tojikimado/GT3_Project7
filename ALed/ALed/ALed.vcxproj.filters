@@ -67,6 +67,18 @@
     <Filter Include="Source Files\Inputs">
       <UniqueIdentifier>{d7ef516f-d0d7-4d3e-a832-5a4aa02f15e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Render\Shader">
+      <UniqueIdentifier>{361d971a-0dd8-4f7f-9fd0-c8c7c989f939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Shader">
+      <UniqueIdentifier>{35797162-6213-4be0-9a6a-660f4e20bc63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{1fbb4028-b0c6-470b-b4f6-3fc4e5fcded7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{973f184b-1558-4c57-8850-718022bdbc1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -165,14 +177,20 @@
     <ClCompile Include="InputController.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
-    <ClCompile Include="InputListener.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="IC.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerTrack.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Render\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Raycast.cpp">
+      <Filter>Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,11 +302,20 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
-    <ClInclude Include="IC.h">
-      <Filter>Header Files\Inputs</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerTrack.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Render\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Raycast.h">
+      <Filter>Header Files\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
