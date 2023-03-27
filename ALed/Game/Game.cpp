@@ -9,6 +9,8 @@
 #include <Track.h>
 #include "SplinePresets.h"
 #include "GenerateRandPlayerSplines.h"
+#include <ColoredCubeMesh.h>
+#include "GenerateSpaceships.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -68,7 +70,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			D3DXVECTOR3(1.f, 1.f, 1.f)),
 		500, 305, 1.f);
 
-	sky->CreateMesh();
+
+	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
+	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
+	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
 
 	if (land->CreateMesh())
 	{
