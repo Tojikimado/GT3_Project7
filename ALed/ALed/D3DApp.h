@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Track.h"
 #include "InputController.h"
+#include "Raycast.h"
 
 // include the Direct3D Library file
 
@@ -39,6 +40,9 @@ public :
 	unsigned int GetClientWidth();
 	unsigned int GetClientHeight();
 	IDirect3DDevice9* GetDevice();
+
+	InputController* m_pInputController;
+	Raycast* m_pRaycast;
 
 protected: 
 	//atributes

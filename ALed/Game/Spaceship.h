@@ -5,12 +5,12 @@ class Spaceship : public ColoredGameObject
 {
 private:
 	bool isHit;
-	BoundingAABB collider;
+	
 public:
 	Spaceship();
 	Spaceship(Transform transform, ColoredMesh* mesh);
 	~Spaceship();
-
+	BoundingAABB collider;
 	void OnHit();
 };
 
