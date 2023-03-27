@@ -45,12 +45,6 @@ int D3DApp::Run()
 		{
 			Update(STimer::s_deltaTime);
 			STimer::UpdateDeltaTime();
-
-			/*std::string a = std::to_string(STimer::s_deltaTime);
-			a += "\n";
-			std::wstring b = std::wstring(a.begin(), a.end());
-			OutputDebugString((LPCWSTR)b.c_str());*/
-
 			Render();
 		}
 	}
@@ -67,15 +61,14 @@ bool D3DApp::Init()
 	{
 		return false;
 	}
-	//InputController::Get()->AddListener(this);
+	m_pInputController = InputController::Get();
+	m_pRaycast = Raycast::Get();
 	return true;
 }
 
 void D3DApp::Update(float dt)
 {
 	InputController::Get()->Update();
-	
-	//IC::Get()->Update();
 	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
 	{
 		if (coloredGobj->b_isActive)

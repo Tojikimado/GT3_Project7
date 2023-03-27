@@ -15,6 +15,7 @@
 #include "PlayerTrack.h"
 #include "TrackPosition.h"
 #include "Spaceship.h"
+#include "Raycast.h"
 
 class MainScene : public D3DApp
 {
@@ -34,6 +35,5 @@ public:
 protected : 
 
 	std::vector<Spaceship> v_spaceships;
-
 };
 

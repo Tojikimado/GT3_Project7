@@ -8,17 +8,6 @@ CollisionHandler::~CollisionHandler()
 {
 }
 
-/*
-CollisionHandler* CollisionHandler::GetInstance()
-{
-	if (pCollisionHandlerInstance == nullptr)
-	{
-		pCollisionHandlerInstance = new CollisionHandler();
-	}
-	return pCollisionHandlerInstance;
-}
-*/
-
 bool CollisionHandler::Sphere_Vs_Sphere(const BoundingSphere& _sphere, const BoundingSphere& _other)
 {
 	float distance = GetDistance(_sphere.GetPosition(), _other.GetPosition());
@@ -69,4 +58,11 @@ bool CollisionHandler::AABB_Vs_Sphere(const BoundingAABB& _box, const BoundingSp
 const float CollisionHandler::GetDistance(D3DXVECTOR3 _A,D3DXVECTOR3 _B)
 {
 	return (float)sqrt(pow(_B.x-_A.x,2) + pow(_B.y-_A.y,2) + pow(_B.z-_A.z,2));
+}
+
+CollisionHandler* CollisionHandler::Get()
+{
+	static CollisionHandler collisionHandler;
+
+	return &collisionHandler;
 }

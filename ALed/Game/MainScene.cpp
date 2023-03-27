@@ -30,6 +30,9 @@ bool MainScene::Init()
 	track->StartFollow();
 	this->CreateTrack(track);
 
+	//ColoredGameObject* ufo = new ColoredGameObject(Transform(),new ColoredMeshRenderer("D:/mvita/ufo.x"));
+	//this->CreateColoredGameObject(ufo);
+
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
 		coloredGO->Init(m_pDevice3D);
@@ -44,20 +47,30 @@ bool MainScene::Init()
 void MainScene::Update(float dt)
 {
 	this->D3DApp::Update(dt);
+
+	//
+	if (InputController::Get()->IsKeyDown(VK_LBUTTON))
+	{
+		for (Spaceship spaceship : v_spaceships)
+		{
+			if (m_pRaycast->SingleRayCast(m_pInputController->GetMouseX(),
+										m_pInputController->GetMouseY(), spaceship.collider))
+			{
+				spaceship.OnHit();
+			}
+		}
+	}
+
+	//
+
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
+
+
 	pTrack->Update(dt);
 	D3DApp::Update(dt);
 	pCamera->Update(dt);
-
-	if (InputController::Get()->IsKey(InputController::Get()->m_controls["Forward"]))
-	{
-		std::string a = to_string(InputController::Get()->m_keys[InputController::Get()->m_controls["Forward"]]);
-		std::wstring b = wstring(a.begin(), a.end());
-		OutputDebugString(b.c_str());
-		InputController::Get()->Update();
-	}
 }
 
 void MainScene::Render()

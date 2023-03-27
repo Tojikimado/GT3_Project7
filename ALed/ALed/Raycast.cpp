@@ -1,15 +1,23 @@
 #include "Raycast.h"
 
-void Raycast::SingleRayCast(int x, int y)
+bool Raycast::SingleRayCast(int x, int y, const BoundingAABB spaceships_colliders)
 {
 	for (float f = 5.f; f < 500.f; f = f + step)
 	{
-		D3DXVECTOR3* pointPos = new D3DXVECTOR3(x, y, f);
+		D3DXVECTOR3 pointPos = D3DXVECTOR3(x, y, f);
 		
-		//check toute les collisions / break si y'en a une 
-		
-
-
+		if (CollisionHandler::Get()->AABB_Vs_Point(spaceships_colliders, pointPos))
+		{
+			return true;
+		}
 	}
-
+	return false;
 }
+
+Raycast* Raycast::Get()
+{
+	static Raycast raycast;
+
+	return &raycast;
+}
+

@@ -1,10 +1,20 @@
 #include "ColoredMeshRenderer.h"
 
+ColoredMeshRenderer::ColoredMeshRenderer(std::string _xFile, std::string _shaderFilePath)
+{
+	m_shader = new Shader(_shaderFilePath);
+	m_xFilePath = &_xFile;
+}
+
+ColoredMeshRenderer::ColoredMeshRenderer(std::string _xFile)
+{
+	m_xFilePath = &_xFile;
+}
+
 ColoredMeshRenderer::ColoredMeshRenderer(ColoredMesh* mesh, std::string _shaderFilePath)
 {
 	m_shader = new Shader(_shaderFilePath);
 	coloredMesh = mesh;
-	m_shaderFilePath = _shaderFilePath;
 }
 
 ColoredMeshRenderer::ColoredMeshRenderer(ColoredMesh* mesh)
@@ -19,15 +29,15 @@ ColoredMeshRenderer::~ColoredMeshRenderer()
 	delete[] indexBuffer;
 }
 
-void ColoredMeshRenderer::Init(IDirect3DDevice9* m_pDevice3D)
+void ColoredMeshRenderer::Init(IDirect3DDevice9* pDevice3D)
 {
 	// Création d'un vertex buffer pour stocker les vertices d'une figure
-	m_pDevice3D->CreateVertexBuffer(coloredMesh->GetVerticesSize(), 0,
+	pDevice3D->CreateVertexBuffer(coloredMesh->GetVerticesSize(), 0,
 		d3dVertex::VertexPositionColor::FVF, D3DPOOL_MANAGED,
 		&vectorBuffer, NULL);
 
 	// Création d'un index buffer pour stocker les indexes des triangles d'une figure
-	m_pDevice3D->CreateIndexBuffer(coloredMesh->GetIndicesSize(), D3DUSAGE_WRITEONLY,
+	pDevice3D->CreateIndexBuffer(coloredMesh->GetIndicesSize(), D3DUSAGE_WRITEONLY,
 		D3DFMT_INDEX16, D3DPOOL_MANAGED,
 		&indexBuffer, NULL);
 
@@ -43,38 +53,66 @@ void ColoredMeshRenderer::Init(IDirect3DDevice9* m_pDevice3D)
 	memcpy(pIndices, coloredMesh->GetIndices(), coloredMesh->GetIndicesSize());
 	indexBuffer->Unlock();
 
+	
+	/*
+	else
+	{
+		//set mesh from .x file 
+		InitMeshFromXFile(pDevice3D);
+	}
+	*/
+	
 	// set the shader 
 	if (m_shader != nullptr)
 	{
-		m_shader->Init(m_pDevice3D);
+		m_shader->Init(pDevice3D);
 	}
 }
 
-void ColoredMeshRenderer::Render(IDirect3DDevice9* m_pDevice3D)
+void ColoredMeshRenderer::InitMeshFromXFile(IDirect3DDevice9* pDevice3D)
+{
+	std::string path = *m_xFilePath;
+	HRESULT hr = D3DXLoadMeshFromXA(path.c_str(), NULL, pDevice3D, NULL, NULL,
+		NULL, 0, &m_mesh);
+}
+
+void ColoredMeshRenderer::Render(IDirect3DDevice9* pDevice3D)
 {
 	if (m_shader != nullptr && m_shader->m_effect != nullptr)
 	{
 		unsigned int cPasses = 0;
-		m_pDevice3D->SetStreamSource(0, vectorBuffer, 0, sizeof(d3dVertex::VertexPositionColor));
-		m_pDevice3D->SetIndices(indexBuffer);
+		pDevice3D->SetFVF(d3dVertex::VertexPositionColor::FVF);
+		pDevice3D->SetStreamSource(0, vectorBuffer, 0, sizeof(d3dVertex::VertexPositionColor));
+		pDevice3D->SetIndices(indexBuffer);
+
 		/*
 		pass values
 		*/
+
 		m_shader->m_effect->Begin(&cPasses, 0);
 
 		for (unsigned int iPass = 0; iPass < cPasses; iPass++)
 		{
 			m_shader->m_effect->BeginPass(iPass);
-			m_pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, coloredMesh->GetNbVertices(), 0, coloredMesh->GetNbIndices());
+
+			/*
+			if (m_mesh != nullptr)
+			{
+				m_mesh->DrawSubset(0);
+			}
+			*/
+
+			pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, coloredMesh->GetNbVertices(), 0, coloredMesh->GetNbIndices() / 3);
+			
 			m_shader->m_effect->EndPass();
 		}
 		m_shader->m_effect->End();
 	}
 	else
 	{
-		m_pDevice3D->SetStreamSource(0, vectorBuffer, 0, sizeof(d3dVertex::VertexPositionColor));
-		m_pDevice3D->SetIndices(indexBuffer);
-		m_pDevice3D->SetFVF(d3dVertex::VertexPositionColor::FVF);
-		m_pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, coloredMesh->GetNbVertices(), 0, coloredMesh->GetNbIndices());
+		pDevice3D->SetStreamSource(0, vectorBuffer, 0, sizeof(d3dVertex::VertexPositionColor));
+		pDevice3D->SetIndices(indexBuffer);
+		pDevice3D->SetFVF(d3dVertex::VertexPositionColor::FVF);
+		pDevice3D->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, coloredMesh->GetNbVertices(), 0, coloredMesh->GetNbIndices());
 	}	
 }

@@ -24,8 +24,8 @@ bool LandscapeGenerator::CreateMesh()
 		{
 			D3DCOLOR color = d3dColors::Yellow;
 
-			float z = 0.f + std::rand() % 2;
-			if (z > 0.4f)
+			float z = 0.f + std::rand() % 3;
+			if (z > 1.2f)
 			{
 				color = d3dColors::CornFlowerBlue;
 			}
@@ -53,7 +53,8 @@ bool LandscapeGenerator::CreateMesh()
 	}
 	ColoredMesh* newMesh = new ColoredMesh(vertices, XSize * YSize, baseIndices,nbIndice);
 
-	m_meshRenderer = new ColoredMeshRenderer(newMesh, "D:/mvita/Color.hlsl");
+	//m_meshRenderer = new ColoredMeshRenderer(newMesh, "D:/mvita/Color.hlsl");
+	m_meshRenderer = new ColoredMeshRenderer(newMesh);
 
 	if (m_meshRenderer == nullptr)
 	{
