@@ -67,6 +67,12 @@
     <Filter Include="Source Files\Inputs">
       <UniqueIdentifier>{d7ef516f-d0d7-4d3e-a832-5a4aa02f15e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Render\Shader">
+      <UniqueIdentifier>{361d971a-0dd8-4f7f-9fd0-c8c7c989f939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render\Shader">
+      <UniqueIdentifier>{35797162-6213-4be0-9a6a-660f4e20bc63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test.cpp">
@@ -165,14 +171,11 @@
     <ClCompile Include="InputController.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
-    <ClCompile Include="InputListener.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="IC.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerTrack.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Render\Shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,11 +287,11 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\Inputs</Filter>
     </ClInclude>
-    <ClInclude Include="IC.h">
-      <Filter>Header Files\Inputs</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerTrack.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Render\Shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

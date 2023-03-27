@@ -3,6 +3,7 @@
 #include "ColoredMesh.h"
 #include <string>
 #include "STimer.h"
+#include "Shader.h"
 
 class ColoredMeshRenderer: public MeshRenderer
 {
@@ -14,9 +15,8 @@ protected:
 	//shader
 	LPD3DXEFFECT m_effect;
 	D3DXHANDLE m_techniqueHandle;
-	//
-	D3DXHANDLE m_handlevar;
-	//
+
+	class Shader* m_shader;
 
 public:
 	ColoredMeshRenderer(ColoredMesh* mesh, std::string _shaderFilePath);
