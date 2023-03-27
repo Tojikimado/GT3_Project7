@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ExplosionParticle.h" />
     <ClInclude Include="GenerateSpaceships.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="PTrack.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ExplosionParticle.cpp" />
     <ClCompile Include="GenerateSpaceships.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="PTrack.cpp" />

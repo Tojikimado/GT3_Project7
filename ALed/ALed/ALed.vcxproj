@@ -133,7 +133,6 @@
   <ItemGroup>
     <ClCompile Include="BoundingAABB.cpp" />
     <ClCompile Include="BoundingSphere.cpp" />
-    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CollisionHandler.cpp" />
@@ -148,15 +147,16 @@
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InputController.cpp" />
-    <ClCompile Include="Label.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="PlayerTrack.cpp" />
     <ClCompile Include="Spline.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="STimer.cpp" />
-    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="TexturedGameObject.cpp" />
     <ClCompile Include="TexturedMesh.cpp" />
     <ClCompile Include="TexturedMeshRenderer.cpp" />
@@ -168,7 +168,6 @@
   <ItemGroup>
     <ClInclude Include="BoundingAABB.h" />
     <ClInclude Include="BoundingSphere.h" />
-    <ClInclude Include="Button.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CollisionHandler.h" />
@@ -186,16 +185,18 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="IntersectData.h" />
-    <ClInclude Include="Label.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="ParticleData.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="PlayerTrack.h" />
     <ClInclude Include="Spline.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="STimer.h" />
-    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="TexturedGameObject.h" />
     <ClInclude Include="TexturedMesh.h" />
     <ClInclude Include="TexturedMeshRenderer.h" />
