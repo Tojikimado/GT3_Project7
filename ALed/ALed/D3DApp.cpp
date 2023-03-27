@@ -9,7 +9,7 @@ namespace
 
 LRESULT CALLBACK MainWindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	return g_pd3dApp->MsgProc(hwnd,msg,wParam,lParam);
+	return g_pd3dApp->MsgProc(hwnd, msg, wParam, lParam);
 }
 
 D3DApp::D3DApp(HINSTANCE hInstance)
@@ -63,12 +63,14 @@ bool D3DApp::Init()
 	}
 	m_pInputController = InputController::Get();
 	m_pRaycast = Raycast::Get();
+	timerLabel = new Label(m_pDevice3D);
 	return true;
 }
 
 void D3DApp::Update(float dt)
 {
 	InputController::Get()->Update();
+
 	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
 	{
 		if (coloredGobj->b_isActive)
@@ -76,6 +78,9 @@ void D3DApp::Update(float dt)
 			coloredGobj->Update(dt);
 		}
 	}
+
+	//OutputDebugStringA(to_string((int)STimer::GetSystemTimeEx()).c_str());
+	Render();
 }
 
 void D3DApp::Render()
@@ -91,6 +96,11 @@ void D3DApp::Render()
 			coloredGobj->Render(m_pDevice3D);
 		}
 	}
+
+	timerLabel->SetCaption(to_string(100 - (int)STimer::GetSystemTimeEx()));
+	timerLabel->SetColor(d3dColors::Red);
+	timerLabel->SetRect(m_uiClientWidth/2 - 25, 10, m_uiClientWidth/2 + 25, 50);
+	timerLabel->OnRender();
 
 	m_pDevice3D->EndScene();
 

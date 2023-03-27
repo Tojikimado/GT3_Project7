@@ -12,6 +12,8 @@
 #include "Track.h"
 #include "InputController.h"
 #include "Raycast.h"
+#include "Label.h"
+#include "STimer.h"
 
 // include the Direct3D Library file
 
@@ -62,6 +64,8 @@ protected:
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
 	std::vector<Track*> v_tracks;
 
+	Label* timerLabel;
+	std::string m_timerCaption;
 
 protected:
 	//Methods 

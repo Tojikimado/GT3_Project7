@@ -8,16 +8,18 @@ class Button
 protected:
 	HFONT m_font;
 	Label* m_caption;
-	bool m_isPressed;
+	bool m_pressed;
+	D3DXCOLOR m_defaultColor;
+	D3DXCOLOR m_pressedColor;
 
 public:
-	Button(LPDIRECT3DDEVICE9 device);
+	Button(IDirect3DDevice9* device);
 	~Button();
 
 	bool OnRender();
 	void OnSetFocus();
 	void OnLostFocus();
-	void SetCaption(char* Caption);
+	void SetCaption(IDirect3DDevice9* device, std::string Caption);
 	bool SetUnpressedImage(char* File);
 	bool SetPressedImage(char* File);
 };

@@ -1,14 +1,18 @@
 #include "Label.h"
 
-Label::Label(LOGFONT font, LPDIRECT3DDEVICE9 device)
+
+Label::Label(IDirect3DDevice9* device)
 {
-	D3DXCreateFont(device, font.lfWidth, font.lfHeight, font.lfWeight, 1,
-		font.lfItalic, font.lfCharSet, font.lfOutPrecision,
-		font.lfQuality, font.lfPitchAndFamily,
-		font.lfFaceName, &m_font);
-	//m_caption = "";
-	m_color = D3DCOLOR_XRGB(0, 0, 0);
-	m_format = DT_LEFT;
+	D3DXCreateFontA(device, 22, 0, FW_NORMAL, 1, false,
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, ANTIALIASED_QUALITY, 
+		FF_DONTCARE, "Arial", &m_font);
+	m_caption = "";
+	m_color = d3dColors::DeepPink;
+	m_format = DT_CENTER;
+	m_rect.left = 0;
+	m_rect.top = 0;
+	m_rect.right = 100;
+	m_rect.bottom = 100;
 }
 
 Label::~Label()
@@ -19,32 +23,19 @@ Label::~Label()
 
 bool Label::OnRender()
 {
-	if (m_font)
+	if (m_font != nullptr)
 	{
-		RECT Rectangle;
-		D3DXVECTOR2 Vec2;
-		Vec2.x = 0;
-		Vec2.y = 0;
-		//GetAbsolutePosition(&Vec2);
-		Rectangle.left = Vec2.x;
-		Rectangle.top = Vec2.y;
-		Rectangle.right = 100;//GetWidth();
-		Rectangle.bottom = 200;//GetHeight();
-		//m_font->DrawText(NULL, m_caption, strlen(m_caption), &Rectangle,
-			//m_format, m_color);
+		m_font->DrawTextA(NULL, m_caption.c_str(), -1, &m_rect, m_format, m_color);
 	}
 	return true;
 }
 
-void Label::SetCaption(char* caption)
+void Label::SetCaption(std::string caption)
 {
-	/*if (caption && *caption)
-		strcpy(m_caption, caption);
-	else
-		m_caption[0] = 0;*/
+	m_caption = caption;
 }
 
-char* Label::GetCaption()
+std::string Label::GetCaption()
 {
 	return m_caption;
 }
@@ -67,4 +58,17 @@ void Label::SetFormat(DWORD format)
 DWORD Label::GetFormat()
 {
 	return m_format;
+}
+
+void Label::SetRect(int left, int top, int right, int bottom)
+{
+	m_rect.left = left;
+	m_rect.top = top;
+	m_rect.right = right;
+	m_rect.bottom = bottom;
+}
+
+RECT Label::GetRect()
+{
+	return m_rect;
 }

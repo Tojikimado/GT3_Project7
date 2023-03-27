@@ -1,8 +1,8 @@
 #include "Button.h"
 
-Button::Button(LPDIRECT3DDEVICE9 device)
+Button::Button(IDirect3DDevice9* device)
 {
-	m_isPressed = false;
+	m_pressed = false;
 	m_caption = NULL;
 }
 
@@ -12,7 +12,7 @@ Button::~Button()
 
 bool Button::OnRender()
 {
-	return false;
+	return true;
 }
 
 void Button::OnSetFocus()
@@ -23,13 +23,13 @@ void Button::OnLostFocus()
 {
 }
 
-void Button::SetCaption(char* Caption)
+void Button::SetCaption(IDirect3DDevice9* device, std::string Caption)
 {
 	LOGFONT lf;
 	if (m_caption)
 		delete m_caption;
 	SystemParametersInfo(SPI_GETICONTITLELOGFONT, sizeof(lf), &lf, 0);
-	//m_caption = new Label(lf, GetDevice());
+	m_caption = new Label(device);
 	//m_caption->SetWidthHeight(0, 0);
 	m_caption->SetCaption(Caption);
 }
