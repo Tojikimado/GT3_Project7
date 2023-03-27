@@ -16,12 +16,12 @@
 
 class Camera; 
 
-class Test : public D3DApp
+class GameScene : public D3DApp
 {
 public:
-	Test(HINSTANCE hInstance);
+	GameScene(HINSTANCE hInstance);
 
-	~Test();
+	~GameScene();
 
 	bool Init() override;
 	void Update(float dt) override;
