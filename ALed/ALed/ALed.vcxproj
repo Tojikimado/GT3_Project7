@@ -150,7 +150,6 @@
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="PlayerTrack.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Spline.cpp" />
@@ -190,7 +189,6 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
-    <ClInclude Include="PlayerTrack.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Spline.h" />

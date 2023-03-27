@@ -1,4 +1,5 @@
 #include "MainScene.h"
+#include <ColoredCubeMesh.h>
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -15,6 +16,11 @@ bool MainScene::Init()
 {
 	Track* track;
 
+	if (pCamera == nullptr)
+	{
+		pCamera = new Camera(GetDevice(), GetClientWidth(), GetClientHeight(), Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
+	}
+
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	this->CreateColoredGameObject(cube);
 
@@ -29,6 +35,9 @@ bool MainScene::Init()
 	track = new Track(cube->GetTransform(), spline, cube, true);
 	track->StartFollow();
 	this->CreateTrack(track);
+
+	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
+	sGenerator = new GenerateSpaceships(pCamera, defMesh);
 
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
@@ -46,6 +55,14 @@ void MainScene::Update(float dt)
 	this->D3DApp::Update(dt);
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
+	}
+	if (sGenerator != nullptr) {
+		Spaceship* spaceship = sGenerator->Update(dt);
+		if (spaceship != nullptr) {
+			//v_spaceships.push_back(spaceship);
+			spaceship->Init(m_pDevice3D);
+			this->CreateColoredGameObject(spaceship);
+		}
 	}
 	pTrack->Update(dt);
 	D3DApp::Update(dt);

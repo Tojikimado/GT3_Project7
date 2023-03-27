@@ -12,7 +12,6 @@
 #include <string>
 #include <cmath>
 #include <math.h>
-#include "PlayerTrack.h"
 
 class Camera; 
 
@@ -28,7 +27,6 @@ public:
 	void Render() override;
 
 	Camera* pCamera = nullptr;
-	PlayerTrack* pTrack = nullptr;
 
 private: 
 

@@ -73,7 +73,7 @@ void GameScene::Update(float dt)
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
-	pTrack->Update(dt);
+	//pTrack->Update(dt);
 	D3DApp::Update(dt);
 	pCamera->Update(dt);
 

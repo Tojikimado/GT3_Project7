@@ -12,9 +12,10 @@
 #include <cmath>
 #include <math.h>
 #include <corecrt_math_defines.h>
-#include "PlayerTrack.h"
+#include "PTrack.h"
 #include "TrackPosition.h"
 #include "Spaceship.h"
+#include "GenerateSpaceships.h"
 
 class MainScene : public D3DApp
 {
@@ -29,7 +30,8 @@ public:
 	void Render() override;
 
 	Camera* pCamera = nullptr;
-	PlayerTrack* pTrack = nullptr;
+	PTrack* pTrack = nullptr;
+	GenerateSpaceships* sGenerator = nullptr;
 
 protected : 
 

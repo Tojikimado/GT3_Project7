@@ -35,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (tApp->pTrack == nullptr)
 	{
 		GenerateRandPlayerSplines randSplines = GenerateRandPlayerSplines(5);
-		tApp->pTrack = new PlayerTrack(tApp->pCamera, randSplines._splineBuffer, 5);
+		tApp->pTrack = new PTrack(tApp->pCamera);
 	}
 
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 20.f),
@@ -69,11 +69,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			D3DXVECTOR3(-M_PI_2, 0.f, 0.f),
 			D3DXVECTOR3(1.f, 1.f, 1.f)),
 		500, 305, 1.f);
-
-
-	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
-	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
-	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
 
 	if (land->CreateMesh())
 	{
