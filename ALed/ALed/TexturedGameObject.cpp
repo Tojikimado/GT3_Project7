@@ -11,6 +11,7 @@ TexturedGameObject::TexturedGameObject(Transform transform, TexturedMeshRenderer
 
 TexturedGameObject::~TexturedGameObject()
 {
+	delete m_meshRenderer;
 }
 
 void TexturedGameObject::SetTexturedMeshRenderer(TexturedMeshRenderer* _meshRenderer)

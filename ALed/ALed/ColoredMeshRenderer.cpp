@@ -11,6 +11,13 @@ ColoredMeshRenderer::ColoredMeshRenderer(ColoredMesh* mesh)
 	coloredMesh = mesh;
 }
 
+ColoredMeshRenderer::~ColoredMeshRenderer()
+{
+	delete[] coloredMesh;
+	delete[] vectorBuffer;
+	delete[] indexBuffer;
+}
+
 void ColoredMeshRenderer::Init(IDirect3DDevice9* m_pDevice3D)
 {
 	// Création d'un vertex buffer pour stocker les vertices d'une figure

@@ -1,5 +1,9 @@
 #include "BoundingAABB.h"
 
+BoundingAABB::BoundingAABB()
+{
+}
+
 BoundingAABB::BoundingAABB(int _collisionType, D3DXVECTOR3* _position, ColoredMesh* _mesh):
 Collider(_collisionType, _position)
 {

@@ -5,6 +5,14 @@ TexturedMeshRenderer::TexturedMeshRenderer(TexturedMesh* mesh)
 	texturedMesh = mesh;
 }
 
+TexturedMeshRenderer::~TexturedMeshRenderer()
+{
+	delete[] texturedMesh;
+	delete[] vectorBuffer;
+	delete[] indexBuffer;
+	delete[] texture;
+}
+
 void TexturedMeshRenderer::Init(IDirect3DDevice9* m_pDevice3D)
 {
 	// Création d'un vertex buffer pour stocker les vertices d'une figure

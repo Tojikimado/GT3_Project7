@@ -76,6 +76,13 @@ TexturedMesh::TexturedMesh(VertexPositionTexture* newvertices, int size, short* 
 	this->texFileName = texFile;
 }
 
+TexturedMesh::~TexturedMesh()
+{
+	delete[] indices;
+	delete[] vertices;
+	delete[] texFileName;
+}
+
 
 VertexPositionTexture* TexturedMesh::GetVerices() {
 	return vertices;

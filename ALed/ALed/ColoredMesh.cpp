@@ -48,6 +48,12 @@ ColoredMesh::ColoredMesh(VertexPositionColor* newvertices, int size, short* indi
 	this->nbIndices = indiceSize;
 }
 
+ColoredMesh::~ColoredMesh()
+{
+	delete[] indices;
+	delete[] vertices;
+}
+
 
 VertexPositionColor* ColoredMesh::GetVertices() {
 	return vertices;

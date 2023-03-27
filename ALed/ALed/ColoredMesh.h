@@ -11,6 +11,7 @@ protected:
 public:
 	ColoredMesh();
 	ColoredMesh(VertexPositionColor* newvertices, int size, short* indices, int indiceSize);
+	~ColoredMesh();
 
 	VertexPositionColor* GetVertices();
 	int GetNbVertices();

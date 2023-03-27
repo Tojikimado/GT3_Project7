@@ -6,7 +6,7 @@ GenerateRandPlayerSplines::GenerateRandPlayerSplines(int trackLength)
 	_splineBuffer = new Spline* [trackLength];
 	int splineIndex;
 	for (int i = 0; i < _trackLength; i++) {
-		splineIndex = rand() % 7;
+		splineIndex = rand() % 8;
 		switch (splineIndex) {
 		case 0:
 			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
@@ -21,13 +21,16 @@ GenerateRandPlayerSplines::GenerateRandPlayerSplines(int trackLength)
 			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
 			break;
 		case 4:
-			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
+			_splineBuffer[i] = PlayerSplines::LoopingSpline(10).spline;
 			break;
 		case 5:
-			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
+			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
 			break;
 		case 6:
-			_splineBuffer[i] = PlayerSplines::LeftStrafSpline(10).spline;
+			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
+			break;
+		case 7:
+			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;
 			break;
 		default:
 			_splineBuffer[i] = PlayerSplines::StraightSpline(10).spline;

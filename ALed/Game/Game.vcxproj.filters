@@ -45,7 +45,7 @@
     <ClInclude Include="Noise.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
-    <ClInclude Include="CreateSpaceship.h">
+    <ClInclude Include="Spaceship.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
     <ClInclude Include="GenerateRandPlayerSplines.h">
@@ -65,7 +65,7 @@
     <ClCompile Include="LandscapeGenerator.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="CreateSpaceship.cpp">
+    <ClCompile Include="Spaceship.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
     <ClCompile Include="GenerateRandPlayerSplines.cpp">

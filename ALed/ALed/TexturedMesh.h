@@ -15,6 +15,7 @@ public:
 	TexturedMesh();
 	TexturedMesh(const char* texFile);
 	TexturedMesh(VertexPositionTexture* newvertices, int size, short* indices, int indiceSize, const char* texFile);
+	~TexturedMesh();
 
 	VertexPositionTexture* GetVerices();
 	int GetNbVertices();

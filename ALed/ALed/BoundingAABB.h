@@ -6,7 +6,7 @@
 class BoundingAABB : public Collider
 {
 public : 
-
+	BoundingAABB();
 	BoundingAABB(int _collisionType, D3DXVECTOR3* _position, ColoredMesh* _mesh);
 	BoundingAABB(int _collisionType, D3DXVECTOR3* _position, TexturedMesh* _mesh);
 

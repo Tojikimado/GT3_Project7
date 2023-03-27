@@ -9,7 +9,7 @@ public :
 		TYPE_SPHERE,
 		TYPE_AABB,
 	};
-
+	Collider();
 	Collider(int _collisionType, D3DXVECTOR3* _position);
 
 	D3DXVECTOR3 GetPosition() const;

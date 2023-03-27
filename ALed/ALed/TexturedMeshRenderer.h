@@ -11,6 +11,7 @@ protected:
 
 public:
 	TexturedMeshRenderer(TexturedMesh* mesh);
+	~TexturedMeshRenderer();
 
 	void Init(IDirect3DDevice9* m_pDevice3D) override;
 	void Render(IDirect3DDevice9* m_pDevice3D) override;
