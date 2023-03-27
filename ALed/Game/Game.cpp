@@ -3,7 +3,7 @@
 
 #include "framework.h"
 #include "Game.h"
-#include "Test.h"
+#include "GameScene.h"
 #include "LandscapeGenerator.h"
 #include "UI.h"
 #include <Track.h>
@@ -11,6 +11,7 @@
 #include "GenerateRandPlayerSplines.h"
 #include <ColoredCubeMesh.h>
 #include "GenerateSpaceships.h"
+#include "MainScene.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -20,7 +21,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
 	std::srand(time(NULL));
 
-    Test* tApp = new Test(hInstance);
+    MainScene* tApp = new MainScene(hInstance);
 
 	if (tApp->D3DApp::Init() == false)
 	{
@@ -36,6 +37,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		GenerateRandPlayerSplines randSplines = GenerateRandPlayerSplines(5);
 		tApp->pTrack = new PlayerTrack(tApp->pCamera, randSplines._splineBuffer, 5);
 	}
+
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 20.f),
 		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
@@ -53,9 +55,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
 		d3dColors::Green);
 	tApp->CreateColoredGameObject(cube2);
-	/*Track* track = new Track(cube->GetTransform(), PlayerSplines::StraightSpline(5).spline, cube, false);
-	track->StartFollow();
-	tApp->CreateTrack(track);*/
+
 	LandscapeGenerator* land = new LandscapeGenerator(
 		Transform(
 		D3DXVECTOR3(100.f, -10.f, 5),
