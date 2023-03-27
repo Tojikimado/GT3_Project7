@@ -29,9 +29,12 @@ public:
 	bool IsKeyDown(int key) { return m_keys[key] == DOWN; }
 	bool IsKeyUp(int key) { return m_keys[key] == UP; }
 
-	std::map<std::string, int> m_controls;
+	int GetMouseX();
+	int GetMouseY();
 
+	std::map<std::string, int> m_controls;
 	BYTE m_keys[256];
+	POINT m_pt;
 
 protected:
 	//Methods

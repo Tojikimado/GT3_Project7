@@ -76,6 +76,14 @@ void Test::Update(float dt)
 	pTrack->Update(dt);
 	D3DApp::Update(dt);
 	pCamera->Update(dt);
+
+	if (InputController::Get()->IsKey(InputController::Get()->m_controls["Forward"]))
+	{
+		std::string a = to_string(InputController::Get()->m_keys[InputController::Get()->m_controls["Forward"]]);
+		std::wstring b = wstring(a.begin(), a.end());
+		OutputDebugString(b.c_str());
+		InputController::Get()->Update();
+	}
 }
 
 void Test::Render()

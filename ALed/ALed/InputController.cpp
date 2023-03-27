@@ -76,3 +76,15 @@ void InputController::UnbindControl(std::string action)
 		m_controls.at(action) = NULL;
 }
 
+int InputController::GetMouseX()
+{
+    GetCursorPos(&m_pt);
+    return m_pt.x;
+}
+
+int InputController::GetMouseY()
+{
+    GetCursorPos(&m_pt);
+    return m_pt.y;
+}
+

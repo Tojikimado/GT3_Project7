@@ -74,13 +74,7 @@ bool D3DApp::Init()
 void D3DApp::Update(float dt)
 {
 	InputController::Get()->Update();
-	if (InputController::Get()->IsKey(InputController::Get()->m_controls["Forward"]))
-	{
-		std::string a = to_string(InputController::Get()->m_keys[InputController::Get()->m_controls["Forward"]]);
-		std::wstring b = wstring(a.begin(), a.end());
-		OutputDebugString(b.c_str());
-		InputController::Get()->Update();
-	}
+	
 	//IC::Get()->Update();
 	for (ColoredGameObject* coloredGobj : v_coloredGameObjects)
 	{
