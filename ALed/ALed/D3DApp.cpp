@@ -1,5 +1,6 @@
 #include "D3DApp.h"
 #include "STimer.h"
+#include "Image.h"
 
 namespace
 {
@@ -64,6 +65,7 @@ bool D3DApp::Init()
 	m_pInputController = InputController::Get();
 	m_pRaycast = Raycast::Get();
 	timerLabel = new Label(m_pDevice3D);
+
 	return true;
 }
 
@@ -78,9 +80,6 @@ void D3DApp::Update(float dt)
 			coloredGobj->Update(dt);
 		}
 	}
-
-	//OutputDebugStringA(to_string((int)STimer::GetSystemTimeEx()).c_str());
-	Render();
 }
 
 void D3DApp::Render()
@@ -102,6 +101,10 @@ void D3DApp::Render()
 	timerLabel->SetRect(m_uiClientWidth/2 - 25, 10, m_uiClientWidth/2 + 25, 50);
 	timerLabel->OnRender();
 
+	Image* im = new Image(m_pDevice3D, L"C:/Users/htaurand/Documents/GitHub/GT3_Project7/ALed/ALed/wall.png", D3DXVECTOR2(0, 50), D3DXVECTOR2(5, 5), D3DCOLOR_ARGB(255, 255, 255, 255));
+	im->SetSize(D3DXVECTOR2(10 , 10), m_uiClientWidth, m_uiClientHeight, m_renderWidth, m_renderHeight);
+	im->Draw();
+
 	m_pDevice3D->EndScene();
 
 	m_pDevice3D->Present(0, 0, 0, 0);
@@ -114,47 +117,6 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
-
-	/*case Input::DXE_MOUSEMOVE:
-	{
-		GetCursorPos(&m_pt);
-		int a = m_pt.x;
-		std::string b = std::to_string(a);
-		std::wstring c = std::wstring(b.begin(), b.end());
-		int d = m_pt.y;
-		std::string e = std::to_string(d);
-		std::wstring f = std::wstring(e.begin(), e.end());
-		std::wstring info = L"x = " + c + L" ; y = " + f;
-		OutputDebugString((LPCWSTR)info.c_str());
-		OutputDebugString(L"\n");
-		return 0;
-	}*/
-
-	/*case WM_INPUT:
-		RAWINPUT* raw = GetRawInput(lParam);
-		if (raw->header.dwType == Input::DXI_KEYBOARD)
-		{
-			if (raw->data.keyboard.Message == Input::DXE_SYSKEYDOWN || raw->data.keyboard.Message == Input::DXE_KEYDOWN)
-			{
-				if (GetAsyncKeyState(m_inputController.m_controls["Menu"]))
-				{
-					PostQuitMessage(0);
-				}
-				if (GetAsyncKeyState(Input::DXK_A))
-				{
-					m_inputController.BindControl("Menu", Input::DXK_LCONTROL);
-				}
-			}
-		}
-		if (raw->header.dwType == Input::DXI_MOUSE)
-		{
-			if (GetAsyncKeyState(Input::DXK_LEFTMOUSEBUTTON))
-			{
-				OutputDebugString(L"LeftMB\n");
-			}
-				
-		}
-		return 0;*/
 	}
 
 
@@ -258,6 +220,9 @@ bool D3DApp::InitDirect3D()
 	m_d3dpp.EnableAutoDepthStencil = TRUE;    // automatically run the z-buffer for us
 	m_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;    // 16-bit pixel format for the z-buffer
 
+	m_renderWidth = m_d3dpp.BackBufferWidth;
+	m_renderHeight = m_d3dpp.BackBufferHeight;
+	
 	//Create the device
 	HRESULT res = m_pDirect3D->CreateDevice(D3DADAPTER_DEFAULT,
 		D3DDEVTYPE_HAL, m_hAppWindow, 

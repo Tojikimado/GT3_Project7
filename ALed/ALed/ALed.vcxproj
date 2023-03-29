@@ -148,6 +148,7 @@
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="IntersectData.h" />

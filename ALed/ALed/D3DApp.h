@@ -54,6 +54,8 @@ protected:
 	unsigned int m_uiClientHeight;
 	DWORD m_WindowStyle;
 	POINT m_pt;
+	int m_renderWidth;
+	int m_renderHeight;
 
 	//DirectX attributes 
 	IDirect3D9* m_pDirect3D;
