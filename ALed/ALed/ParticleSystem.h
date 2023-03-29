@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm> 
 #include "ParticleData.h"
-#include "Transform.h"
+#include "STimer.h"
 
 #define D3DFVF_POINTVERTEX (D3DFVF_XYZ | D3DFVF_DIFFUSE)
 
@@ -11,27 +11,37 @@ class ParticleSystem
 {
 public:
 
-	ParticleSystem(IDirect3DDevice9* device, Transform startPos, int maxParticles, int maxLifetime, float maxSize, float startInterval, float startSpeed, float duration);
+	ParticleSystem(IDirect3DDevice9* device, LPDIRECT3DTEXTURE9 texture, Transform startPos, int maxParticles, int maxLifetime, float maxSize, float startInterval, float startSpeed, float duration, bool isLooping);
 	~ParticleSystem();
 
 	virtual void Update();
 	virtual void Render();
 
+	bool isLooping = false;
+
 protected:
 
 	Transform m_transform;
 
-	std::vector<Particle>	m_particles;
+	std::vector<Particle*>	m_particles;
+	int m_particlesAlive;
 	LPDIRECT3DVERTEXBUFFER9 m_points;
 	IDirect3DDevice9*		m_renderTarget;
 
-	std::vector<Particle>::iterator FindNextDeadParticle();
+	float m_maxSize;
+	LPDIRECT3DTEXTURE9 m_particleTex;
+	
+	void RemoveDeadParticles();
 	virtual void StartParticles();
 
-	virtual void StartSingleParticle(std::vector<Particle>::iterator& p);
+	virtual void StartSingleParticle();
 
 	static float random_number(unsigned int a, unsigned int b);
 
+	static inline DWORD FtoDW(float f)
+	{
+		return *((DWORD*)&f);
+	}
 private:
 
 
@@ -47,29 +57,23 @@ private:
 
 	/*inline bool IsParticleDead(const Particle &p) { return p.lifetime == 0; }*/
 
-	LPDIRECT3DTEXTURE9 m_particleTex;
 	D3DXVECTOR3 m_origin;
 
 	float m_startTimer;
 	float m_startInterval;
 
+
 	int m_maxParticles;
 	int m_startParticles;
 
-	int m_particlesAlive;
 	int m_maxLifetime;
-
-	float m_maxSize;
 
 	D3DXVECTOR3 m_startPos;
 
 	std::vector<Particle>::iterator m_deadParticles;
 
 
-	static inline DWORD FtoDW(float f)
-	{
-		return *((DWORD*)&f);
-	}
+	
 
 };
 

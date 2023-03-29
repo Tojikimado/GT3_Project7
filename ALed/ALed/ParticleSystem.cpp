@@ -1,16 +1,22 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(IDirect3DDevice9* device, Transform startTransform, int maxParticles, int maxLifetime, float maxSize, float startInterval, float startSpeed, float duration)
-{
 
+ParticleSystem::ParticleSystem(IDirect3DDevice9* device, LPDIRECT3DTEXTURE9 texture, Transform startTransform, int maxParticles, int maxLifetime, float maxSize, float startInterval, float startSpeed, float duration, bool isLooping_)
+{
+	
 	m_renderTarget = device;
+	m_particleTex = texture;
 	m_transform = startTransform;
 	m_maxParticles = maxParticles;
 	m_maxLifetime = maxLifetime;
 	m_maxSize = maxSize;
 	m_startInterval = startInterval;
+	isLooping = isLooping_;
 
 	m_transform.m_scale = D3DXVECTOR3(maxSize, maxSize, maxSize);
+	m_particlesAlive = 0;
+	m_startParticles = 0;
+	m_startTimer = 0;
 
 	
 	Particle p;
@@ -35,6 +41,7 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::Update()
 {
+	
 }
 
 void ParticleSystem::Render()
@@ -80,25 +87,47 @@ void ParticleSystem::Render()
 	m_renderTarget->SetRenderState(D3DRS_ZENABLE, D3DZB_TRUE);
 }
 
-std::vector<Particle>::iterator ParticleSystem::FindNextDeadParticle()
+
+void ParticleSystem::RemoveDeadParticles()
 {
-	m_deadParticles = std::find_if(m_particles.begin(), m_particles.end(), IsParticleDead());
-	return m_deadParticles;
+	for (std::vector<Particle*>::reverse_iterator it = m_particles.rbegin(); it != m_particles.rend(); )
+	{
+		if ((*it)->lifetime <= 0)
+		{
+			delete* it;
+			it = m_particles.erase(it);
+		}
+	}
+
+	for (int i = m_particles.size() - 1; i != 0; i--)
+	{
+		if (m_particles[i].lifetime <= 0)
+		{
+			m_particles.erase(std::next(m_particles.begin() + i));
+		}
+	}
+
+	for (Particle* particle : m_particles)
+	{
+
+	}
 }
 	
 
 void ParticleSystem::StartParticles()
 {
-	// Only start a new particle when the time is right and there are enough dead (inactive) particles.
-	if (m_startTimer == 0 && m_particlesAlive < m_maxParticles)
+	if (m_startTimer <= 0 && m_particlesAlive < m_maxParticles)
 	{
+		// Only spawn missing particles
+		/*m_startParticles = m_maxParticles - m_particlesAlive;*/
+
 		// Number of particles to start in this batch...
-		for (int i(0); i < m_startParticles; ++i)
+		for (int i(0); i < m_maxParticles; ++i)
 		{
 			if (m_particlesAlive < m_maxParticles)
 			{
-				FindNextDeadParticle();
-				StartSingleParticle(m_deadParticles);
+				RemoveDeadParticles();
+				StartSingleParticle();
 			}
 		}
 
@@ -108,22 +137,25 @@ void ParticleSystem::StartParticles()
 	else
 	{
 		// Otherwise decrease the start timer.
-		--m_startTimer;
+		--m_startTimer -= STimer::s_deltaTime;
 	}
 }
 
-void ParticleSystem::StartSingleParticle(std::vector<Particle>::iterator& p)
+void ParticleSystem::StartSingleParticle()
 {
-	if (p == m_particles.end()) return;
+	Particle* p = new Particle();
 
-	p->id = 0;
-
-	p->position = m_origin;
-
+	p->mesh = new ColoredMesh();
+	p->transform.SetPosition(m_origin);
 	p->lifetime = random_number(0, m_maxLifetime);
 
+	m_particles.push_back(p);
 	++m_particlesAlive;
 }
+
+
+
+
 
 float ParticleSystem::random_number(unsigned int a, unsigned int b)
 {
@@ -133,3 +165,4 @@ float ParticleSystem::random_number(unsigned int a, unsigned int b)
 
 	return a + (rand() % (b - a));
 }
+
