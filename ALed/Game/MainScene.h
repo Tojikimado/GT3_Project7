@@ -1,6 +1,5 @@
 #pragma once
 #include "D3DApp.h"
-#include "D3DApp.h"
 #include "Camera.h"
 
 #include "ColoredRectangle.h"

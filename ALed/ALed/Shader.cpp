@@ -7,6 +7,8 @@ Shader::Shader(std::string _shaderFilePath) : m_shaderFilePath(_shaderFilePath)
 
 Shader::~Shader()
 {
+	m_effect = nullptr;
+	m_techniqueHandle = nullptr;
 }
 
 void Shader::Init(IDirect3DDevice9* m_pDevice3D)

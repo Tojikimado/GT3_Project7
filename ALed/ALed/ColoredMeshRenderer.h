@@ -14,13 +14,12 @@ protected:
 
 	//x file
 	LPD3DXMESH m_mesh = nullptr;
-	std::string* m_xFilePath = nullptr; 
+	D3DMATERIAL9* m_materials = nullptr;
+	DWORD m_numMaterials = 0;
+	std::string m_xFilePath; 
 
 	//shader
-	LPD3DXEFFECT m_effect;
-	D3DXHANDLE m_techniqueHandle;
-
-	class Shader* m_shader;
+	Shader* m_shader;
 
 public:
 	ColoredMeshRenderer(std::string _xFile, std::string _shaderFilePath);
@@ -31,8 +30,7 @@ public:
 	~ColoredMeshRenderer();
 
 	void Init(IDirect3DDevice9* pDevice3D) override;
-	void InitMeshFromXFile(IDirect3DDevice9* pDevice3D);
-	void Render(IDirect3DDevice9* pDevice3D) override;
-
+	bool InitMeshFromXFile(IDirect3DDevice9* pDevice3D);
+	void Render(IDirect3DDevice9* pDevice3D,D3DXMATRIX _worldMatrix) override;
 };
 

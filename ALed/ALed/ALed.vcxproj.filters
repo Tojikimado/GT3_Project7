@@ -81,9 +81,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ColoredMesh.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -180,23 +177,23 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files\Render\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="Raycast.cpp">
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ColoredCubeMesh.h">
       <Filter>Header Files\Render\MeshPresets\Colored</Filter>
     </ClInclude>
@@ -305,12 +302,6 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files\Render\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="Raycast.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
@@ -319,6 +310,15 @@
     </ClInclude>
     <ClInclude Include="ParticleSystem.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

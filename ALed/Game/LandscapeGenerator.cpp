@@ -24,12 +24,11 @@ bool LandscapeGenerator::CreateMesh()
 		{
 			D3DCOLOR color = d3dColors::Yellow;
 
-			float z = 0.f + std::rand() % 3;
-			if (z > 1.2f)
+			float z = 0.f + std::rand() % 2;
+			if (z > 0.4f)
 			{
 				color = d3dColors::CornFlowerBlue;
 			}
-
 			vertices[vertex] = VertexPositionColor(x - XSize/2, y - YSize/2, -z , color);
 			vertex++;
 		}

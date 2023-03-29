@@ -43,7 +43,7 @@ void TexturedMeshRenderer::Init(IDirect3DDevice9* m_pDevice3D)
 	D3DXCreateTextureFromFile(m_pDevice3D, wString, &texture);
 }
 
-void TexturedMeshRenderer::Render(IDirect3DDevice9* m_pDevice3D)
+void TexturedMeshRenderer::Render(IDirect3DDevice9* m_pDevice3D,D3DXMATRIX _worldMatrix)
 {
 	m_pDevice3D->SetTexture(0, texture);
 
