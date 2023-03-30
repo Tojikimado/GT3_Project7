@@ -10,12 +10,14 @@ Spaceship::Spaceship()
 	collider = BoundingAABB(1, &m_transform.m_position, defMesh);
 }
 
-Spaceship::Spaceship(Transform transform, ColoredMesh* mesh)
+Spaceship::Spaceship(Transform transform, ColoredMeshRenderer* meshR)
 {
 	isHit = false;
 	m_transform = transform;
-	m_meshRenderer = new ColoredMeshRenderer(mesh);
-	collider = BoundingAABB(1, &m_transform.m_position, mesh);
+	m_meshRenderer = meshR;
+	D3DXVECTOR3* offsetPos = &m_transform.m_position;
+	offsetPos->y += 1.f;
+	collider = BoundingAABB(1, offsetPos, new ColoredRectangleMesh(2.f, 1.5f, 2.f));
 }
 
 Spaceship::~Spaceship()

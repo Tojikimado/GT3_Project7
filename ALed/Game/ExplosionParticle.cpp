@@ -23,31 +23,31 @@ void ExplosionParticle::Update()
 	StartParticles();
 	int speed = 20;
 	// Update the particles that are still alive...
-	for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
-	{
-		if (p->lifetime > 0)	// Update only if this particle is alive.
-		{
+	//for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
+	//{
+	//	if (p->lifetime > 0)	// Update only if this particle is alive.
+	//	{
 
-			p->lifetime -= STimer::s_deltaTime;
-			// Calculate the new position of the particle...
+	//		p->lifetime -= STimer::s_deltaTime;
+	//		// Calculate the new position of the particle...
 
-			p->transform.SetPosition(D3DXVECTOR3(p->transform.m_position.x += speed * STimer::s_deltaTime,
-									p->transform.m_position.y += speed * STimer::s_deltaTime,
-									p->transform.m_position.z += speed * STimer::s_deltaTime));
+	//		p->transform.SetPosition(D3DXVECTOR3(p->transform.m_position.x += speed * STimer::s_deltaTime,
+	//								p->transform.m_position.y += speed * STimer::s_deltaTime,
+	//								p->transform.m_position.z += speed * STimer::s_deltaTime));
 
-			/*p->time += m_timeIncrement;*/
-			//// update alpha value
-			//if (p->lifetime < fadeOutTime)
-			//{
-			//	p->colour.a -= static_cast<float>(1) / fadeOutTime_;
-			//}
+	//		/*p->time += m_timeIncrement;*/
+	//		//// update alpha value
+	//		//if (p->lifetime < fadeOutTime)
+	//		//{
+	//		//	p->colour.a -= static_cast<float>(1) / fadeOutTime_;
+	//		//}
 
-			if (p->lifetime == 0)	// Has this particle come to the end of it's life?
-			{
-				--m_particlesAlive;		// If so, terminate it.
-			}
-		}
-	}
+	//		if (p->lifetime == 0)	// Has this particle come to the end of it's life?
+	//		{
+	//			--m_particlesAlive;		// If so, terminate it.
+	//		}
+	//	}
+	//}
 
 	// Create a pointer to the first vertex in the buffer
 	// Also lock it, so nothing else can touch it while the values are being inserted.
@@ -60,7 +60,7 @@ void ExplosionParticle::Update()
 	// Now update the vertex buffer - after the update has been
 	// performed, just in case this particle has died in the process.
 
-	for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
+	/*for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
 	{
 		if (p->lifetime > 0)
 		{
@@ -71,7 +71,7 @@ void ExplosionParticle::Update()
 			points[P].color = p->colour;
 			++P;
 		}
-	}
+	}*/
 
 	m_points->Unlock();
 }
@@ -114,15 +114,15 @@ void ExplosionParticle::Render()
 	m_renderTarget->SetStreamSource(0, m_points, 0, sizeof(POINTVERTEX));
 	m_renderTarget->SetFVF(D3DFVF_POINTVERTEX);
 
-	for (unsigned int i = 0; i < m_particles.size(); ++i)
-	{
-		if (m_particles[i].lifetime > 0)
-		{
-			// render the particle in its specific size
-			m_renderTarget->SetRenderState(D3DRS_POINTSIZE, FtoDW(m_particles[i].size));
-			m_renderTarget->DrawPrimitive(D3DPT_POINTLIST, i, 1);
-		}
-	}
+	//for (unsigned int i = 0; i < m_particles.size(); ++i)
+	//{
+	//	if (m_particles[i].lifetime > 0)
+	//	{
+	//		// render the particle in its specific size
+	//		m_renderTarget->SetRenderState(D3DRS_POINTSIZE, FtoDW(m_particles[i].size));
+	//		m_renderTarget->DrawPrimitive(D3DPT_POINTLIST, i, 1);
+	//	}
+	//}
 
 	// Reset the render states.
 	m_renderTarget->SetRenderState(D3DRS_POINTSPRITEENABLE, false);

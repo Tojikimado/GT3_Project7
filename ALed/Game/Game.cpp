@@ -39,46 +39,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		tApp->pTrack = new PTrack(tApp->pCamera);
 	}
 
-	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(3.f, 3.f, 20.f),
-		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
-		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
-		d3dColors::Yellow, "D:/mvita/Color.hlsl");
-	tApp->CreateColoredGameObject(cube);
+	//tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
 
-	ColoredCube* cube1 = new ColoredCube(Transform(D3DXVECTOR3(-3.f, 3.f, 40.f),
-		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
-		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
-		d3dColors::Blue);
-	tApp->CreateColoredGameObject(cube1);
-
-	ColoredCube* cube2 = new ColoredCube(Transform(D3DXVECTOR3(3.f, -3.f, 60.f),
-		D3DXVECTOR3(M_PI_4, M_PI_4, M_PI_4),
-		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
-		d3dColors::Green);
-	tApp->CreateColoredGameObject(cube2);
-
-	LandscapeGenerator* land = new LandscapeGenerator(
-		Transform(
-		D3DXVECTOR3(100.f, -10.f, 5),
-		D3DXVECTOR3(M_PI_2, 0.f, 0.f),
-		D3DXVECTOR3(1.f, 1.f, 1.f)),
-		500,305,1.f);
-
-	LandscapeGenerator* sky = new LandscapeGenerator(
-		Transform(
-			D3DXVECTOR3(100.f, 50.f, 5),
-			D3DXVECTOR3(-M_PI_2, 0.f, 0.f),
-			D3DXVECTOR3(1.f, 1.f, 1.f)),
-		500, 305, 1.f);
-
-
-	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
-	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
-	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
-
-	tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
-
-	if (land->CreateMesh())
+	/*if (land->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(land);
 	}
@@ -86,7 +49,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	if (sky->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(sky);
-	}
+	}*/
 
 	UI* playerUI = new UI(tApp->pCamera);
 	tApp->pCamera->SetUI(playerUI);

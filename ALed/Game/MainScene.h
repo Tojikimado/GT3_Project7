@@ -16,6 +16,7 @@
 #include "Spaceship.h"
 #include "GenerateSpaceships.h"
 #include "Raycast.h"
+#include "Landscape.h"
 
 class ExplosionParticle;
 
@@ -35,6 +36,7 @@ public:
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;
 	ExplosionParticle* pParticleSystem = nullptr;
+	Landscape* m_landscape = nullptr;
 
 protected : 
 

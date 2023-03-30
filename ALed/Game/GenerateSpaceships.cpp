@@ -1,9 +1,9 @@
 #include "GenerateSpaceships.h"
 
-GenerateSpaceships::GenerateSpaceships(Camera* camera, ColoredMesh* mesh)
+GenerateSpaceships::GenerateSpaceships(Camera* camera, ColoredMeshRenderer* meshR)
 {
     pCamera = camera;
-    sMesh = mesh;
+    sMeshR = meshR;
 }
 
 Spaceship* GenerateSpaceships::CreateSpaceShip()
@@ -12,7 +12,8 @@ Spaceship* GenerateSpaceships::CreateSpaceShip()
     int yPos = rand() % 15 - 7;
     Transform sTransform = pCamera->GetTransform();
     sTransform.SetPosition(D3DXVECTOR3(sTransform.m_position.x + xPos, sTransform.m_position.y + yPos, sTransform.m_position.z + 30));
-    return new Spaceship(sTransform, sMesh);
+    sTransform.SetScale(D3DXVECTOR3(0.003f, 0.004f, 0.003f));
+    return new Spaceship(sTransform, sMeshR);
 }
 
 Spaceship* GenerateSpaceships::Update(float dt)

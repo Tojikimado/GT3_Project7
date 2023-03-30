@@ -11,6 +11,8 @@ protected:
 	int nbIndices;
 
 public:
+	Mesh();
+	~Mesh();
 	short* GetIndices();
 	int GetNbIndices();
 	int GetIndicesSize();

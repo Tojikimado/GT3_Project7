@@ -1,5 +1,6 @@
 #include "MainScene.h"
 #include <ColoredCubeMesh.h>
+#include "LandscapeGenerator.h"
 
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
@@ -36,10 +37,20 @@ bool MainScene::Init()
 	track->StartFollow();
 	this->CreateTrack(track);
 
-	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
-	sGenerator = new GenerateSpaceships(pCamera, defMesh);
-	ColoredGameObject* ufo = new ColoredGameObject(Transform(D3DXVECTOR3(0.f, 0.f, 20.f), D3DXVECTOR3(0.f, 0.f ,0.f), D3DXVECTOR3(0.01f, 0.01f, 0.01f)),new ColoredMeshRenderer("../ufo_2.x", "../Color.hlsl"));
-	this->CreateColoredGameObject(ufo);
+	ColoredMeshRenderer* ufo = new ColoredMeshRenderer("../ufo_2.x", "../Color.hlsl");
+	sGenerator = new GenerateSpaceships(pCamera, ufo);
+
+	LandscapeGenerator* land = new LandscapeGenerator(202, 202, 1.f);
+	LandscapeGenerator* sky = new LandscapeGenerator(202, 202, 1.f);
+
+	m_landscape = new Landscape(land, sky);
+	ColoredGameObject** m_land = m_landscape->GetLand();
+	ColoredGameObject** m_sky = m_landscape->GetSky();
+	for (int i = 0; i < 4; i++) {
+		this->CreateColoredGameObject(m_land[i]);
+		this->CreateColoredGameObject(m_sky[i]);
+	}
+
 
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
@@ -87,7 +98,9 @@ void MainScene::Update(float dt)
 			this->CreateColoredGameObject(spaceship);
 		}
 	}
-
+	if (m_landscape != nullptr) {
+		m_landscape->Update(pCamera);
+	}
 
 	pTrack->Update(dt);
 	D3DApp::Update(dt);

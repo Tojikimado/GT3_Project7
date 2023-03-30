@@ -1,5 +1,13 @@
 #include "Mesh.h"
 
+Mesh::Mesh()
+{
+}
+
+Mesh::~Mesh()
+{
+}
+
 short* Mesh::GetIndices()
 {
 	return indices;

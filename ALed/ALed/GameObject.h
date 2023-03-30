@@ -12,7 +12,7 @@ public:
 	string m_name;
 
 	GameObject();
-	~GameObject();
+	virtual ~GameObject();
 
 	Transform GetTransform();
 	void SetTransform(Transform transform);

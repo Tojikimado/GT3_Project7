@@ -22,7 +22,7 @@ ParticleSystem::ParticleSystem(IDirect3DDevice9* device, LPDIRECT3DTEXTURE9 text
 	Particle p;
 
 	reset_particle(p);
-	m_particles.resize(m_maxParticles, p);
+	//m_particles.resize(m_maxParticles, p);
 
 	int buffer_size = m_maxParticles * sizeof(POINTVERTEX);
 
@@ -95,16 +95,16 @@ void ParticleSystem::RemoveDeadParticles()
 		if ((*it)->lifetime <= 0)
 		{
 			delete* it;
-			it = m_particles.erase(it);
+			//it = m_particles.erase(it);
 		}
 	}
 
 	for (int i = m_particles.size() - 1; i != 0; i--)
 	{
-		if (m_particles[i].lifetime <= 0)
+		/*if (m_particles[i].lifetime <= 0)
 		{
 			m_particles.erase(std::next(m_particles.begin() + i));
-		}
+		}*/
 	}
 
 	for (Particle* particle : m_particles)

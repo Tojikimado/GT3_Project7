@@ -8,7 +8,7 @@ private:
 	
 public:
 	Spaceship();
-	Spaceship(Transform transform, ColoredMesh* mesh);
+	Spaceship(Transform transform, ColoredMeshRenderer* mesh);
 	~Spaceship();
 	BoundingAABB collider;
 	void OnHit();

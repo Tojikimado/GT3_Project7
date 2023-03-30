@@ -1,11 +1,14 @@
 #include "LandscapeGenerator.h"
 
 
-LandscapeGenerator::LandscapeGenerator(Transform _transform, int _XSize, int _YSize, float _Scale) :
+LandscapeGenerator::LandscapeGenerator()
+{
+}
+
+LandscapeGenerator::LandscapeGenerator(int _XSize, int _YSize, float _Scale) :
 XSize(_XSize), YSize(_YSize), Scale(_Scale)
 {
-	m_transform = _transform;
-	m_name = "land";
+	CreateMesh();
 }
 
 bool LandscapeGenerator::CreateMesh()
@@ -15,8 +18,8 @@ bool LandscapeGenerator::CreateMesh()
 		return false;
 	}
 
-	VertexPositionColor* vertices = new VertexPositionColor[XSize * YSize];
-
+	nbVertices = XSize * YSize;
+	vertices = new VertexPositionColor[nbVertices];
 	int vertex = 0;
 	for (int x =0; x < XSize; x++)
 	{
@@ -34,11 +37,11 @@ bool LandscapeGenerator::CreateMesh()
 		}
 	}
 
-	int nbIndice = 6 * ((XSize - 1) * (YSize - 1));
-	short* baseIndices = new short[nbIndice];
+	nbIndices = 6 * ((XSize - 1) * (YSize - 1));
+	short* baseIndices = new short[nbIndices];
 
 	int indiceIndex = 0;
-	for (int i = 0; i < (XSize * YSize) - YSize; i++)
+	for (int i = 0; i < nbVertices - YSize; i++)
 	{
 		if (i % YSize != YSize - 1) {
 			baseIndices[indiceIndex] = i; 
@@ -48,17 +51,13 @@ bool LandscapeGenerator::CreateMesh()
 			baseIndices[indiceIndex + 4] = i + 1 + YSize;
 			baseIndices[indiceIndex + 5] = i + YSize;
 			indiceIndex += 6;
+	
 		}
 	}
-	ColoredMesh* newMesh = new ColoredMesh(vertices, XSize * YSize, baseIndices,nbIndice);
+	indices = baseIndices;
+	//ColoredMesh* newMesh = new ColoredMesh(vertices, XSize * YSize, baseIndices,nbIndice);
 
 	//m_meshRenderer = new ColoredMeshRenderer(newMesh, "D:/mvita/Color.hlsl");
-	m_meshRenderer = new ColoredMeshRenderer(newMesh);
-
-	if (m_meshRenderer == nullptr)
-	{
-		return false;
-	}
 
 	return true;
 }
