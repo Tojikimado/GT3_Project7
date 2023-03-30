@@ -133,7 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ExplosionParticle.h" />
     <ClInclude Include="GenerateSpaceships.h" />
     <ClInclude Include="Landscape.h" />
     <ClInclude Include="GameStateMachine.h" />
@@ -151,7 +150,6 @@
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ExplosionParticle.cpp" />
     <ClCompile Include="GenerateSpaceships.cpp" />
     <ClCompile Include="Landscape.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />

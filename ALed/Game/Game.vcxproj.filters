@@ -66,9 +66,6 @@
     <ClInclude Include="PTrack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExplosionParticle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Landscape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,9 +99,6 @@
       <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
     <ClCompile Include="PTrack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ExplosionParticle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Landscape.cpp">
