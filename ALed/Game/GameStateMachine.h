@@ -27,7 +27,7 @@ class InGameState : public GameState
 {
 protected:
 
-	float gameDuration = 15.0f;
+	float gameDuration = 300.0f;
 
 public:
 
