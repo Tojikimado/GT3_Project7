@@ -89,7 +89,7 @@ bool ColoredMeshRenderer::InitMeshFromXFile(IDirect3DDevice9* pDevice3D)
 	return false;
 }
 
-void ColoredMeshRenderer::Render(IDirect3DDevice9* pDevice3D,D3DXMATRIX _worldMatrix)
+void ColoredMeshRenderer::Render(IDirect3DDevice9* pDevice3D,D3DXMATRIX _worldViewProjMatrix)
 {
 	if (m_shader != nullptr && m_shader->m_effect != nullptr)
 	{
@@ -102,7 +102,8 @@ void ColoredMeshRenderer::Render(IDirect3DDevice9* pDevice3D,D3DXMATRIX _worldMa
 			pDevice3D->SetIndices(indexBuffer);
 		}
 
-		m_shader->m_effect->SetMatrix("WorldViewProj",&_worldMatrix);
+		m_shader->m_effect->SetMatrix("WorldViewProj",&_worldViewProjMatrix);
+		m_shader->m_effect->SetFloat("Time", STimer::GetSystemTimeEx());
 
 		m_shader->m_effect->Begin(&cPasses, 0);
 

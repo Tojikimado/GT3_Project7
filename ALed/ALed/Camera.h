@@ -33,6 +33,10 @@ public:
     inline float GetWidth() { return _width; };
     inline float GetHeight() { return _height; };
 
+    inline D3DXMATRIX GetProj() { return _matProjection; };
+
+    inline D3DXMATRIX GetView() { return _matView; };
+
 private:
     IDirect3DDevice9* _device;
 

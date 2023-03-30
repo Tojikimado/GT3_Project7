@@ -45,6 +45,8 @@ public :
 	HWND GetAppWindow();
 	InputController* m_pInputController;
 	Raycast* m_pRaycast;
+	Camera* pCamera = nullptr;
+
 
 protected: 
 	//atributes

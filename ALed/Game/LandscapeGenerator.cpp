@@ -52,8 +52,7 @@ bool LandscapeGenerator::CreateMesh()
 	}
 	ColoredMesh* newMesh = new ColoredMesh(vertices, XSize * YSize, baseIndices,nbIndice);
 
-	//m_meshRenderer = new ColoredMeshRenderer(newMesh, "D:/mvita/Color.hlsl");
-	m_meshRenderer = new ColoredMeshRenderer(newMesh);
+	m_meshRenderer = new ColoredMeshRenderer(newMesh, "../Landscape.hlsl");
 
 	if (m_meshRenderer == nullptr)
 	{

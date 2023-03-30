@@ -56,14 +56,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
 		d3dColors::Green);
 	tApp->CreateColoredGameObject(cube2);
-/*
+
 	LandscapeGenerator* land = new LandscapeGenerator(
 		Transform(
 		D3DXVECTOR3(100.f, -10.f, 5),
 		D3DXVECTOR3(M_PI_2, 0.f, 0.f),
 		D3DXVECTOR3(1.f, 1.f, 1.f)),
 		500,305,1.f);
-
+	/*
 	LandscapeGenerator* sky = new LandscapeGenerator(
 		Transform(
 			D3DXVECTOR3(100.f, 50.f, 5),
@@ -78,12 +78,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	//tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
 
-	/*
 	if (land->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(land);
 	}
-
+	/*
 	if (sky->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(sky);

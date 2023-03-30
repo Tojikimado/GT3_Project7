@@ -30,8 +30,11 @@ void ColoredGameObject::Update(float dt)
 {
 }
 
-void ColoredGameObject::Render(IDirect3DDevice9* m_pDevice3D)
+void ColoredGameObject::Render(IDirect3DDevice9* m_pDevice3D, D3DXMATRIX _view, D3DXMATRIX _proj)
 {
 	m_pDevice3D->SetTransform(D3DTS_WORLD, &m_transform.GetWorld());
-	m_meshRenderer->Render(m_pDevice3D, m_transform.GetWorld());
+
+	D3DXMATRIX WorldViewProj = m_transform.GetWorld() * _view * _proj;
+
+	m_meshRenderer->Render(m_pDevice3D, WorldViewProj);
 }

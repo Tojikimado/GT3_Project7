@@ -1,5 +1,4 @@
 #include "D3DApp.h"
-#include "STimer.h"
 #include "Image.h"
 
 namespace
@@ -92,7 +91,7 @@ void D3DApp::Render()
 	{
 		if (coloredGobj->b_isActive)
 		{
-			coloredGobj->Render(m_pDevice3D);
+			coloredGobj->Render(m_pDevice3D, pCamera->GetView(), pCamera->GetProj());
 		}
 	}
 

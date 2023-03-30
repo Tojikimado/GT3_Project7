@@ -33,7 +33,6 @@ public:
 	void Update(float dt) override;
 	void Render() override;
 
-	Camera* pCamera = nullptr;
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;
 	ExplosionParticle* pParticleSystem = nullptr;
