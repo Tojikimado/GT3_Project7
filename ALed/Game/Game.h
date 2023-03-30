@@ -10,4 +10,3 @@
 #include <ColoredCubeMesh.h>
 #include "GenerateSpaceships.h"
 #include "MainScene.h"
-#include "ExplosionParticle.h"

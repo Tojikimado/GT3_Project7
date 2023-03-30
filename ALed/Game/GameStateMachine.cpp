@@ -79,6 +79,11 @@ void InGameState::UpdateState(float dt)
 	{
 		m_stateMachine->SwitchState(new GameOverState(m_scene));
 	}
+
+	if (InputController::Get()->IsKeyDown(Input::DXK_ESCAPE))
+	{
+		m_stateMachine->SwitchState(new GameOverState(m_scene));
+	}
 }
 
 void InGameState::LeaveState()

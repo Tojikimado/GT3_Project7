@@ -108,7 +108,7 @@ void MainScene::LoadScene()
 	pCamera->SetUI(playerUI);
 	CreateColoredGameObject(playerUI);
 
-	ColoredMeshRenderer* ufo = new ColoredMeshRenderer("../ufo_2.x", "../Color.hlsl");
+	ColoredMeshRenderer* ufo = new ColoredMeshRenderer("../ufo_2.x", "../Ufo.hlsl");
 	sGenerator = new GenerateSpaceships(pCamera, ufo);
 
 	LandscapeGenerator* land = new LandscapeGenerator(202, 202, 1.f);

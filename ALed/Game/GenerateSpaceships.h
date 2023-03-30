@@ -7,7 +7,7 @@ class GenerateSpaceships
 private:
 	Camera* pCamera;
 	ColoredMeshRenderer* sMeshR;
-	float generationCooldown = 3.f;
+	float generationCooldown = 1.f;
 	float currentCooldown = 0.f;
 public:
 	GenerateSpaceships(Camera* camera, ColoredMeshRenderer* meshR);

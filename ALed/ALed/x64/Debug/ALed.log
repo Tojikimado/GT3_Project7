@@ -1,6 +1,74 @@
-﻿  D3DApp.cpp
-D:\mvita\GT3_Project7\ALed\ALed\D3DApp.cpp(98,18): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
-D:\mvita\GT3_Project7\ALed\ALed\D3DApp.cpp(98,35): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
-  Winmaincpp.cpp
+﻿  BoundingAABB.cpp
+  BoundingSphere.cpp
+  Button.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Button.cpp(7,138): warning C4244: 'argument': conversion from 'LONG' to 'FLOAT', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Button.cpp(7,123): warning C4244: 'argument': conversion from 'LONG' to 'FLOAT', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Button.cpp(7,188): warning C4244: 'argument': conversion from 'LONG' to 'FLOAT', possible loss of data
+  Collider.cpp
+  Camera.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  CollisionHandler.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\CollisionHandler.cpp(51,29): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\CollisionHandler.cpp(51,23): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+  ColoredCube.cpp
+  ColoredCubeMesh.cpp
+  ColoredMesh.cpp
+  ColoredMeshRenderer.cpp
+  ColoredRectangle.cpp
+  ColoredRectangleMesh.cpp
+  ColoredSlopeMesh.cpp
+  ColoredGameObject.cpp
+  D3DApp.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\D3DApp.cpp(194,18): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\D3DApp.cpp(194,35): warning C4838: conversion from 'unsigned int' to 'LONG' requires a narrowing conversion
+  GameObject.cpp
+  GameScene.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\GameScene.cpp(29,82): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\GameScene.cpp(30,80): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\GameScene.cpp(31,84): warning C4305: 'argument': truncation from 'double' to 'FLOAT'
+  Image.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Image.cpp(83,39): warning C4244: 'argument': conversion from 'UINT' to 'FLOAT', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Image.cpp(83,27): warning C4244: 'argument': conversion from 'UINT' to 'FLOAT', possible loss of data
+  InputController.cpp
+  Label.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Label.cpp(115,13): warning C4553: '==': result of expression not used; did you intend '='?
   Generating Code...
-  ALed.vcxproj -> D:\mvita\GT3_Project7\ALed\x64\Debug\ALed.exe
+  Compiling...
+  Mesh.cpp
+  Random.cpp
+  Raycast.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Raycast.cpp(8,67): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Raycast.cpp(8,64): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  Shader.cpp
+  ParticleSystem.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\ParticleSystem.cpp(17,41): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data
+  Spline.cpp
+  StateMachine.cpp
+  STimer.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\STimer.cpp(7,33): warning C4244: 'initializing': conversion from 'float' to '__int64', possible loss of data
+  TexturedGameObject.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\TexturedGameObject.cpp(34,10): warning C4244: 'initializing': conversion from 'DWORD' to 'float', possible loss of data
+  TexturedMesh.cpp
+  TexturedMeshRenderer.cpp
+  Track.cpp
+  TrackPosition.cpp
+  Transform.cpp
+  Winmaincpp.cpp
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(33,38): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\Camera.h(34,39): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\ALed\ParticleSystem.cpp(25): warning C4715: 'ParticleSystem::Init': not all control paths return a value
+  ALed.vcxproj -> C:\Users\htaurand\Documents\GitHub\GT3_Project7\ALed\x64\Debug\ALed.lib
