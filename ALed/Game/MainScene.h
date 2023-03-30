@@ -21,6 +21,7 @@
 #include "GameStateMachine.h"
 
 class ExplosionParticle;
+class GameStateMachine;
 
 class MainScene : public D3DApp
 {
@@ -33,6 +34,9 @@ public:
 	bool Init() override;
 	void Update(float dt) override;
 	void Render() override;
+
+	void LoadScene();
+	void UnloadScene();
 
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;

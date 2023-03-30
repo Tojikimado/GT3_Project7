@@ -24,8 +24,17 @@ ColoredMeshRenderer::ColoredMeshRenderer(ColoredMesh* mesh)
 
 ColoredMeshRenderer::~ColoredMeshRenderer()
 {
-	delete[] vectorBuffer;
-	delete[] indexBuffer;
+
+	if (m_mesh == nullptr) {
+		if (vectorBuffer != nullptr) vectorBuffer->Release();
+		if (indexBuffer != nullptr) indexBuffer->Release();
+	}
+	if (m_materials != nullptr) {
+		m_materials = nullptr;
+	}
+	if (m_shader != nullptr) {
+		m_shader = nullptr;
+	}
 }
 
 void ColoredMeshRenderer::Init(IDirect3DDevice9* pDevice3D)

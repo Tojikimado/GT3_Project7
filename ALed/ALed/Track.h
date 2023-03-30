@@ -8,7 +8,7 @@ protected:
 	Spline* _spline;
 	int _currentPoint = 0;
 	float _pointProgress = 0;
-	float _speed = 1.f;
+	float _speed = 2.f;
 	bool _movementState = false;
 	bool _looping = false;
 public:

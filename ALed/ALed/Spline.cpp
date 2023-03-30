@@ -12,6 +12,7 @@ Spline::Spline(SplinePoint* splinePoints, int nbPoints) : _splinePoints(splinePo
 
 Spline::~Spline()
 {
+    if(_splinePoints != nullptr) delete[] _splinePoints;
 }
 
 SplinePoint* Spline::GetSplinePoints()

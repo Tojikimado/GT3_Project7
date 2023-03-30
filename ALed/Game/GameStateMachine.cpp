@@ -20,8 +20,9 @@ void GameStateMachine::SwitchState(State* nextState)
 	StateMachine::SwitchState(nextState);
 }
 
-GameState::GameState() : State()
+GameState::GameState(MainScene* scene) : State()
 {
+	m_scene = scene;
 }
 
 GameState::~GameState()
@@ -51,7 +52,7 @@ void GameState::LeaveState()
 
 
 #pragma region ingame
-InGameState::InGameState()
+InGameState::InGameState(MainScene* scene) : GameState(scene)
 {
 }
 
@@ -67,7 +68,7 @@ void InGameState::SetStateMachine(StateMachine* stateMachine)
 void InGameState::EnterState()
 {
 	GameState::EnterState();
-
+	m_scene->LoadScene();
 	OutputDebugStringA("enter in game \n");
 }
 
@@ -76,21 +77,21 @@ void InGameState::UpdateState(float dt)
 	gameDuration -= dt;
 	if (gameDuration <= 0.f)
 	{
-		m_stateMachine->SwitchState(new GameOverState());
+		m_stateMachine->SwitchState(new GameOverState(m_scene));
 	}
 }
 
 void InGameState::LeaveState()
 {
 	GameState::LeaveState();
-
+	m_scene->UnloadScene();
 	OutputDebugStringA("leaving ingame \n");
 }
 
 #pragma endregion
 
 #pragma region mainmenu
-MainMenuState::MainMenuState()
+MainMenuState::MainMenuState(MainScene* scene) : GameState(scene)
 {
 }
 
@@ -114,7 +115,7 @@ void MainMenuState::UpdateState(float dt)
 {
 	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
 	{
-		m_stateMachine->SwitchState(new InGameState());
+		m_stateMachine->SwitchState(new InGameState(m_scene));
 	}
 }
 
@@ -128,7 +129,7 @@ void MainMenuState::LeaveState()
 
 #pragma region game over
 
-GameOverState::GameOverState()
+GameOverState::GameOverState(MainScene* scene) : GameState(scene)
 {
 }
 
@@ -151,7 +152,7 @@ void GameOverState::UpdateState(float dt)
 {
 	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
 	{
-		m_stateMachine->SwitchState(new MainMenuState());
+		m_stateMachine->SwitchState(new MainMenuState(m_scene));
 	}
 }
 

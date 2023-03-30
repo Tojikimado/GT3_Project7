@@ -11,6 +11,7 @@ private:
 	float currentCooldown = 0.f;
 public:
 	GenerateSpaceships(Camera* camera, ColoredMeshRenderer* meshR);
+	~GenerateSpaceships();
 
 	Spaceship* CreateSpaceShip();
 

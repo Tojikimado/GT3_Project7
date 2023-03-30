@@ -27,6 +27,7 @@ Track::Track(Transform transform, Spline* spline, GameObject* splineFollower, bo
 
 Track::~Track()
 {
+	if (_spline != nullptr) delete _spline;
 }
 
 void Track::StartFollow()

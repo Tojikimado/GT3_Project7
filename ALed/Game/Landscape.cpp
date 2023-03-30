@@ -21,6 +21,10 @@ Landscape::Landscape(LandscapeGenerator* land, LandscapeGenerator* sky)
 
 Landscape::~Landscape()
 {
+	for (int i = 0; i < 4; i++) {
+		if (m_land[i] != nullptr) m_land[i]->~ColoredGameObject();
+		if (m_sky[i] != nullptr) m_sky[i]->~ColoredGameObject();
+	}
 }
 
 

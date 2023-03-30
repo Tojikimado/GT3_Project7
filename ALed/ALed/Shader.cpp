@@ -7,8 +7,7 @@ Shader::Shader(std::string _shaderFilePath) : m_shaderFilePath(_shaderFilePath)
 
 Shader::~Shader()
 {
-	m_effect = nullptr;
-	m_techniqueHandle = nullptr;
+	if (m_effect != nullptr) m_effect->Release();
 }
 
 void Shader::Init(IDirect3DDevice9* m_pDevice3D)
@@ -18,8 +17,7 @@ void Shader::Init(IDirect3DDevice9* m_pDevice3D)
 
 	if (hr == D3D_OK)
 	{
-		m_techniqueHandle = m_effect->GetTechniqueByName("Default");
-		m_effect->SetTechnique(m_techniqueHandle);
+		m_effect->SetTechnique(m_effect->GetTechniqueByName("Default"));
 	}
 }
 

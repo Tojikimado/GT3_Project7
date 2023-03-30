@@ -15,6 +15,7 @@ PTrack::PTrack(Camera* camera)
 
 PTrack::~PTrack()
 {
+	if (pTrack != nullptr) delete pTrack;
 }
 
 void PTrack::Update(float dt)

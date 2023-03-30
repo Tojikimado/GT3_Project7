@@ -15,7 +15,6 @@ public :
 
 	//shader
 	LPD3DXEFFECT m_effect = nullptr;
-	D3DXHANDLE m_techniqueHandle = nullptr;
 	std::string m_shaderFilePath;
 
 };

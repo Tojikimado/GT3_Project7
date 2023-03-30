@@ -12,7 +12,7 @@ ColoredGameObject::ColoredGameObject(Transform transform, ColoredMeshRenderer* m
 
 ColoredGameObject::~ColoredGameObject()
 {
-	delete m_meshRenderer;
+	m_meshRenderer->~ColoredMeshRenderer();
 }
 
 void ColoredGameObject::SetColoredMeshRenderer(ColoredMeshRenderer* _meshRenderer)

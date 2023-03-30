@@ -16,8 +16,8 @@ D3DApp::D3DApp(HINSTANCE hInstance)
 {
 	m_hAppInstance = hInstance;
 	m_hAppWindow = NULL;
-	m_uiClientHeight = 600;
-	m_uiClientWidth = 800;
+	m_uiClientHeight = 800;
+	m_uiClientWidth = 1200;
 	m_WindowStyle = WS_OVERLAPPEDWINDOW;
 	g_pd3dApp = this;
 
@@ -99,10 +99,6 @@ void D3DApp::Render()
 	timerLabel->SetColor(d3dColors::Red);
 	timerLabel->SetRect(m_uiClientWidth/2 - 25, 10, m_uiClientWidth/2 + 25, 50);
 	timerLabel->OnRender();
-
-	/*Image* im = new Image(m_pDevice3D, L"C:/Users/htaurand/Documents/GitHub/GT3_Project7/ALed/ALed/wall.png", D3DXVECTOR2(0, 50), D3DXVECTOR2(5, 5), D3DCOLOR_ARGB(255, 255, 255, 255));
-	im->SetSize(D3DXVECTOR2(10 , 10), m_uiClientWidth, m_uiClientHeight, m_renderWidth, m_renderHeight);
-	im->Draw();*/
 
 	m_pDevice3D->EndScene();
 

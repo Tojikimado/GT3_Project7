@@ -1,7 +1,8 @@
 #pragma once
 #include "StateMachine.h"
+#include "MainScene.h"
 
-
+class MainScene;
 class GameStateMachine;
 
 class GameState : public State
@@ -9,8 +10,8 @@ class GameState : public State
 protected:
 
 public:
-
-	GameState();
+	MainScene* m_scene;
+	GameState(MainScene* scene);
 	~GameState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -26,11 +27,11 @@ class InGameState : public GameState
 {
 protected:
 
-	float gameDuration = 300.0f;
+	float gameDuration = 15.0f;
 
 public:
 
-	InGameState();
+	InGameState(MainScene* scene);
 	~InGameState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -50,7 +51,7 @@ protected:
 
 public:
 
-	MainMenuState();
+	MainMenuState(MainScene* scene);
 	~MainMenuState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -70,7 +71,7 @@ protected:
 
 public:
 
-	GameOverState();
+	GameOverState(MainScene* scene);
 	~GameOverState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
