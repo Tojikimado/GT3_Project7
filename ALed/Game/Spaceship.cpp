@@ -24,5 +24,6 @@ Spaceship::~Spaceship()
 
 void Spaceship::OnHit()
 {
-	delete this;
+	this->b_isActive = false;
+	//delete this;
 }

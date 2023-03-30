@@ -152,6 +152,11 @@ d3dCollision::WidhtHeightDepth BoundingAABB::SetDimensions(TexturedMesh* _mesh)
 		minWidth, minHeight, minDepth);
 }
 
+d3dCollision::WidhtHeightDepth BoundingAABB::GetDimensions() const
+{
+	return m_dimensions;
+}
+
 float BoundingAABB::MaxX() const
 {
 	return m_dimensions.maxX + GetPosition().x;
@@ -159,7 +164,7 @@ float BoundingAABB::MaxX() const
 
 float BoundingAABB::MinX() const
 {
-	return m_dimensions.minX - GetPosition().x;
+	return m_dimensions.minX + GetPosition().x;
 }
 
 float BoundingAABB::MaxY() const
@@ -169,7 +174,7 @@ float BoundingAABB::MaxY() const
 
 float BoundingAABB::MinY() const
 {
-	return m_dimensions.minY - GetPosition().y;
+	return m_dimensions.minY + GetPosition().y;
 }
 
 float BoundingAABB::MaxZ() const
@@ -179,7 +184,7 @@ float BoundingAABB::MaxZ() const
 
 float BoundingAABB::MinZ() const
 {
-	return m_dimensions.minZ - GetPosition().z;
+	return m_dimensions.minZ + GetPosition().z;
 }
 
 

@@ -42,6 +42,6 @@ public:
 
 protected : 
 
-	std::vector<Spaceship> v_spaceships;
+	std::vector<Spaceship*> v_spaceships;
 };
 

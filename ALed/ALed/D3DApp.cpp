@@ -149,6 +149,10 @@ IDirect3DDevice9* D3DApp::GetDevice()
 	return m_pDevice3D;
 }
 
+HWND D3DApp::GetAppWindow() {
+	return m_hAppWindow;
+}
+
 bool D3DApp::InitWindow()
 {
 	//create a window class struct 
