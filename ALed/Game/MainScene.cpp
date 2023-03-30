@@ -15,6 +15,7 @@ MainScene::~MainScene()
 
 bool MainScene::Init()
 {
+	
 	Track* track;
 
 	if (pCamera == nullptr)
@@ -52,6 +53,8 @@ bool MainScene::Init()
 	}
 
 
+	pStateMachine = new GameStateMachine(new MainMenuState());
+
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
 		coloredGO->Init(m_pDevice3D);
@@ -59,7 +62,7 @@ bool MainScene::Init()
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
-
+	
 	return true;
 }
 
@@ -101,6 +104,8 @@ void MainScene::Update(float dt)
 	if (m_landscape != nullptr) {
 		m_landscape->Update(pCamera);
 	}
+
+	pStateMachine->Update(dt);
 
 	pTrack->Update(dt);
 	D3DApp::Update(dt);

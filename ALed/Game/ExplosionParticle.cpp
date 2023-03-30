@@ -53,7 +53,7 @@ void ExplosionParticle::Update()
 	// Also lock it, so nothing else can touch it while the values are being inserted.
 	POINTVERTEX* points;
 	m_points->Lock(0, 0, (void**)&points, 0);
-
+	
 	// Fill the vertex buffers with data...
 	int P(0);
 

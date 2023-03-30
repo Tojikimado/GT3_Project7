@@ -18,6 +18,8 @@
 #include "Raycast.h"
 #include "Landscape.h"
 
+#include "GameStateMachine.h"
+
 class ExplosionParticle;
 
 class MainScene : public D3DApp
@@ -32,11 +34,12 @@ public:
 	void Update(float dt) override;
 	void Render() override;
 
-	Camera* pCamera = nullptr;
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;
 	ExplosionParticle* pParticleSystem = nullptr;
 	Landscape* m_landscape = nullptr;
+
+	GameStateMachine* pStateMachine = nullptr;
 
 protected : 
 

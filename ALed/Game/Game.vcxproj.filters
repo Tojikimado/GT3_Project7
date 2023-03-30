@@ -19,6 +19,12 @@
     <Filter Include="Source Files\WorldGeneration">
       <UniqueIdentifier>{5ace0ec0-db8e-46c7-866d-500cd88ee9db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameStateMachine">
+      <UniqueIdentifier>{ee5683d6-920b-4e0e-92c5-edd621bfc2a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameStateMachine">
+      <UniqueIdentifier>{285e9507-1d29-47cb-8583-df23ccee3d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -66,6 +72,9 @@
     <ClInclude Include="Landscape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Header Files\GameStateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -100,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="Landscape.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Source Files\GameStateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

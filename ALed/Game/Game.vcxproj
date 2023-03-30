@@ -136,6 +136,7 @@
     <ClInclude Include="ExplosionParticle.h" />
     <ClInclude Include="GenerateSpaceships.h" />
     <ClInclude Include="Landscape.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="PTrack.h" />
     <ClInclude Include="Spaceship.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="ExplosionParticle.cpp" />
     <ClCompile Include="GenerateSpaceships.cpp" />
     <ClCompile Include="Landscape.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="PTrack.cpp" />
     <ClCompile Include="Spaceship.cpp" />

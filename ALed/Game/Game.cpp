@@ -41,16 +41,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	//tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
 
-	/*if (land->CreateMesh())
-	{
-		tApp->CreateColoredGameObject(land);
-	}
-
-	if (sky->CreateMesh())
-	{
-		tApp->CreateColoredGameObject(sky);
-	}*/
-
 	UI* playerUI = new UI(tApp->pCamera);
 	tApp->pCamera->SetUI(playerUI);
 	tApp->CreateColoredGameObject(playerUI);
