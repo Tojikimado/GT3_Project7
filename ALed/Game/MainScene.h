@@ -1,6 +1,5 @@
 #pragma once
 #include "D3DApp.h"
-#include "D3DApp.h"
 #include "Camera.h"
 
 #include "ColoredRectangle.h"
@@ -18,6 +17,8 @@
 #include "GenerateSpaceships.h"
 #include "Raycast.h"
 
+class ExplosionParticle;
+
 class MainScene : public D3DApp
 {
 public:
@@ -33,6 +34,7 @@ public:
 	Camera* pCamera = nullptr;
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;
+	ExplosionParticle* pParticleSystem = nullptr;
 
 protected : 
 

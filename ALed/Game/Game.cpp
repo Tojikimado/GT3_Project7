@@ -12,6 +12,7 @@
 #include <ColoredCubeMesh.h>
 #include "GenerateSpaceships.h"
 #include "MainScene.h"
+#include "ExplosionParticle.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -69,6 +70,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			D3DXVECTOR3(-M_PI_2, 0.f, 0.f),
 			D3DXVECTOR3(1.f, 1.f, 1.f)),
 		500, 305, 1.f);
+
+
+	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
+	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
+	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
+
+	tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
 
 	if (land->CreateMesh())
 	{

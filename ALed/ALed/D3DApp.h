@@ -12,6 +12,8 @@
 #include "Track.h"
 #include "InputController.h"
 #include "Raycast.h"
+#include "Label.h"
+#include "STimer.h"
 
 // include the Direct3D Library file
 
@@ -52,6 +54,8 @@ protected:
 	unsigned int m_uiClientHeight;
 	DWORD m_WindowStyle;
 	POINT m_pt;
+	int m_renderWidth;
+	int m_renderHeight;
 
 	//DirectX attributes 
 	IDirect3D9* m_pDirect3D;
@@ -62,6 +66,8 @@ protected:
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
 	std::vector<Track*> v_tracks;
 
+	Label* timerLabel;
+	std::string m_timerCaption;
 
 protected:
 	//Methods 

@@ -38,8 +38,8 @@ bool MainScene::Init()
 
 	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
 	sGenerator = new GenerateSpaceships(pCamera, defMesh);
-	//ColoredGameObject* ufo = new ColoredGameObject(Transform(),new ColoredMeshRenderer("D:/mvita/ufo.x"));
-	//this->CreateColoredGameObject(ufo);
+	ColoredGameObject* ufo = new ColoredGameObject(Transform(D3DXVECTOR3(0.f, 0.f, 20.f), D3DXVECTOR3(0.f, 0.f ,0.f), D3DXVECTOR3(0.01f, 0.01f, 0.01f)),new ColoredMeshRenderer("../ufo_2.x", "../Color.hlsl"));
+	this->CreateColoredGameObject(ufo);
 
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
