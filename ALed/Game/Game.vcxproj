@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="ExplosionParticle.h" />
     <ClInclude Include="GenerateSpaceships.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="PTrack.h" />
     <ClInclude Include="Spaceship.h" />
@@ -151,6 +152,7 @@
   <ItemGroup>
     <ClCompile Include="ExplosionParticle.cpp" />
     <ClCompile Include="GenerateSpaceships.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="PTrack.cpp" />
     <ClCompile Include="Spaceship.cpp" />

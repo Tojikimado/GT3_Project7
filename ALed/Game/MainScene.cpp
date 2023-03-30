@@ -14,6 +14,7 @@ MainScene::~MainScene()
 
 bool MainScene::Init()
 {
+	
 	Track* track;
 
 	if (pCamera == nullptr)
@@ -21,6 +22,7 @@ bool MainScene::Init()
 		pCamera = new Camera(GetDevice(), GetClientWidth(), GetClientHeight(), Transform(D3DXVECTOR3(0.f, 0.f, -10.0f), D3DXVECTOR3(0.f, 0.f, 0.f), D3DXVECTOR3(1.f, 1.f, 1.f)));
 	}
 
+	/*
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
 	this->CreateColoredGameObject(cube);
 
@@ -41,6 +43,10 @@ bool MainScene::Init()
 	ColoredGameObject* ufo = new ColoredGameObject(Transform(D3DXVECTOR3(0.f, 0.f, 20.f), D3DXVECTOR3(0.f, 0.f ,0.f), D3DXVECTOR3(0.01f, 0.01f, 0.01f)),new ColoredMeshRenderer("../ufo_2.x", "../Color.hlsl"));
 	this->CreateColoredGameObject(ufo);
 
+	*/
+
+	pStateMachine = new GameStateMachine(new MainMenuState());
+
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
 	{
 		coloredGO->Init(m_pDevice3D);
@@ -48,7 +54,7 @@ bool MainScene::Init()
 
 	m_pDevice3D->SetRenderState(D3DRS_LIGHTING, false);
 	m_pDevice3D->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
-
+	
 	return true;
 }
 
@@ -83,6 +89,7 @@ void MainScene::Update(float dt)
 		}
 	}
 
+	pStateMachine->Update(dt);
 
 	pTrack->Update(dt);
 	D3DApp::Update(dt);

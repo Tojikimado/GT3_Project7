@@ -56,7 +56,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f,
 		d3dColors::Green);
 	tApp->CreateColoredGameObject(cube2);
-
+/*
 	LandscapeGenerator* land = new LandscapeGenerator(
 		Transform(
 		D3DXVECTOR3(100.f, -10.f, 5),
@@ -70,14 +70,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			D3DXVECTOR3(-M_PI_2, 0.f, 0.f),
 			D3DXVECTOR3(1.f, 1.f, 1.f)),
 		500, 305, 1.f);
-
+		*/
 
 	ColoredCubeMesh* defMesh = new ColoredCubeMesh(1.f, d3dColors::Red);
 	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
 	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
 
-	tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
+	//tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
 
+	/*
 	if (land->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(land);
@@ -87,6 +88,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	{
 		tApp->CreateColoredGameObject(sky);
 	}
+	*/
 
 	UI* playerUI = new UI(tApp->pCamera);
 	tApp->pCamera->SetUI(playerUI);

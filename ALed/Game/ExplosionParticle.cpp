@@ -23,6 +23,7 @@ void ExplosionParticle::Update()
 	StartParticles();
 	int speed = 20;
 	// Update the particles that are still alive...
+	/*
 	for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
 	{
 		if (p->lifetime > 0)	// Update only if this particle is alive.
@@ -41,25 +42,26 @@ void ExplosionParticle::Update()
 			//{
 			//	p->colour.a -= static_cast<float>(1) / fadeOutTime_;
 			//}
-
+	/*
 			if (p->lifetime == 0)	// Has this particle come to the end of it's life?
 			{
 				--m_particlesAlive;		// If so, terminate it.
 			}
 		}
 	}
-
+	*/
+	
 	// Create a pointer to the first vertex in the buffer
 	// Also lock it, so nothing else can touch it while the values are being inserted.
 	POINTVERTEX* points;
 	m_points->Lock(0, 0, (void**)&points, 0);
-
+	
 	// Fill the vertex buffers with data...
 	int P(0);
 
 	// Now update the vertex buffer - after the update has been
 	// performed, just in case this particle has died in the process.
-
+	/*
 	for (std::vector<Particle>::iterator p(m_particles.begin()); p != m_particles.end(); ++p)
 	{
 		if (p->lifetime > 0)
@@ -72,7 +74,7 @@ void ExplosionParticle::Update()
 			++P;
 		}
 	}
-
+	*/
 	m_points->Unlock();
 }
 
@@ -116,12 +118,14 @@ void ExplosionParticle::Render()
 
 	for (unsigned int i = 0; i < m_particles.size(); ++i)
 	{
+		/*
 		if (m_particles[i].lifetime > 0)
 		{
 			// render the particle in its specific size
 			m_renderTarget->SetRenderState(D3DRS_POINTSIZE, FtoDW(m_particles[i].size));
 			m_renderTarget->DrawPrimitive(D3DPT_POINTLIST, i, 1);
 		}
+		*/
 	}
 
 	// Reset the render states.

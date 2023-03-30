@@ -17,6 +17,8 @@
 #include "GenerateSpaceships.h"
 #include "Raycast.h"
 
+#include "GameStateMachine.h"
+
 class ExplosionParticle;
 
 class MainScene : public D3DApp
@@ -35,6 +37,8 @@ public:
 	PTrack* pTrack = nullptr;
 	GenerateSpaceships* sGenerator = nullptr;
 	ExplosionParticle* pParticleSystem = nullptr;
+
+	GameStateMachine* pStateMachine = nullptr;
 
 protected : 
 
