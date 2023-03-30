@@ -3,6 +3,15 @@
 
 #include "framework.h"
 #include "Game.h"
+#include "GameScene.h"
+#include "LandscapeGenerator.h"
+#include "UI.h"
+#include <Track.h>
+#include "SplinePresets.h"
+#include "GenerateRandPlayerSplines.h"
+#include <ColoredCubeMesh.h>
+#include "GenerateSpaceships.h"
+#include "MainScene.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -66,8 +75,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	GenerateSpaceships* sGenerator = new GenerateSpaceships(tApp->pCamera, defMesh);
 	tApp->CreateColoredGameObject(sGenerator->CreateSpaceShip());
 
-	//tApp->pParticleSystem = new ExplosionParticle(tApp->GetDevice(), Transform(), 1000, 5, 2.f, 0.5f, 20.f, 0.5f);
-
+	/*
 	if (land->CreateMesh())
 	{
 		tApp->CreateColoredGameObject(land);

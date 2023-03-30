@@ -152,6 +152,7 @@
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Raycast.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
@@ -192,9 +193,9 @@
     <ClInclude Include="Label.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshRenderer.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Raycast.h" />
     <ClInclude Include="Shader.h" />
-    <ClInclude Include="ParticleData.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Spline.h" />
     <ClInclude Include="StateMachine.h" />
