@@ -21,6 +21,8 @@ public :
 
 	bool AABB_Vs_Sphere(const BoundingAABB& _box, const BoundingSphere& _other);
 
+	bool RayBoxIntersect(const BoundingAABB& _box, D3DXVECTOR3* pPoint, D3DXVECTOR3* pDir, D3DXVECTOR3* oIntersect, FLOAT* oDist);
+
 	const float GetDistance(D3DXVECTOR3 _A, D3DXVECTOR3 _B);
 	
 	static CollisionHandler* Get();

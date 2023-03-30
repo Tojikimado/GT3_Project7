@@ -84,3 +84,29 @@ GameObject* Camera::GetUI()
 {
     return pUI;
 }
+
+void Camera::GetCursorRay(D3DXVECTOR3* pOrg, D3DXVECTOR3* pDir, FLOAT x, FLOAT y)
+{
+
+
+    x = x * 2.0f / GetWidth() - 1.0f;
+    y = y * 2.0f / GetHeight() - 1.0f;
+    D3DXVECTOR3 v;
+    v.x = x / _matProjection._11;
+    v.y = -y / _matProjection._22;
+    v.z = 1.0f;
+
+    // Inverse view matrix
+    D3DXMATRIX matV;
+    D3DXMatrixInverse(&matV, NULL, &_matView);
+
+
+    // Transform the screen space pick ray into 3D space
+    pOrg->x = matV._41;
+    pOrg->y = matV._42;
+    pOrg->z = matV._43;
+    pDir->x = v.x * matV._11 + v.y * matV._21 + v.z * matV._31;
+    pDir->y = v.x * matV._12 + v.y * matV._22 + v.z * matV._32;
+    pDir->z = v.x * matV._13 + v.y * matV._23 + v.z * matV._33;
+    D3DXVec3Normalize(pDir, pDir);
+}

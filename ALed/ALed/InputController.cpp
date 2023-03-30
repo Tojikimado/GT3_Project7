@@ -76,15 +76,17 @@ void InputController::UnbindControl(std::string action)
 		m_controls.at(action) = NULL;
 }
 
-int InputController::GetMouseX()
+int InputController::GetMouseX(HWND hWnd)
 {
     GetCursorPos(&m_pt);
+    ScreenToClient(hWnd, &m_pt);
     return m_pt.x;
 }
 
-int InputController::GetMouseY()
+int InputController::GetMouseY(HWND hWnd)
 {
     GetCursorPos(&m_pt);
+    ScreenToClient(hWnd, &m_pt);
     return m_pt.y;
 }
 

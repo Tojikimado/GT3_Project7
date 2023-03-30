@@ -59,12 +59,17 @@ void MainScene::Update(float dt)
 	//
 	if (InputController::Get()->IsKeyDown(VK_LBUTTON))
 	{
-		for (Spaceship spaceship : v_spaceships)
+		for (Spaceship* spaceship : v_spaceships)
 		{
-			if (m_pRaycast->SingleRayCast(m_pInputController->GetMouseX(),
-										m_pInputController->GetMouseY(), spaceship.collider))
+			if(spaceship->b_isActive)
 			{
-				spaceship.OnHit();
+				D3DXVECTOR3* cursorWorldOrigin = new D3DXVECTOR3();
+				bool isHit = m_pRaycast->SingleRayCast(this->pCamera, m_pInputController->GetMouseX(this->GetAppWindow()), m_pInputController->GetMouseY(this->GetAppWindow()), spaceship->collider, cursorWorldOrigin);
+
+				if(isHit)
+				{
+					spaceship->OnHit();
+				}
 			}
 		}
 	}
@@ -77,7 +82,7 @@ void MainScene::Update(float dt)
 	if (sGenerator != nullptr) {
 		Spaceship* spaceship = sGenerator->Update(dt);
 		if (spaceship != nullptr) {
-			//v_spaceships.push_back(spaceship);
+			v_spaceships.push_back(spaceship);
 			spaceship->Init(m_pDevice3D);
 			this->CreateColoredGameObject(spaceship);
 		}

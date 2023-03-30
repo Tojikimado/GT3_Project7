@@ -7,7 +7,6 @@ TexturedMeshRenderer::TexturedMeshRenderer(TexturedMesh* mesh)
 
 TexturedMeshRenderer::~TexturedMeshRenderer()
 {
-	delete[] texturedMesh;
 	delete[] vectorBuffer;
 	delete[] indexBuffer;
 	delete[] texture;

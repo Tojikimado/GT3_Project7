@@ -13,6 +13,8 @@ public :
 	d3dCollision::WidhtHeightDepth SetDimensions(ColoredMesh* _mesh);
 
 	d3dCollision::WidhtHeightDepth SetDimensions(TexturedMesh* _mesh);
+
+	d3dCollision::WidhtHeightDepth GetDimensions() const;
 	
 	float MaxX() const;
 	float MinX() const;

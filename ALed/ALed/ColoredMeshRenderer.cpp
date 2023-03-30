@@ -24,7 +24,6 @@ ColoredMeshRenderer::ColoredMeshRenderer(ColoredMesh* mesh)
 
 ColoredMeshRenderer::~ColoredMeshRenderer()
 {
-	delete[] coloredMesh;
 	delete[] vectorBuffer;
 	delete[] indexBuffer;
 }

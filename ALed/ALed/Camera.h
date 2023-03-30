@@ -19,6 +19,8 @@ public:
     void SetUI(GameObject* ui);
     GameObject* GetUI();
 
+    void GetCursorRay(D3DXVECTOR3* pOrg, D3DXVECTOR3* pDir, FLOAT x, FLOAT y);
+
     inline void SetFOV(float fov) { _fov = fov; };
     inline float GetFOV() { return _fov; };
 
@@ -27,6 +29,9 @@ public:
 
     inline void SetZFar(float zFar) { _zFar = zFar; };
     inline float GetZFar() { return _zFar; };
+
+    inline float GetWidth() { return _width; };
+    inline float GetHeight() { return _height; };
 
 private:
     IDirect3DDevice9* _device;
