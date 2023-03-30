@@ -77,12 +77,6 @@ void D3DApp::Update(float dt)
 			coloredGobj->Update(dt);
 		}
 	}
-	
-	if(m_playLabel)
-		m_playLabel->Update(m_hAppWindow, "Play");
-
-	if(m_quitLabel)
-		m_quitLabel->Update(m_hAppWindow, "Quit");
 }
 
 void D3DApp::Render()
@@ -96,6 +90,14 @@ void D3DApp::Render()
 		if (coloredGobj->b_isActive)
 		{
 			coloredGobj->Render(m_pDevice3D, pCamera->GetView(), pCamera->GetProj());
+		}
+	}
+
+	for (Label* label : v_labels)
+	{
+		if (label->m_pIsActive)
+		{
+			label->OnRender();
 		}
 	}
 
@@ -131,6 +133,11 @@ void D3DApp::CreateColoredGameObject(ColoredGameObject* _coloredGameObject)
 void D3DApp::CreateTrack(Track* gameObject) 
 {
 	v_tracks.push_back(gameObject);
+}
+
+void D3DApp::CreateLabels(Label* label)
+{
+	v_labels.push_back(label);
 }
 
 unsigned int D3DApp::GetClientWidth()

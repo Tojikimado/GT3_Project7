@@ -13,10 +13,8 @@ Button::~Button()
 
 void Button::Update(HWND hwnd)
 {
-	m_mousePos.x = InputController::Get()->GetMouseX();
-	m_mousePos.y = InputController::Get()->GetMouseY();
-
-	ScreenToClient(hwnd, &m_mousePos);
+	m_mousePos.x = InputController::Get()->GetMouseX(hwnd);
+	m_mousePos.y = InputController::Get()->GetMouseY(hwnd);
 
 	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
 	{

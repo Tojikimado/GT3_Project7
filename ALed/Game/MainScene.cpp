@@ -74,11 +74,23 @@ void MainScene::Update(float dt)
 	}
 	pStateMachine->Update(dt);
 	pCamera->Update(dt);
+
+	if (m_timerLabel != nullptr)
+	{
+		m_currentTime += dt;
+		m_timerLabel->SetCaption(std::to_string(m_maxTime - (int)m_currentTime));
+	}
+
+	if (m_scoreLabel != nullptr)
+	{
+		m_scoreLabel->SetCaption("Score : " + std::to_string(ScoreManager::Get()->GetScore()));
+	}
 }
 
 void MainScene::Render()
 {
 	this->D3DApp::Render();
+
 }
 
 void MainScene::LoadScene()
@@ -114,6 +126,21 @@ void MainScene::LoadScene()
 	{
 		coloredGO->Init(m_pDevice3D);
 	}
+
+	m_currentTime = 0;
+
+	RECT timerRect;
+	SetRect(&timerRect, m_uiClientWidth / 2 - 25, 25, m_uiClientWidth / 2 + 25, 50);
+	m_timerLabel = new Label(m_pDevice3D, this, "0", d3dColors::Red, DT_CENTER, timerRect, false);
+	
+	ScoreManager::Get()->ResetScore();
+
+	RECT scoreRect;
+	SetRect(&scoreRect, 25, 25, 100, 50);
+	m_scoreLabel = new Label(m_pDevice3D, this, "Score : " + std::to_string(ScoreManager::Get()->GetScore()), d3dColors::Red, DT_CENTER, scoreRect, false);
+
+	this->CreateLabels(m_timerLabel);
+	this->CreateLabels(m_scoreLabel);
 }
 
 void MainScene::UnloadScene()
@@ -138,4 +165,64 @@ void MainScene::UnloadScene()
 		if (spaceship != nullptr) delete spaceship;
 	}
 	v_spaceships.clear();
+
+	for (Label* label : v_labels)
+	{
+		if (label != nullptr)  label->~Label();
+	}
+	v_labels.clear();
+}
+
+void MainScene::LoadMainMenuScene()
+{
+	RECT titleRect;
+	SetRect(&titleRect, m_uiClientWidth / 2 - 100, 25, m_uiClientWidth / 2 + 100, 100);
+
+	RECT playRect;
+	SetRect(&playRect, m_uiClientWidth / 2 - 25, m_uiClientHeight / 2.5f - 25, m_uiClientWidth / 2 + 25, m_uiClientHeight / 2.5f + 25);
+	m_playLabel = new Label(m_pDevice3D, this, "Play", d3dColors::Yellow, DT_CENTER, playRect, false);
+
+	RECT quitRect;
+	SetRect(&quitRect, m_uiClientWidth / 2 - 25, m_uiClientHeight / 2 - 25, m_uiClientWidth / 2 + 25, m_uiClientHeight / 2 + 25);
+	m_quitLabel = new Label(m_pDevice3D, this, "Quit", d3dColors::Yellow, DT_CENTER, quitRect, false);
+
+	this->CreateLabels(new Label(m_pDevice3D, this, "Roller Coaster V24", d3dColors::Yellow, DT_CENTER, titleRect, true));
+	this->CreateLabels(m_playLabel);
+	this->CreateLabels(m_quitLabel);
+}
+
+void MainScene::UnloadMainMenuScene()
+{
+	for (Label* label : v_labels)
+	{
+		if (label != nullptr)  label->~Label();
+	}
+	v_labels.clear();
+}
+
+void MainScene::LoadEndScene()
+{
+	RECT titleRect;
+	SetRect(&titleRect, m_uiClientWidth / 2 - 100, 25, m_uiClientWidth / 2 + 100, 100);
+
+	RECT playRect;
+	SetRect(&playRect, m_uiClientWidth / 2 - 50, m_uiClientHeight / 2.5f - 25, m_uiClientWidth / 2 + 50, m_uiClientHeight / 2.5f + 25);
+	m_mainMenuLabel = new Label(m_pDevice3D, this, "Main Menu", d3dColors::Yellow, DT_CENTER, playRect, false);
+
+	RECT quitRect;
+	SetRect(&quitRect, m_uiClientWidth / 2 - 25, m_uiClientHeight / 2 - 25, m_uiClientWidth / 2 + 25, m_uiClientHeight / 2 + 25);
+	m_quitLabel = new Label(m_pDevice3D, this, "Quit", d3dColors::Yellow, DT_CENTER, quitRect, false);
+
+	this->CreateLabels(new Label(m_pDevice3D, this, "Score : " + std::to_string(ScoreManager::Get()->GetScore()), d3dColors::Yellow, DT_CENTER, titleRect, true));
+	this->CreateLabels(m_mainMenuLabel);
+	this->CreateLabels(m_quitLabel);
+}
+
+void MainScene::UnloadEndScene()
+{
+	for (Label* label : v_labels)
+	{
+		if (label != nullptr)  label->~Label();
+	}
+	v_labels.clear();
 }

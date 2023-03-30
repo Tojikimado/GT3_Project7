@@ -1,5 +1,4 @@
 #include "GameStateMachine.h"
-#include "InputController.h"
 
 GameStateMachine::GameStateMachine(GameState* state) : StateMachine(state)
 {
@@ -54,6 +53,7 @@ void GameState::LeaveState()
 #pragma region ingame
 InGameState::InGameState(MainScene* scene) : GameState(scene)
 {
+	m_scene->SetMaxTime(gameDuration);
 }
 
 InGameState::~InGameState()
@@ -107,22 +107,34 @@ void MainMenuState::SetStateMachine(StateMachine* stateMachine)
 void MainMenuState::EnterState()
 {
 	GameState::EnterState();
-
+	m_scene->LoadMainMenuScene();
 	OutputDebugStringA("main menu \n");
 }
 
 void MainMenuState::UpdateState(float dt)
 {
-	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
+	if (m_scene->m_playLabel != nullptr)
 	{
-		m_stateMachine->SwitchState(new InGameState(m_scene));
+		if (m_scene->m_playLabel->Update(m_scene->GetHWND(), ButtonAction::PLAY) == ButtonAction::PLAY)
+		{
+			m_stateMachine->SwitchState(new InGameState(m_scene));
+		}
+		else if (m_scene->m_quitLabel != nullptr)
+		{
+			if (m_scene->m_quitLabel->Update(m_scene->GetHWND(), ButtonAction::QUIT) == ButtonAction::QUIT)
+			{
+				PostQuitMessage(0);
+			}
+		}
 	}
+	
+	
 }
 
 void MainMenuState::LeaveState()
 {
 	GameState::LeaveState();
-
+	m_scene->UnloadMainMenuScene();
 	OutputDebugStringA("leaving menu \n");
 }
 #pragma endregion
@@ -145,20 +157,32 @@ void GameOverState::SetStateMachine(StateMachine* stateMachine)
 void GameOverState::EnterState()
 {
 	GameState::EnterState();
+	m_scene->LoadEndScene();
 	OutputDebugStringA("enter game over \n");
 }
 
 void GameOverState::UpdateState(float dt)
 {
-	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
+	if (m_scene->m_mainMenuLabel != nullptr)
 	{
-		m_stateMachine->SwitchState(new MainMenuState(m_scene));
+		if (m_scene->m_mainMenuLabel->Update(m_scene->GetHWND(), ButtonAction::MENU) == ButtonAction::MENU)
+		{
+			m_stateMachine->SwitchState(new MainMenuState(m_scene));
+		}
+		else if (m_scene->m_quitLabel != nullptr)
+		{
+			if (m_scene->m_quitLabel->Update(m_scene->GetHWND(), ButtonAction::QUIT) == ButtonAction::QUIT)
+			{
+				PostQuitMessage(0);
+			}
+		}
 	}
 }
 
 void GameOverState::LeaveState()
 {
 	GameState::LeaveState();
+	m_scene->UnloadEndScene();
 	OutputDebugStringA("leaving game over \n");
 }
 

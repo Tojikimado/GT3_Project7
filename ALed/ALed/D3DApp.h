@@ -42,6 +42,7 @@ public :
 
 	void CreateColoredGameObject(ColoredGameObject* _coloredGameObject);
 	void CreateTrack(Track* gameObject);
+	void CreateLabels(Label* label);
 
 	unsigned int GetClientWidth();
 	unsigned int GetClientHeight();
@@ -73,9 +74,7 @@ protected:
 	//Game attributes 
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
 	std::vector<Track*> v_tracks;
-
-	Label* m_playLabel;
-	Label* m_quitLabel;
+	std::vector<Label*> v_labels;
 
 protected:
 	//Methods 

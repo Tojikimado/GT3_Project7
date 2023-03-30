@@ -1,6 +1,8 @@
 #pragma once
 #include <ColoredGameObject.h>
 #include <BoundingAABB.h>
+#include "ScoreManager.h"
+
 class Spaceship : public ColoredGameObject
 {
 private:

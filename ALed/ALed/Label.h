@@ -7,6 +7,14 @@
 
 class D3DApp;
 
+enum ButtonAction 
+{
+	PLAY,
+	QUIT,
+	MENU,
+	NONE
+};
+
 class Label
 {
 protected:
@@ -35,6 +43,8 @@ public:
 	RECT GetRect();
 	void SetSize(D3DApp* app);
 	bool LoadTexture(LPCWSTR imagePath, bool isBg);
-	void Update(HWND hwnd, std::string action);
+	ButtonAction Update(HWND hwnd, ButtonAction action);
+
+	bool m_pIsActive = true;
 
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "StateMachine.h"
 #include "MainScene.h"
+#include "InputController.h"
 
 class MainScene;
 class GameStateMachine;
@@ -27,7 +28,7 @@ class InGameState : public GameState
 {
 protected:
 
-	float gameDuration = 15.0f;
+	float gameDuration = 300.0f;
 
 public:
 

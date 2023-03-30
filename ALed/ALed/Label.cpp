@@ -35,11 +35,12 @@ bool Label::OnRender()
 		m_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
 		auto pos = D3DXVECTOR3(0, 0, 0);
-		m_sprite->Draw(m_texture, NULL, NULL, &pos, 0xFFFFFFFF);
+		m_sprite->Draw(m_texture, NULL, NULL, &pos, d3dColors::DarkGrey);
 		m_font->DrawTextA(m_sprite, m_caption.c_str(), -1, &m_rect, m_format, m_color);
 
 		m_sprite->End();
 	}
+
 	return true;
 }
 
@@ -124,25 +125,19 @@ bool Label::LoadTexture(LPCWSTR imagePath, bool isBg)
 	return true;
 }
 
-void Label::Update(HWND hwnd, std::string action)
+ButtonAction  Label::Update(HWND hwnd, ButtonAction action)
 {
-	m_mousePos.x = InputController::Get()->GetMouseX();
-	m_mousePos.y = InputController::Get()->GetMouseY();
+	m_mousePos.x = InputController::Get()->GetMouseX(hwnd);
+	m_mousePos.y = InputController::Get()->GetMouseY(hwnd);
 
-	ScreenToClient(hwnd, &m_mousePos);
-
-	if (InputController::Get()->IsKeyDown(VK_RBUTTON))
+	if (InputController::Get()->IsKeyDown(VK_LBUTTON))
 	{
 		if (m_mousePos.x > m_rect.left && m_mousePos.x < m_rect.right &&
 			m_mousePos.y > m_rect.top && m_mousePos.y < m_rect.bottom)
 		{
-			if (action == "Play") {
-				OutputDebugStringA("Play");
-			}
-			else if (action == "Quit")
-			{
-				OutputDebugStringA("Quit");
-			}
+			return action;
 		}
 	}
+
+	return ButtonAction::NONE;
 }
