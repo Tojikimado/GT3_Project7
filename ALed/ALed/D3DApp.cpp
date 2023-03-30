@@ -1,5 +1,4 @@
 #include "D3DApp.h"
-#include "Image.h"
 
 namespace
 {
@@ -63,7 +62,6 @@ bool D3DApp::Init()
 	}
 	m_pInputController = InputController::Get();
 	m_pRaycast = Raycast::Get();
-	timerLabel = new Label(m_pDevice3D);
 
 	return true;
 }
@@ -79,6 +77,12 @@ void D3DApp::Update(float dt)
 			coloredGobj->Update(dt);
 		}
 	}
+	
+	if(m_playLabel)
+		m_playLabel->Update(m_hAppWindow, "Play");
+
+	if(m_quitLabel)
+		m_quitLabel->Update(m_hAppWindow, "Quit");
 }
 
 void D3DApp::Render()
@@ -95,11 +99,6 @@ void D3DApp::Render()
 		}
 	}
 
-	timerLabel->SetCaption(to_string(100 - (int)STimer::GetSystemTimeEx()));
-	timerLabel->SetColor(d3dColors::Red);
-	timerLabel->SetRect(m_uiClientWidth/2 - 25, 10, m_uiClientWidth/2 + 25, 50);
-	timerLabel->OnRender();
-
 	m_pDevice3D->EndScene();
 
 	m_pDevice3D->Present(0, 0, 0, 0);
@@ -112,6 +111,12 @@ LRESULT D3DApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
+
+	case WM_SIZE:
+		DWORD width = LOWORD(lParam);
+		DWORD height = HIWORD(lParam);
+		m_uiClientWidth = width;
+		m_uiClientHeight = height;
 	}
 
 
@@ -136,6 +141,16 @@ unsigned int D3DApp::GetClientWidth()
 unsigned int D3DApp::GetClientHeight()
 {
 	return m_uiClientHeight;
+}
+
+int D3DApp::GetRenderWidth()
+{
+	return m_renderWidth;
+}
+
+int D3DApp::GetRenderHeight()
+{
+	return m_renderHeight;
 }
 
 IDirect3DDevice9* D3DApp::GetDevice()

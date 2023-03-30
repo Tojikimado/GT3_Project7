@@ -14,12 +14,16 @@
 #include "Raycast.h"
 #include "Label.h"
 #include "STimer.h"
+#include "Button.h"
+#include "Image.h"
 
 // include the Direct3D Library file
 
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
 #pragma comment (lib, "winmm.lib")
+
+class Label;
 
 class D3DApp
 {
@@ -41,6 +45,8 @@ public :
 
 	unsigned int GetClientWidth();
 	unsigned int GetClientHeight();
+	int GetRenderWidth();
+	int GetRenderHeight();
 	IDirect3DDevice9* GetDevice();
 	HWND GetAppWindow();
 	InputController* m_pInputController;
@@ -68,8 +74,8 @@ protected:
 	std::vector<ColoredGameObject*> v_coloredGameObjects;
 	std::vector<Track*> v_tracks;
 
-	Label* timerLabel;
-	std::string m_timerCaption;
+	Label* m_playLabel;
+	Label* m_quitLabel;
 
 protected:
 	//Methods 

@@ -45,6 +45,8 @@ public:
 
 	GameStateMachine* pStateMachine = nullptr;
 
+	Button* but;
+
 protected : 
 
 	std::vector<Spaceship*> v_spaceships;

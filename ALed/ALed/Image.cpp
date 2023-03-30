@@ -2,14 +2,14 @@
 #include <string>
 #include <iostream>
 
-Image::Image(IDirect3DDevice9* device, LPCWSTR imagePath, D3DXVECTOR2 position, D3DXVECTOR2 size, D3DCOLOR color)
+Image::Image(IDirect3DDevice9* device, LPCWSTR imagePath, D3DXVECTOR3 position, D3DXVECTOR2 size, D3DCOLOR color, D3DApp* app)
 {
 	m_device = device;
 	m_position = position;
 	m_size = size;
 	m_color = color;
 	LoadTexture(imagePath);
-
+	SetSize(size, app);
 }
 
 Image::~Image()
@@ -20,20 +20,18 @@ void Image::Draw()
 {
 	m_sprite->Begin(D3DXSPRITE_ALPHABLEND);
 
-	auto position = D3DXVECTOR3(m_position.x, m_position.y, 0.0f);
-	m_sprite->Draw(m_texture, NULL, NULL, &position, m_color);
+	m_sprite->Draw(m_texture, NULL, NULL, &m_position, m_color);
 
 	m_sprite->End();
 }
 
-void Image::SetSize(D3DXVECTOR2 size, int clientWidth, int clienHeight, int renderWidth, int renderHeight)
+void Image::SetSize(D3DXVECTOR2 size, D3DApp* app)
 {
+	float wR = ((float)app->GetClientWidth() / (float)app->GetRenderWidth());
+	float hR = ((float)app->GetClientHeight() / (float)app->GetRenderHeight());
 
-	float wR = ((float)clientWidth / renderWidth);
-	float hR = ((float)clienHeight / renderHeight);
-
-	float scaleX = (float)size.x / (float)m_size.x;
-	float scaleY = (float)size.y / (float)m_size.y;
+	float scaleX = (float)size.x / ((float)m_size.x * wR);
+	float scaleY = (float)size.y / ((float)m_size.y * hR);
 
 	D3DXMATRIX mat;
 
@@ -42,6 +40,26 @@ void Image::SetSize(D3DXVECTOR2 size, int clientWidth, int clienHeight, int rend
 	mat._42 = m_position.y;
 
 	m_sprite->SetTransform(&mat);
+}
+
+D3DXVECTOR2 Image::GetSize()
+{
+	return m_size;
+}
+
+void Image::SetColor(D3DCOLOR color)
+{
+	m_color = color;
+}
+
+D3DCOLOR Image::GetColor()
+{
+	return m_color;
+}
+
+LPD3DXSPRITE Image::GetSprite()
+{
+	return m_sprite;
 }
 
 bool Image::LoadTexture(LPCWSTR imagePath)
@@ -65,4 +83,14 @@ bool Image::LoadTexture(LPCWSTR imagePath)
 	m_size = D3DXVECTOR2(desc.Width, desc.Height);
 
 	return true;
+}
+
+void Image::SetPosition(D3DXVECTOR3 position)
+{
+	m_position = position;
+}
+
+D3DXVECTOR3 Image::GetPosition()
+{
+	return m_position;
 }
