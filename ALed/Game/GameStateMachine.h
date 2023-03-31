@@ -1,9 +1,9 @@
 #pragma once
 #include "StateMachine.h"
-#include "MainScene.h"
+#include "GameApp.h"
 #include "InputController.h"
 
-class MainScene;
+class GameApp;
 class GameStateMachine;
 
 class GameState : public State
@@ -11,8 +11,8 @@ class GameState : public State
 protected:
 
 public:
-	MainScene* m_scene;
-	GameState(MainScene* scene);
+	GameApp* m_scene;
+	GameState(GameApp* scene);
 	~GameState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -32,7 +32,7 @@ protected:
 
 public:
 
-	InGameState(MainScene* scene);
+	InGameState(GameApp* scene);
 	~InGameState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -52,7 +52,7 @@ protected:
 
 public:
 
-	MainMenuState(MainScene* scene);
+	MainMenuState(GameApp* scene);
 	~MainMenuState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;
@@ -72,7 +72,7 @@ protected:
 
 public:
 
-	GameOverState(MainScene* scene);
+	GameOverState(GameApp* scene);
 	~GameOverState();
 
 	void SetStateMachine(StateMachine* stateMachine) override;

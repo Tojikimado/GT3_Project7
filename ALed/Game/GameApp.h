@@ -25,13 +25,13 @@
 class ExplosionParticle;
 class GameStateMachine;
 
-class MainScene : public D3DApp
+class GameApp : public D3DApp
 {
 public:
 
-	MainScene(HINSTANCE hInstance);
+	GameApp(HINSTANCE hInstance);
 
-	~MainScene();
+	~GameApp();
 
 	bool Init() override;
 	void Update(float dt) override;

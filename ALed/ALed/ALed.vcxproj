@@ -147,7 +147,6 @@
     <ClCompile Include="ColoredGameObject.cpp" />
     <ClCompile Include="D3DApp.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Label.cpp" />
@@ -165,7 +164,6 @@
     <ClCompile Include="Track.cpp" />
     <ClCompile Include="TrackPosition.cpp" />
     <ClCompile Include="Transform.cpp" />
-    <ClCompile Include="Winmaincpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoundingAABB.h" />
@@ -185,7 +183,6 @@
     <ClInclude Include="D3DApp.h" />
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="GameScene.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputController.h" />

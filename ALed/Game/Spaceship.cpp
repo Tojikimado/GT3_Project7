@@ -26,6 +26,6 @@ Spaceship::~Spaceship()
 
 void Spaceship::OnHit()
 {
-	this->b_isActive = false;
+	b_isActive = false;
 	ScoreManager::Get()->SetScore(1);
 }

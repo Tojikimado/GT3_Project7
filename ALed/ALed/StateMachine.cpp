@@ -4,7 +4,7 @@
 //finite state machine 
 StateMachine::StateMachine(State* state)
 {	
-	this->SwitchState(state);
+	SwitchState(state);
 }
 
 StateMachine::~StateMachine()

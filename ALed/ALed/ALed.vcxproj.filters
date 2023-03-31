@@ -79,6 +79,18 @@
     <Filter Include="Source Files\UI">
       <UniqueIdentifier>{973f184b-1558-4c57-8850-718022bdbc1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Render\Particle">
+      <UniqueIdentifier>{658b3db8-ed38-435b-a9ca-a428a374377f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render\Particle">
+      <UniqueIdentifier>{5a38b21f-35f2-4d7f-baff-85e934885c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Track">
+      <UniqueIdentifier>{99a81f92-a11a-4927-9032-87f8e6523bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Track">
+      <UniqueIdentifier>{d750221c-e46e-4bcc-b3c6-476683ca390e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ColoredMesh.cpp">
@@ -114,9 +126,6 @@
     <ClCompile Include="D3DApp.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Winmaincpp.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -147,9 +156,6 @@
     <ClCompile Include="TexturedGameObject.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -162,15 +168,6 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Spline.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Track.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TrackPosition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InputController.cpp">
       <Filter>Source Files\Inputs</Filter>
     </ClCompile>
@@ -179,12 +176,6 @@
     </ClCompile>
     <ClCompile Include="Raycast.cpp">
       <Filter>Source Files\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Source Files\UI</Filter>
@@ -198,8 +189,20 @@
     <ClCompile Include="Image.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Source Files\Render\Particle</Filter>
+    </ClCompile>
     <ClCompile Include="Random.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Render\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Track.cpp">
+      <Filter>Source Files\Track</Filter>
+    </ClCompile>
+    <ClCompile Include="TrackPosition.cpp">
+      <Filter>Source Files\Track</Filter>
+    </ClCompile>
+    <ClCompile Include="Spline.cpp">
+      <Filter>Source Files\Track</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -278,9 +281,6 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -292,15 +292,6 @@
     </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Spline.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Track.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TrackPosition.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InputController.h">
       <Filter>Header Files\Inputs</Filter>
@@ -314,12 +305,6 @@
     <ClInclude Include="Raycast.h">
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -332,8 +317,20 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Header Files\Render\Particle</Filter>
+    </ClInclude>
     <ClInclude Include="Random.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Render\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Spline.h">
+      <Filter>Header Files\Track</Filter>
+    </ClInclude>
+    <ClInclude Include="Track.h">
+      <Filter>Header Files\Track</Filter>
+    </ClInclude>
+    <ClInclude Include="TrackPosition.h">
+      <Filter>Header Files\Track</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

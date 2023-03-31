@@ -19,8 +19,8 @@ ColoredSlopeMesh::ColoredSlopeMesh(float width, float height, float deepth, D3DC
 	slopeVertices[4] = { -1.0f * width, 1.0f * height, 1.0f * deepth, color, };
 	slopeVertices[5] = { -1.0f * width, -1.0f * height, 1.0f * deepth, color, };
 
-	this->vertices = slopeVertices;
-	this->nbVertices = 6;
+	vertices = slopeVertices;
+	nbVertices = 6;
 
 	// create the indices using an int array
 	short* baseIndices = new short[24];
@@ -37,8 +37,8 @@ ColoredSlopeMesh::ColoredSlopeMesh(float width, float height, float deepth, D3DC
 
 	baseIndices[21] = 3; baseIndices[22] = 4; baseIndices[23] = 5;    // side 5
 
-	this->indices = baseIndices;
-	this->nbIndices = 24;
+	indices = baseIndices;
+	nbIndices = 24;
 }
 
 ColoredSlopeMesh::ColoredSlopeMesh(float width, float height, float deepth) : ColoredSlopeMesh(width, height, deepth, D3DCOLOR_XRGB(255, 0, 255))

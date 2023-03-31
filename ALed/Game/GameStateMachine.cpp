@@ -19,7 +19,7 @@ void GameStateMachine::SwitchState(State* nextState)
 	StateMachine::SwitchState(nextState);
 }
 
-GameState::GameState(MainScene* scene) : State()
+GameState::GameState(GameApp* scene) : State()
 {
 	m_scene = scene;
 }
@@ -51,7 +51,7 @@ void GameState::LeaveState()
 
 
 #pragma region ingame
-InGameState::InGameState(MainScene* scene) : GameState(scene)
+InGameState::InGameState(GameApp* scene) : GameState(scene)
 {
 	m_scene->SetMaxTime(gameDuration);
 }
@@ -96,7 +96,7 @@ void InGameState::LeaveState()
 #pragma endregion
 
 #pragma region mainmenu
-MainMenuState::MainMenuState(MainScene* scene) : GameState(scene)
+MainMenuState::MainMenuState(GameApp* scene) : GameState(scene)
 {
 }
 
@@ -146,7 +146,7 @@ void MainMenuState::LeaveState()
 
 #pragma region game over
 
-GameOverState::GameOverState(MainScene* scene) : GameState(scene)
+GameOverState::GameOverState(GameApp* scene) : GameState(scene)
 {
 }
 

@@ -22,7 +22,7 @@ GameScene::~GameScene()
 bool GameScene::Init()
 {
 	ColoredCube* cube = new ColoredCube(Transform(D3DXVECTOR3(-2.5f, -2.5f, 3.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), 0.5f, d3dColors::CornFlowerBlue);
-	this->CreateColoredGameObject(cube);
+	CreateColoredGameObject(cube);
 
 	SplinePoint* testSpline = new SplinePoint[5];
 	testSpline[0] = { Transform() };
@@ -34,7 +34,7 @@ bool GameScene::Init()
 	Spline* spline = new Spline(testSpline, 5);
 	track = new Track(cube->GetTransform(), spline, cube, true);
 	track->StartFollow();
-	this->CreateTrack(track);
+	CreateTrack(track);
 	
 	/*TexturedMeshRenderer* brickCubeRenderer = new TexturedMeshRenderer(new TexturedMesh());
 	brickCube = new TexturedGameObject(Transform(D3DXVECTOR3(0.f, 2.f, 1.f), D3DXVECTOR3(0, 0, 0), D3DXVECTOR3(1.f, 1.f, 1.f)), brickCubeRenderer);
@@ -55,7 +55,7 @@ bool GameScene::Init()
 
 void GameScene::Update(float dt)
 {
-	this->D3DApp::Update(dt);
+	D3DApp::Update(dt);
 	for (Track* gameObject : v_tracks) {
 		gameObject->Update(dt);
 	}
@@ -74,7 +74,7 @@ void GameScene::Update(float dt)
 
 void GameScene::Render()
 {
-	this->D3DApp::Render();
+	D3DApp::Render();
 }
 
 #pragma endregion

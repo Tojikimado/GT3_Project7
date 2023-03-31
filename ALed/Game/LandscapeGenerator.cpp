@@ -55,10 +55,6 @@ bool LandscapeGenerator::CreateMesh()
 		}
 	}
 	indices = baseIndices;
-	//ColoredMesh* newMesh = new ColoredMesh(vertices, XSize * YSize, baseIndices,nbIndice);
-
-	//m_meshRenderer = new ColoredMeshRenderer(newMesh, "D:/mvita/Color.hlsl");
-
 	return true;
 }
 

@@ -25,23 +25,20 @@
     <Filter Include="Header Files\GameStateMachine">
       <UniqueIdentifier>{285e9507-1d29-47cb-8583-df23ccee3d70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{be545612-3c3c-42d8-bced-da54c87796b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{5e35f17e-45ab-44b0-a7a9-a9746411654f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{97db0447-326c-4820-b35e-cdde674058ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{d5dee4cd-1b91-4885-8539-07292f39121d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LandscapeGenerator.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
@@ -54,46 +51,49 @@
     <ClInclude Include="Spaceship.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
-    <ClInclude Include="MainScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GenerateRandPlayerSplines.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
     <ClInclude Include="GenerateSpaceships.h">
       <Filter>Header Files\WorldGeneration</Filter>
     </ClInclude>
-    <ClInclude Include="PTrack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Landscape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameStateMachine.h">
       <Filter>Header Files\GameStateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApp.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Landscape.h">
+      <Filter>Header Files\WorldGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="PTrack.h">
+      <Filter>Header Files\WorldGeneration</Filter>
+    </ClInclude>
     <ClInclude Include="ScoreManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Noise.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LandscapeGenerator.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
     <ClCompile Include="Spaceship.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="MainScene.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GenerateSpaceships.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
@@ -101,17 +101,26 @@
     <ClCompile Include="GenerateRandPlayerSplines.cpp">
       <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
-    <ClCompile Include="PTrack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Landscape.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameStateMachine.cpp">
       <Filter>Source Files\GameStateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
     <ClCompile Include="ScoreManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PTrack.cpp">
+      <Filter>Source Files\WorldGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="Landscape.cpp">
+      <Filter>Source Files\WorldGeneration</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

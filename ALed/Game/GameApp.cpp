@@ -1,4 +1,4 @@
-#include "MainScene.h"
+#include "GameApp.h"
 #include <ColoredCubeMesh.h>
 #include "LandscapeGenerator.h"
 #include "GenerateRandPlayerSplines.h"
@@ -7,15 +7,15 @@
 const DWORD d3dVertex::VertexPositionColor::FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE;
 const DWORD d3dVertex::VertexPositionTexture::FVF = D3DFVF_XYZ | D3DFVF_TEX1;
 
-MainScene::MainScene(HINSTANCE hInstance) : D3DApp(hInstance)
+GameApp::GameApp(HINSTANCE hInstance) : D3DApp(hInstance)
 {
 }
 
-MainScene::~MainScene()
+GameApp::~GameApp()
 {
 }
 
-bool MainScene::Init()
+bool GameApp::Init()
 {
 	if (pCamera == nullptr)
 	{
@@ -30,9 +30,9 @@ bool MainScene::Init()
 	return true;
 }
 
-void MainScene::Update(float dt)
+void GameApp::Update(float dt)
 {
-	this->D3DApp::Update(dt);
+	D3DApp::Update(dt);
 
 	//
 	if (InputController::Get()->IsKeyDown(VK_LBUTTON))
@@ -42,7 +42,7 @@ void MainScene::Update(float dt)
 			if(spaceship->b_isActive)
 			{
 				D3DXVECTOR3* cursorWorldOrigin = new D3DXVECTOR3();
-				bool isHit = m_pRaycast->SingleRayCast(this->pCamera, m_pInputController->GetMouseX(this->GetAppWindow()), m_pInputController->GetMouseY(this->GetAppWindow()), spaceship->collider, cursorWorldOrigin);
+				bool isHit = m_pRaycast->SingleRayCast(pCamera, m_pInputController->GetMouseX(GetAppWindow()), m_pInputController->GetMouseY(GetAppWindow()), spaceship->collider, cursorWorldOrigin);
 
 				if(isHit)
 				{
@@ -62,7 +62,7 @@ void MainScene::Update(float dt)
 		if (spaceship != nullptr) {
 			v_spaceships.push_back(spaceship);
 			spaceship->Init(m_pDevice3D);
-			this->CreateColoredGameObject(spaceship);
+			CreateColoredGameObject(spaceship);
 		}
 	}
 	if (m_landscape != nullptr) {
@@ -87,13 +87,13 @@ void MainScene::Update(float dt)
 	}
 }
 
-void MainScene::Render()
+void GameApp::Render()
 {
-	this->D3DApp::Render();
+	D3DApp::Render();
 
 }
 
-void MainScene::LoadScene()
+void GameApp::LoadScene()
 {
 
 	if (pTrack == nullptr)
@@ -118,8 +118,8 @@ void MainScene::LoadScene()
 	ColoredGameObject** m_land = m_landscape->GetLand();
 	ColoredGameObject** m_sky = m_landscape->GetSky();
 	for (int i = 0; i < 4; i++) {
-		this->CreateColoredGameObject(m_land[i]);
-		this->CreateColoredGameObject(m_sky[i]);
+		CreateColoredGameObject(m_land[i]);
+		CreateColoredGameObject(m_sky[i]);
 	}
 
 	for (ColoredGameObject* coloredGO : v_coloredGameObjects)
@@ -139,11 +139,11 @@ void MainScene::LoadScene()
 	SetRect(&scoreRect, 25, 25, 100, 50);
 	m_scoreLabel = new Label(m_pDevice3D, this, "Score : " + std::to_string(ScoreManager::Get()->GetScore()), d3dColors::Red, DT_CENTER, scoreRect, false);
 
-	this->CreateLabels(m_timerLabel);
-	this->CreateLabels(m_scoreLabel);
+	CreateLabels(m_timerLabel);
+	CreateLabels(m_scoreLabel);
 }
 
-void MainScene::UnloadScene()
+void GameApp::UnloadScene()
 {
 	if (pTrack != nullptr) {
 		delete pTrack;
@@ -173,7 +173,7 @@ void MainScene::UnloadScene()
 	v_labels.clear();
 }
 
-void MainScene::LoadMainMenuScene()
+void GameApp::LoadMainMenuScene()
 {
 	RECT titleRect;
 	SetRect(&titleRect, m_uiClientWidth / 2 - 100, 25, m_uiClientWidth / 2 + 100, 100);
@@ -186,12 +186,12 @@ void MainScene::LoadMainMenuScene()
 	SetRect(&quitRect, m_uiClientWidth / 2 - 25, m_uiClientHeight / 2 - 25, m_uiClientWidth / 2 + 25, m_uiClientHeight / 2 + 25);
 	m_quitLabel = new Label(m_pDevice3D, this, "Quit", d3dColors::Yellow, DT_CENTER, quitRect, false);
 
-	this->CreateLabels(new Label(m_pDevice3D, this, "Roller Coaster V24", d3dColors::Yellow, DT_CENTER, titleRect, true));
-	this->CreateLabels(m_playLabel);
-	this->CreateLabels(m_quitLabel);
+	CreateLabels(new Label(m_pDevice3D, this, "Roller Coaster V24", d3dColors::Yellow, DT_CENTER, titleRect, true));
+	CreateLabels(m_playLabel);
+	CreateLabels(m_quitLabel);
 }
 
-void MainScene::UnloadMainMenuScene()
+void GameApp::UnloadMainMenuScene()
 {
 	for (Label* label : v_labels)
 	{
@@ -200,7 +200,7 @@ void MainScene::UnloadMainMenuScene()
 	v_labels.clear();
 }
 
-void MainScene::LoadEndScene()
+void GameApp::LoadEndScene()
 {
 	RECT titleRect;
 	SetRect(&titleRect, m_uiClientWidth / 2 - 100, 25, m_uiClientWidth / 2 + 100, 100);
@@ -213,12 +213,12 @@ void MainScene::LoadEndScene()
 	SetRect(&quitRect, m_uiClientWidth / 2 - 25, m_uiClientHeight / 2 - 25, m_uiClientWidth / 2 + 25, m_uiClientHeight / 2 + 25);
 	m_quitLabel = new Label(m_pDevice3D, this, "Quit", d3dColors::Yellow, DT_CENTER, quitRect, false);
 
-	this->CreateLabels(new Label(m_pDevice3D, this, "Score : " + std::to_string(ScoreManager::Get()->GetScore()), d3dColors::Yellow, DT_CENTER, titleRect, true));
-	this->CreateLabels(m_mainMenuLabel);
-	this->CreateLabels(m_quitLabel);
+	CreateLabels(new Label(m_pDevice3D, this, "Score : " + std::to_string(ScoreManager::Get()->GetScore()), d3dColors::Yellow, DT_CENTER, titleRect, true));
+	CreateLabels(m_mainMenuLabel);
+	CreateLabels(m_quitLabel);
 }
 
-void MainScene::UnloadEndScene()
+void GameApp::UnloadEndScene()
 {
 	for (Label* label : v_labels)
 	{

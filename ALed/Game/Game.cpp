@@ -11,7 +11,7 @@
 #include "GenerateRandPlayerSplines.h"
 #include <ColoredCubeMesh.h>
 #include "GenerateSpaceships.h"
-#include "MainScene.h"
+#include "GameApp.h"
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -21,7 +21,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
 	std::srand(time(NULL));
 
-    MainScene* tApp = new MainScene(hInstance);
+    GameApp* tApp = new GameApp(hInstance);
 
 	if (tApp->D3DApp::Init() == false)
 	{

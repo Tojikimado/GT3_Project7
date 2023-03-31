@@ -17,8 +17,8 @@ ColoredRectangleMesh::ColoredRectangleMesh(float width, float height, float deep
 	rectVertices[6] = { -1.0f * width, -1.0f * height, 1.0f * deepth, color, };
 	rectVertices[7] = { 1.0f * width, -1.0f * height, 1.0f * deepth, color, };
 
-	this->vertices = rectVertices;
-	this->nbVertices = 8;
+	vertices = rectVertices;
+	nbVertices = 8;
 
 	// create the indices using an int array
 	short* baseIndices = new short[36];
@@ -40,8 +40,8 @@ ColoredRectangleMesh::ColoredRectangleMesh(float width, float height, float deep
 	baseIndices[30] = 3; baseIndices[31] = 7; baseIndices[32] = 2;    // side 6
 	baseIndices[33] = 2; baseIndices[34] = 7; baseIndices[35] = 6;
 
-	this->indices = baseIndices;
-	this->nbIndices = 36;
+	indices = baseIndices;
+	nbIndices = 36;
 }
 
 ColoredRectangleMesh::ColoredRectangleMesh(float width, float height, float deepth): ColoredRectangleMesh(width, height, deepth, D3DCOLOR_XRGB(255, 0, 255))

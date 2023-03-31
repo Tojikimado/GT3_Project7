@@ -136,7 +136,7 @@
     <ClInclude Include="GenerateSpaceships.h" />
     <ClInclude Include="Landscape.h" />
     <ClInclude Include="GameStateMachine.h" />
-    <ClInclude Include="MainScene.h" />
+    <ClInclude Include="GameApp.h" />
     <ClInclude Include="PTrack.h" />
     <ClInclude Include="ScoreManager.h" />
     <ClInclude Include="Spaceship.h" />
@@ -154,7 +154,7 @@
     <ClCompile Include="GenerateSpaceships.cpp" />
     <ClCompile Include="Landscape.cpp" />
     <ClCompile Include="GameStateMachine.cpp" />
-    <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="PTrack.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="Spaceship.cpp" />
@@ -162,7 +162,6 @@
     <ClCompile Include="GenerateRandPlayerSplines.cpp" />
     <ClCompile Include="LandscapeGenerator.cpp" />
     <ClCompile Include="UI.cpp" />
-    <ClCompile Include="Noise.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Game.rc" />

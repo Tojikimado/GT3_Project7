@@ -12,8 +12,8 @@ ColoredMesh::ColoredMesh() {
 	cubeVertices[6] = { -1.0f, -1.0f, 1.0f, D3DCOLOR_XRGB(255, 255, 255), };
 	cubeVertices[7] = { 1.0f, -1.0f, 1.0f, D3DCOLOR_XRGB(0, 255, 255), };
 
-	this->vertices = cubeVertices;
-	this->nbVertices = 8;
+	vertices = cubeVertices;
+	nbVertices = 8;
 
 	// create the indices using an int array
 	short* baseIndices = new short[36];
@@ -35,17 +35,17 @@ ColoredMesh::ColoredMesh() {
 	baseIndices[30] = 3; baseIndices[31] = 7; baseIndices[32] = 2;    // side 6
 	baseIndices[33] = 2; baseIndices[34] = 7; baseIndices[35] = 6;
 
-	this->indices = baseIndices;
-	this->nbIndices = 36;
+	indices = baseIndices;
+	nbIndices = 36;
 }
 
-ColoredMesh::ColoredMesh(VertexPositionColor* newvertices, int size, short* indices, int indiceSize)
+ColoredMesh::ColoredMesh(VertexPositionColor* _newvertices, int _size, short* _indices, int _indiceSize)
 {
 	//memcpy(vertices, newvertices, size * sizeof(CUSTOMVERTEX));
-	this->vertices = newvertices;
-	this->nbVertices = size;
-	this->indices = indices;
-	this->nbIndices = indiceSize;
+	vertices = _newvertices;
+	nbVertices = _size;
+	indices = _indices;
+	nbIndices = _indiceSize;
 }
 
 ColoredMesh::~ColoredMesh()
